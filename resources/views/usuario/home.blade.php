@@ -27,7 +27,7 @@
                                         <th>Apellido Paterno</th>
                                         <th>Apellido Materno</th>
                                         <th>Correo</th>
-                                        <th>telefono</th>
+                                        <th>telefóno</th>
                                     </tr>
                                 </thead>
                                 <tbody>
