@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('genero_mascota', function (Blueprint $table) {
             $table->id();
             $table->string('genero_mascota');
+            $table->softDeletes();
         });
     }
 

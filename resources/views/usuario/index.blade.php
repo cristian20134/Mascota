@@ -22,22 +22,20 @@
                                 <thead class="bg-danger">
                                     <tr>
                                         <th>#</th>
-                                        <th>rut</th>
+                                        <th>Rut</th>
                                         <th>Nombres</th>
-                                        <th>Apellido Paterno</th>
-                                        <th>Apellido Materno</th>
+                                        <th>Apellidos</th>
                                         <th>Correo</th>
-                                        <th>telefóno</th>
+                                        <th>Telefóno</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($usuario as $u)
+                                    @foreach($usuarios as $u)
                                     <tr>
                                         <td>{{ $u -> id }}</td>
                                         <td>{{ $u -> rut_usuario }}</td>
                                         <td>{{ $u -> nombre_usuario }}</td>
-                                        <td>{{ $u -> apellido_paterno }}</td>
-                                        <td>{{ $u -> apellido_materno }}</td>
+                                        <td>{{ $u -> apellido_paterno}} {{$u-> apellido_materno}}</td>
                                         <td>{{ $u -> email_usuario }}</td>
                                         <td>{{ $u -> telefono_usuario }}</td>
                                     </tr>
@@ -47,5 +45,9 @@
                         </div>
                     </div>
             </div>
+            <div class=" d-flex justify-content-end">
+                {{$usuarios->links()}}
+            </div> 
     </div>
+
 @endsection

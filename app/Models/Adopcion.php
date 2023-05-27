@@ -10,6 +10,16 @@ class Adopcion extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'adopcion';
+
+    protected $fillable = [
+        'usuario_id',
+        'mascota_id',
+        'nombre_cuidad',
+        'fecha_adopcion',
+        'descripcion_mascota'      
+    ];
+
     protected $dates = ['fecha_adopcion','deleted_at'];
 
     public function seguimiento() {

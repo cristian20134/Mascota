@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tamano', function (Blueprint $table) {
             $table->id();
             $table->string('tamano_mascota');
+            $table->softDeletes();
         });
     }
 

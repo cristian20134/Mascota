@@ -21,6 +21,7 @@
             <form method="POST" action="{{ route('usuario.store')}}">
               <div class="card-body">
                 @csrf
+                
                 <div class="form-group">
                   <label class="@error ('nombre_usuario') text-danger @enderror" for="nombre_usuario">Nombres</label>
                   <input 
@@ -102,7 +103,6 @@
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                   </div>
-
               <!-- /.card-body -->
 
                 <div class="card-footer">

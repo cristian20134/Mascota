@@ -26,8 +26,8 @@ class HistorialRequest extends FormRequest
         switch($this->method()){
             case "POST": {
                 return[
-                    'vacuna'=> 'required|max:2',
-                    'enfermedades' => 'required|max:2',
+                    'vacuna'=> 'required',
+                    'enfermedades' => 'required',
                     'comentarios'=> 'required|min:10|max:1000',
                 ];
             }

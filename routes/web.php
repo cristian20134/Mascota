@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\MascotaController;
+use App\Http\Controllers\AdopcionController;
 use App\Http\Controllers\RazaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TamanoController;
@@ -29,9 +31,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/create', [App\Http\Controllers\UsuarioController::class, 'create'])->name('usuario.create');
-Route::post('/store', [App\Http\Controllers\UsuarioController::class, 'store'])->name('usuario.store');
-Route::get('/usuario/index', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuario.home');
+Route::get('/usuario/index', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuario.index');
+Route::get('/usuario/create', [App\Http\Controllers\UsuarioController::class, 'create'])->name('usuario.create');
+Route::post('/usuario/store', [App\Http\Controllers\UsuarioController::class, 'store'])->name('usuario.store');
+
+Route::get('/mascota/create', [App\Http\Controllers\MascotaController::class, 'create'])->name('mascota.create');
+Route::post('/mascota/store', [App\Http\Controllers\MascotaController::class, 'store'])->name('mascota.store');
+
+Route::get('/adopcion/create', [App\Http\Controllers\AdopcionController::class, 'create'])->name('adopcion.create');
+Route::post('/adopcion/store', [App\Http\Controllers\AdopcionController::class, 'store'])->name('adopcion.store');
 
 Route::get('/raza/create', [App\Http\Controllers\RazaController::class, 'create'])->name('raza.create');
 Route::post('/raza/store', [App\Http\Controllers\RazaController::class, 'store'])->name('raza.store');

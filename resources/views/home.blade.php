@@ -15,7 +15,7 @@
 @section('contenido')
     <div class="col-md-10 offset-md-1">
             <div class="card">
-                <div class="card-header">Información Adopción de Mascotas</div>
+                <div class="card-header">Administración Principal</div>
                 <div class="table-responsive">
                     <table class="table table-hover table-condensed table-striped">
                         <thead class="bg-black">
@@ -27,24 +27,26 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <tr>
                                 <td>
-                                    <a href="{{ route('usuario.home') }}" class="nav-link bg-danger btn-lg">
+                                    <a href="{{ route('usuario.index') }}" class="nav-link bg-danger btn-lg">
                                         <i class="nav-icon fas fa-user-plus"></i>
                                         <p class="text-center">Usuario</p>  
                                         </a>
                                 </td>
-                                <td>                                    <a href="{{ route('usuario.home') }}" class="nav-link bg-success btn-lg">
-                                    <i class="nav-icon fas fa-user-plus"></i>
+                                <td>
+                                    <a href="{{ route('usuario.index') }}" class="nav-link bg-info btn-lg">
+                                    <i class="nav-icon fas fa-paw"></i>
                                     <p class="text-center">Mascota</p>  
                                     </a></td>
-                                <td>                                    <a href="{{ route('usuario.home') }}" class="nav-link bg-success btn-lg">
-                                    <i class="nav-icon fas fa-user-plus"></i>
+                                <td>
+                                    <a href="{{ route('usuario.index') }}" class="nav-link bg-success btn-lg">
+                                    <i class="nav-icon fas fa-heart"></i>
                                     <p class="text-center">Adopción</p>  
                                     </a></td>
-                                <td>                                    <a href="{{ route('usuario.home') }}" class="nav-link bg-success btn-lg">
-                                    <i class="nav-icon fas fa-user-plus"></i>
+                                <td>
+                                    <a href="{{ route('usuario.index') }}" class="nav-link bg-success btn-lg">
+                                    <i class="nav-icon fas fa-walking"></i>
                                     <p class="text-center">Seguimiento</p>  
                                     </a></td>
                             </tr>

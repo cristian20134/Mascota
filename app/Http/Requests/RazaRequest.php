@@ -26,12 +26,12 @@ class RazaRequest extends FormRequest
         switch($this->method()){
             case "POST": {
                 return[
-                    'raza_mascota' => 'required|min:5|max:100',
+                    'raza_mascota' => 'required|min:3|max:25',
                 ];
             }
             case "PUT":{
                 return[
-                    'raza_mascota' => 'required|min:5|max:100',
+                    'raza_mascota' => 'required|min:3|max:25',
                 ];
             }
             

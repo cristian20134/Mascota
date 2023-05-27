@@ -10,6 +10,19 @@ class Mascota extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'mascota';
+
+    protected $fillable = [
+        'historial_medico_id',
+        'raza_id',
+        'tamano_id',
+        'genero_mascota_id',
+        'personalidad_mascota_id',
+        'nombre_mascota',
+        'fecha_nacimiento_mascota',
+        'comentario_mascota'
+    ];
+
     protected $dates = ['fecha_nacimiento_mascota','deleted_at'];
 
     public function adopciones() {
@@ -17,7 +30,7 @@ class Mascota extends Model
     }
 
     public function historial_medico() {
-        return $this->hasOne(historial_medico::class);
+        return $this->hasOne(HistorialMedico::class);
     }
 
     public function raza() {

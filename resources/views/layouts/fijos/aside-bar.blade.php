@@ -34,9 +34,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">
+                    <a href="{{ route('mascota.create') }}" class="nav-link">
                     <i class="nav-icon fas fa-paw"></i>
                     <p>Crear Mascota</p>   
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('adopcion.create') }}" class="nav-link">
+                    <i class="nav-icon fas fa-heart"></i>
+                    <p>Adopción de Mascota</p>   
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('home') }}" class="nav-link">
+                    <i class="nav-icon fas fa-walking"></i>
+                    <p>Seguimiento Adopción</p>   
                     </a>
                 </li>
                 <li class="nav-item">
@@ -65,7 +77,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('personalidad.create') }}" class="nav-link">
-                    <i class="nav-icon fas fa-grin-hearts"></i>
+                    <i class="nav-icon fas fa-laugh"></i>
                     <p>Agregar Personalidad</p>   
                     </a>
                 </li>

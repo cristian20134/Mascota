@@ -5,80 +5,65 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UsuarioRequest;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use UnitEnum;
 
 class UsuarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct( )
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $usuario = Usuario::all();
-        return view('usuario.home', compact(['usuario']));
+        $usuarios = Usuario::paginate(2);
+        return view('usuario.index', compact(['usuarios']));
     }
 
     public function create()
     {
-        return view('usuario.create');
+        $usuarios = Usuario::all();
+        return view('usuario.create', compact(['usuarios']));
     }
 
     public function store( UsuarioRequest $request)
     {
-           $usuario = Usuario::create([
+           $usuarios = Usuario::create([
             'nombre_usuario' => $request->nombre_usuario,
             'apellido_paterno' => $request->apellido_paterno,
             'apellido_materno' => $request->apellido_materno,
             'rut_usuario' => $request->rut_usuario,
             'email_usuario' => $request->email_usuario,
             'telefono_usuario' => $request->telefono_usuario,
-           ]);
-           if ($usuario){
-            return view('usuario.create');
-           }    
+            ]);
+
+            if ($usuarios){
+                session()->flash('mensaje', ['success', 'El Usuario se ha registrado correctamente']);
+                return redirect()->route('usuario.index');
+            
+                session()->flash('mensaje', ['danger', 'Se ha Producido un error al momento de registrar un Usuario']);
+                return redirect()->route('usuario.create');
+               }      
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function destroy($id)
     {
         //

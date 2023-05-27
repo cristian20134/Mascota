@@ -22,14 +22,13 @@
               <div class="card-body">
                 @csrf
 
-                <div class="form-group">
+                  <div class="form-group">
                     <label class="@error ('vacuna') text-danger @enderror" for="vacuna">Vacunas</label>
-                    <input 
-                    type="text" name='vacuna' 
-                    class="form-control  @error ('vacuna') is-invalid @enderror" 
-                    id="vacuna" 
-                    placeholder="Ingrese SÍ o NO"
-                    value="{{ old('vacuna') ?: ""}}">
+                    <select name="vacuna" id="vacuna" class="form-control @error ('vacuna') is-invalid @enderror">
+                      <option value="">Seleccione un opción</option>
+                      <option value="si" @if(old('vacuna') == 'si')selected @endif>Si</option>
+                      <option value="no" @if(old('vacuna') == 'no')selected @endif>No</option>
+                    </select>
                     @error('vacuna')
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -37,12 +36,11 @@
 
                   <div class="form-group">
                     <label class="@error ('enfermedades') text-danger @enderror" for="enfermedades">Enfermedades</label>
-                    <input 
-                    type="text" name='enfermedades' 
-                    class="form-control  @error ('enfermedades') is-invalid @enderror" 
-                    id="enfermedades" 
-                    placeholder="Ingrese SÍ o NO"
-                    value="{{ old('enfermedades') ?: ""}}">
+                    <select name="enfermedades" id="enfermedades" class="form-control @error ('enfermedades') is-invalid @enderror">
+                      <option value="">Seleccione un opción</option>
+                      <option value="si" @if(old('enfermedades') == 'si')selected @endif>Si</option>
+                      <option value="no" @if(old('enfermedades') == 'no')selected @endif>No</option>
+                    </select>
                     @error('enfermedades')
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
