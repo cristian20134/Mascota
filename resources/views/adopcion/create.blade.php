@@ -14,7 +14,7 @@
 
 @section('contenido')
     <div class="col-md-10 offset-md-1">
-        <div class="card card-info">
+        <div class="card card-pink">
             <div class="card-header">
               <h3 class="card-title">Formulario Adopción de Mascota</h3>
             </div>
@@ -77,13 +77,13 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="@error('descripcion_mascota') text-danger @enderror" for="descripcion_mascota">Descripción de Adopción</label>
-                  <textarea class="form-control @error ('descripcion_mascota') is-invalid @enderror" 
-                  name="descripcion_mascota" id="descripcion_mascota" 
+                  <label class="@error('descripcion_adopcion') text-danger @enderror" for="descripcion_adopcion">Descripción de Adopción</label>
+                  <textarea class="form-control @error ('descripcion_adopcion') is-invalid @enderror" 
+                  name="descripcion_adopcion" id="descripcion_adopcion" 
                   cols="30" rows="10" 
                   style="resize: none;"
                   ></textarea>
-                  @error('descripcion_mascota')
+                  @error('descripcion_adopcion')
                   <span class="error invalid-feedback d-block">{{ $message }}</span>
                   @enderror
                 </div>

@@ -17,7 +17,7 @@ class Adopcion extends Model
         'mascota_id',
         'nombre_cuidad',
         'fecha_adopcion',
-        'descripcion_mascota'      
+        'descripcion_adopcion'      
     ];
 
     protected $dates = ['fecha_adopcion','deleted_at'];

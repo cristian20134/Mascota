@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adopcion;
 use App\Models\Mascota;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -29,15 +30,28 @@ class AdopcionController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'select_usuario'=>'required|exists:usuario,id',
+            'select_mascota'=>'required|exists:mascota,id',
+            'nombre_cuidad'=>'required',
+            'fecha_adopcion'=>'required|date_format:Y-m-d',
+            'descripcion_adopcion'=>'required|min:5',
+        ]);
+
+        $adopciones = Adopcion::create([
+            'usuario_id' =>$request->select_usuario,
+            'mascota_id' =>$request->select_mascota,
+            'nombre_cuidad' =>$request->nombre_cuidad,
+            'fecha_adopcion' =>$request->fecha_adopcion,
+            'descripcion_adopcion'=>$request->descripcion_adopcion
+        ]);
+
+        if($adopciones) {
+            return redirect()->route('adopcion.create');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //
