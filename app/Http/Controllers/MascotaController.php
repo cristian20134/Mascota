@@ -20,8 +20,8 @@ class MascotaController extends Controller
     
     public function index()
     {
-       
-        return view('mascota.index');
+        $mascotas = Mascota::paginate(10);
+        return view('mascota.index', compact('mascotas'));
     }
 
    
@@ -45,7 +45,6 @@ class MascotaController extends Controller
             'tamano'=>'required|exists:tamano,id',
             'personalidad_mascota'=>'required|exists:personalidad_mascota,id',
             'historial_medico'=>'required|exists:historial_medico,id',
-            'personalidad_mascota'=>'required|exists:personalidad_mascota,id',
             'fecha_nacimiento_mascota'=>'required|date_format:Y-m-d',
             'comentario_mascota'=>'required|min:5',
         ]);
@@ -69,17 +68,12 @@ class MascotaController extends Controller
     }
 
   
-    public function show($id)
+    public function show(Mascota $m)
     {
-        //
+        return view('mascota.show', compact(['m']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function edit($id)
     {
         //

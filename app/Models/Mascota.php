@@ -26,11 +26,11 @@ class Mascota extends Model
     protected $dates = ['fecha_nacimiento_mascota','deleted_at'];
 
     public function adopciones() {
-        return $this->belongsTo(Adopcion::class);
+        return $this->hasMany(Adopcion::class);
     }
 
     public function historial_medico() {
-        return $this->hasOne(HistorialMedico::class);
+        return $this->belongsTo(HistorialMedico::class);
     }
 
     public function raza() {

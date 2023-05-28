@@ -23,6 +23,6 @@ class Usuario extends Model
     ];
 
     public function adopciones() {
-        return $this->belongsTo(Adopcion::class);
+        return $this->hasMany(Adopcion::class);
     }
 }

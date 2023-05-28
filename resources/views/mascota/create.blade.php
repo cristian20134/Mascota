@@ -121,7 +121,7 @@
                   <label class="@error('comentario_mascota') text-danger @enderror" for="comentario_mascota">Comentarios</label>
                   <textarea class="form-control @error ('comentario_mascota') is-invalid @enderror" 
                   name="comentario_mascota" id="comentario_mascota" 
-                  cols="30" rows="10" 
+                  cols="30" rows="4" 
                   style="resize: none;"
                   ></textarea>
                   @error('comentario_mascota')

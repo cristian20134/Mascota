@@ -10,9 +10,18 @@ class Seguimiento extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'seguimiento';
+
+    protected $fillable = [
+        'adopcion_id',
+        'estado_mascota',
+        'fecha_seguimiento',
+        'descripcion_seguimiento'      
+    ];
+
     protected $dates = ['fecha_seguimiento','deleted_at'];
 
-    public function adopciones() {
-        return $this->hasMany(Adopcion::class, 'Seguimiento_id','id');
+    public function adopcion() {
+        return $this->belongsTo(Adopcion::class);
     }
 }

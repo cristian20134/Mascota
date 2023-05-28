@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">
+                    <a href="{{ route('seguimiento.create') }}" class="nav-link">
                     <i class="nav-icon fas fa-walking"></i>
                     <p>Seguimiento Adopción</p>   
                     </a>

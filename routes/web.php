@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\AdopcionController;
+use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\RazaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TamanoController;
@@ -35,11 +36,18 @@ Route::get('/usuario/index', [App\Http\Controllers\UsuarioController::class, 'in
 Route::get('/usuario/create', [App\Http\Controllers\UsuarioController::class, 'create'])->name('usuario.create');
 Route::post('/usuario/store', [App\Http\Controllers\UsuarioController::class, 'store'])->name('usuario.store');
 
+Route::get('/mascota/index', [App\Http\Controllers\MascotaController::class, 'index'])->name('mascota.index');
+Route::get('/mascota/show/{m}', [App\Http\Controllers\MascotaController::class, 'show'])->name('mascota.show');
 Route::get('/mascota/create', [App\Http\Controllers\MascotaController::class, 'create'])->name('mascota.create');
 Route::post('/mascota/store', [App\Http\Controllers\MascotaController::class, 'store'])->name('mascota.store');
 
+Route::get('/adopcion/index', [App\Http\Controllers\AdopcionController::class, 'index'])->name('adopcion.index');
 Route::get('/adopcion/create', [App\Http\Controllers\AdopcionController::class, 'create'])->name('adopcion.create');
 Route::post('/adopcion/store', [App\Http\Controllers\AdopcionController::class, 'store'])->name('adopcion.store');
+
+Route::get('/seguimiento/index', [App\Http\Controllers\SeguimientoController::class, 'index'])->name('seguimiento.index');
+Route::get('/seguimiento/create', [App\Http\Controllers\SeguimientoController::class, 'create'])->name('seguimiento.create');
+Route::post('/seguimiento/store', [App\Http\Controllers\SeguimientoController::class, 'store'])->name('seguimiento.store');
 
 Route::get('/raza/create', [App\Http\Controllers\RazaController::class, 'create'])->name('raza.create');
 Route::post('/raza/store', [App\Http\Controllers\RazaController::class, 'store'])->name('raza.store');

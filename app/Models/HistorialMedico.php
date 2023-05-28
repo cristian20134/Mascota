@@ -17,6 +17,6 @@ class HistorialMedico extends Model
     protected $fillable = ['vacuna','enfermedades','comentarios'];
 
     public function mascota() {
-        return $this->belongsTo(Mascota::class);
+        return $this->hasOne(Mascota::class);
     }
 }

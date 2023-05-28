@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Adopcion;
-use App\Models\Mascota;
-use App\Models\Usuario;
+use App\Models\Seguimiento;
 use Illuminate\Http\Request;
 
-class AdopcionController extends Controller
+class SeguimientoController extends Controller
 {
-  
     public function __construct( )
     {
         $this->middleware('auth');
@@ -17,38 +15,34 @@ class AdopcionController extends Controller
 
     public function index()
     {
-        $adopciones = Adopcion::paginate(10);
-        return view('adopcion.index',compact(['adopciones']));
+        $seguimientos = Seguimiento::all();
+        return view('seguimiento.index',compact(['seguimientos']));
     }
-
 
     public function create()
     {
-        $usuarios = Usuario::all();
-        $mascotas = Mascota::all();
-        return view('adopcion.create',compact(['usuarios','mascotas']));
+        $adopciones = Adopcion::all();
+        return view('seguimiento.create',compact(['adopciones']));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'select_usuario'=>'required|exists:usuario,id',
-            'select_mascota'=>'required|exists:mascota,id',
-            'nombre_cuidad'=>'required',
-            'fecha_adopcion'=>'required|date_format:Y-m-d',
-            'descripcion_adopcion'=>'required|min:5',
+            'select_seguimiento'=>'required|exists:adopcion,id',
+            'estado_mascota'=>'required',
+            'fecha_seguimiento'=>'required|date_format:Y-m-d',
+            'descripcion_seguimiento'=>'required|min:5',
         ]);
 
-        $adopciones = Adopcion::create([
-            'usuario_id' =>$request->select_usuario,
-            'mascota_id' =>$request->select_mascota,
-            'nombre_cuidad' =>$request->nombre_cuidad,
-            'fecha_adopcion' =>$request->fecha_adopcion,
-            'descripcion_adopcion'=>$request->descripcion_adopcion
+        $seguimientos = Seguimiento::create([
+            'adopcion_id' =>$request->select_seguimiento,
+            'estado_mascota' =>$request->estado_mascota,
+            'fecha_seguimiento' =>$request->fecha_seguimiento,
+            'descripcion_seguimiento'=>$request->descripcion_seguimiento
         ]);
 
-        if($adopciones) {
-            return redirect()->route('adopcion.create');
+        if($seguimientos) {
+            return redirect()->route('seguimiento.create');
         }
     }
 

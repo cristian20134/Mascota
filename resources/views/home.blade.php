@@ -35,17 +35,17 @@
                                         </a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('usuario.index') }}" class="nav-link bg-info btn-lg">
+                                    <a href="{{ route('mascota.index') }}" class="nav-link bg-info btn-lg">
                                     <i class="nav-icon fas fa-paw"></i>
                                     <p class="text-center">Mascota</p>  
                                     </a></td>
                                 <td>
-                                    <a href="{{ route('usuario.index') }}" class="nav-link bg-success btn-lg">
+                                    <a href="{{ route('adopcion.index') }}" class="nav-link bg-pink btn-lg">
                                     <i class="nav-icon fas fa-heart"></i>
                                     <p class="text-center">Adopción</p>  
                                     </a></td>
                                 <td>
-                                    <a href="{{ route('usuario.index') }}" class="nav-link bg-success btn-lg">
+                                    <a href="{{ route('seguimiento.index') }}" class="nav-link bg-purple btn-lg">
                                     <i class="nav-icon fas fa-walking"></i>
                                     <p class="text-center">Seguimiento</p>  
                                     </a></td>
