@@ -37,10 +37,10 @@
                                         <td>{{ $mascota->raza->raza_mascota }}</td>
                                         <td>{{ $mascota->genero_mascota->genero_mascota }}</td>
                                         <td>{{ $mascota->tamano->tamano_mascota }}</td>
-                                        <td class="text-center">
+                                        <td>
                                             <a href="{{ route('mascota.show', ['m'=>$mascota->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
                                             <a href="{{ route('mascota.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>
-                                            <a href="{{ route('mascota.create')}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
+                                            <a href="{{ route('mascota.edit', ['m'=>$mascota->id])}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
                                             <a href="{{ route('home')}}" class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
                                         </td>
                                     </tr>

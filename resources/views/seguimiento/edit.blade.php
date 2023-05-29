@@ -5,11 +5,11 @@
 @endsection
 
 @section('titulo_seccion')
-    Seguimiento Adopción de Mascota
+    Editar Seguimiento Mascota
 @endsection
 
 @section('breadcrumb')
-<li class="breadcrumb-item active">Registro Seguimiento Adopción de Mascota</li>
+<li class="breadcrumb-item active">Editar Registro Seguimiento Adopción de Mascota</li>
 @endsection
 
 @section('contenido')
@@ -18,9 +18,10 @@
             <div class="card-header">
               <h3 class="card-title">Registro Seguimiento Adopción de Mascota</h3>
             </div>
-            <form method="POST" action="{{ route('seguimiento.store')}}">
+            <form method="POST" action="{{ route('seguimiento.update', ['seg'=>$seg->id])}}">
               <div class="card-body">
                 @csrf
+                @method('PUT')
 
                 <div class="form-group">
                   <label class="@error ('select_seguimiento') text-danger @enderror" for="select_mascota"># Adopción</label>
@@ -28,14 +29,14 @@
                     <option value="">Seleccione una Opción</option>
                     @foreach($adopciones as $a)
                     <option value="{{$a->id}}"
-                    {{ (int) old('select_seguimiento') === $a->id ? 'selected' : ''}}>{{$a->id}}</option>
+                    {{ ( (int) old('select_seguimiento') === $a->id  or (int) $seg->adopcion_id === $a->id) ? 'selected' : ''}}>{{$a->id}}</option>
                     @endforeach
                   </select>
                     @error('select_seguimiento')
                       <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
-
+                
                 <div class="form-group">
                   <label class="@error ('estado_mascota') text-danger @enderror" for="estado_mascota">Estado Mascota</label>
                   <input 
@@ -43,7 +44,7 @@
                   class="form-control  @error ('estado_mascota') is-invalid @enderror" 
                   id="estado_mascota" 
                   placeholder="Ingrese Estado Mascota"
-                  value="{{ old('estado_mascota') ?: ""}}">
+                  value="{{ old('estado_mascota') ?: $seg->estado_mascota}}">
                   @error('estado_mascota')
                   <span class="error invalid-feedback">{{ $message }}</span>
                   @enderror
@@ -56,19 +57,21 @@
                   class="form-control  @error ('fecha_seguimiento') is-invalid @enderror" 
                   id="fecha_seguimiento"
                   placeholder="Formato: aaaa-mm-dd"
-                  value="{{ old('fecha_seguimiento') ?: ""}}">
+                  value="{{ old('fecha_seguimiento') ?: $seg->fecha_seguimiento->format('Y-m-d')}}">
                   @error('fecha_seguimiento')
                   <span class="error invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label class="@error('descripcion_seguimiento') text-danger @enderror" for="descripcion_seguimiento">Comentario Seguimiento Mascota</label>
-                  <textarea class="form-control @error ('descripcion_seguimiento') is-invalid @enderror" 
-                  name="descripcion_seguimiento" id="descripcion_seguimiento" 
+                  <label class="@error('descripcion_seguimiento') text-danger @enderror" for="descripcion_seguimiento">Descripcion Seguimiento</label>
+                  <textarea 
+                  class="form-control @error ('descripcion_seguimiento') is-invalid @enderror" 
+                  name="descripcion_seguimiento" 
+                  id="descripcion_seguimiento" 
                   cols="30" rows="10" 
                   style="resize: none;"
-                  ></textarea>
+                  >{{ old('descripcion_seguimiento') ?: $seg->descripcion_seguimiento}}</textarea>
                   @error('descripcion_seguimiento')
                   <span class="error invalid-feedback d-block">{{ $message }}</span>
                   @enderror

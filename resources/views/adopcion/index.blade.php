@@ -5,7 +5,7 @@
 @endsection
 
 @section('titulo_seccion')
-    Información de Usuarios Registrados
+    Listado de Adpociones
 @endsection
 
 @section('breadcrumb')
@@ -15,29 +15,36 @@
 @section('contenido')
     <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Listado de Usuario</div>
+                <div class="card-header">Adopciones</div>
                     <div class="card-body p-0 m-0">
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed table-striped">
                                 <thead class="bg-pink">
-                                    <tr>
+                                    <tr class="text-center">
                                         <th>#</th>
-                                        <th>Nombre</th>
+                                        <th>Adoptador</th>
                                         <th>Mascota</th>
                                         <th>Ciudad</th>
                                         <th>Fecha Adopción</th>
                                         <th>Descripción</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($adopciones as $adopcion)
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>{{ $adopcion -> id }}</td>
                                         <td>{{ $adopcion->usuario->nombre_usuario }}</td>
                                         <td>{{ $adopcion->mascota->nombre_mascota }}</td>
                                         <td>{{ $adopcion->nombre_cuidad }}</td>
-                                        <td>{{ $adopcion->fecha_adopcion }}</td>
+                                        <td>{{ $adopcion->fecha_adopcion->format('d-m-Y') }}</td>
                                         <td>{{ $adopcion->descripcion_adopcion }}</td>
+                                        <td>
+                                            <a href="{{ route('adopcion.show', ['info'=>$adopcion->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
+                                            <a href="{{ route('adopcion.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>
+                                            <a href="{{ route('adopcion.edit', ['info'=>$adopcion->id])}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
+                                            <a href="{{ route('home')}}" class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

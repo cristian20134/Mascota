@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MascotaRequest;
 use App\Models\GeneroMascota;
 use App\Models\HistorialMedico;
 use App\Models\Mascota;
@@ -36,19 +37,8 @@ class MascotaController extends Controller
     }
 
   
-    public function store(Request $request)
+    public function store(MascotaRequest $request)
     {
-        $request->validate([
-            'nombre_mascota'=>'required',
-            'select_raza'=>'required|exists:raza,id',
-            'genero_mascota'=>'required|exists:genero_mascota,id',
-            'tamano'=>'required|exists:tamano,id',
-            'personalidad_mascota'=>'required|exists:personalidad_mascota,id',
-            'historial_medico'=>'required|exists:historial_medico,id',
-            'fecha_nacimiento_mascota'=>'required|date_format:Y-m-d',
-            'comentario_mascota'=>'required|min:5',
-        ]);
-
         $mascotas = Mascota::create([
             'historial_medico_id' =>$request->historial_medico,
             'raza_id' =>$request->select_raza,
@@ -60,11 +50,13 @@ class MascotaController extends Controller
             'comentario_mascota'=>$request->comentario_mascota
         ]);
 
-        if($mascotas) {
+        if ($mascotas){
+            session()->flash('mensaje', ['success', 'La mascota se ha registrado correctamente.']);
             return redirect()->route('mascota.create');
-        }
         
-    
+            session()->flash('mensaje', ['danger', 'Se ha Producido un error al registrar la Mascota.']);
+            return redirect()->route('mascota.create');
+           }    
     }
 
   
@@ -74,29 +66,39 @@ class MascotaController extends Controller
     }
 
  
-    public function edit($id)
+    public function edit(Mascota $m)
     {
-        //
+        $razas = Raza::all();
+        $generos = GeneroMascota::all();
+        $personalidades = PersonalidadMascota::all();
+        $tamanos = Tamano::all();
+        $historiales = HistorialMedico::all();
+        return view('mascota.edit', compact('razas','generos','personalidades','tamanos','historiales','m'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Mascota $m, MascotaRequest $request )
     {
-        //
+      $update = $m->update([
+        'historial_medico_id' =>$request->historial_medico,
+            'raza_id' =>$request->select_raza,
+            'tamano_id' =>$request->tamano,
+            'genero_mascota_id' =>$request->genero_mascota,
+            'personalidad_mascota_id' =>$request->personalidad_mascota,
+            'nombre_mascota'=>$request->nombre_mascota,
+            'fecha_nacimiento_mascota' =>$request->fecha_nacimiento_mascota,
+            'comentario_mascota'=>$request->comentario_mascota
+      ]);
+
+      if ($update){
+        session()->flash('mensaje', ['success', 'Los datos de la mascota se han modificado correctamente.']);
+        return redirect()->route('mascota.create');
+    
+        session()->flash('mensaje', ['danger', 'Se ha Producido un error al Modificar los datos de la Mascota.']);
+        return redirect()->route('mascota.create');
+       }    
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

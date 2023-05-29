@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SeguimientoRequest;
 use App\Models\Adopcion;
 use App\Models\Seguimiento;
 use Illuminate\Http\Request;
@@ -25,15 +26,8 @@ class SeguimientoController extends Controller
         return view('seguimiento.create',compact(['adopciones']));
     }
 
-    public function store(Request $request)
+    public function store(SeguimientoRequest $request)
     {
-        $request->validate([
-            'select_seguimiento'=>'required|exists:adopcion,id',
-            'estado_mascota'=>'required',
-            'fecha_seguimiento'=>'required|date_format:Y-m-d',
-            'descripcion_seguimiento'=>'required|min:5',
-        ]);
-
         $seguimientos = Seguimiento::create([
             'adopcion_id' =>$request->select_seguimiento,
             'estado_mascota' =>$request->estado_mascota,
@@ -41,46 +35,45 @@ class SeguimientoController extends Controller
             'descripcion_seguimiento'=>$request->descripcion_seguimiento
         ]);
 
-        if($seguimientos) {
+        if ($seguimientos){
+            session()->flash('mensaje', ['success', 'El seguimniento se ha registrado correctamente.']);
             return redirect()->route('seguimiento.create');
-        }
+        
+            session()->flash('mensaje', ['danger', 'Se ha Producido un error al registrar el seguimiento.']);
+            return redirect()->route('seguimiento.create');
+           }
     }
-
    
-    public function show($id)
+    public function show(Seguimiento $seg)
     {
-        //
+        return view('seguimiento.show', compact(['seg']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+  
+    public function edit(Seguimiento $seg)
     {
-        //
+        $adopciones = Adopcion::all();
+        return view('seguimiento.edit',compact(['adopciones', 'seg']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Seguimiento $seg, SeguimientoRequest $request)
     {
-        //
-    }
+        $update = $seg->update([
+            'adopcion_id' =>$request->select_seguimiento,
+            'estado_mascota' =>$request->estado_mascota,
+            'fecha_seguimiento' =>$request->fecha_seguimiento,
+            'descripcion_seguimiento'=>$request->descripcion_seguimiento
+          ]);
+    
+          if ($update){
+            session()->flash('mensaje', ['success', 'Los datos del seguimiento se han modificado correctamente.']);
+            return redirect()->route('seguimiento.create');
+        
+            session()->flash('mensaje', ['danger', 'Se ha producido un error al modificar los datos del seguimiento.']);
+            return redirect()->route('home');
+           }    
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

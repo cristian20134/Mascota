@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdopcionRequest;
 use App\Models\Adopcion;
 use App\Models\Mascota;
 use App\Models\Usuario;
@@ -31,14 +32,6 @@ class AdopcionController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'select_usuario'=>'required|exists:usuario,id',
-            'select_mascota'=>'required|exists:mascota,id',
-            'nombre_cuidad'=>'required',
-            'fecha_adopcion'=>'required|date_format:Y-m-d',
-            'descripcion_adopcion'=>'required|min:5',
-        ]);
-
         $adopciones = Adopcion::create([
             'usuario_id' =>$request->select_usuario,
             'mascota_id' =>$request->select_mascota,
@@ -47,46 +40,47 @@ class AdopcionController extends Controller
             'descripcion_adopcion'=>$request->descripcion_adopcion
         ]);
 
-        if($adopciones) {
+        if ($adopciones){
+            session()->flash('mensaje', ['success', 'La adopción se ha registrado correctamente.']);
             return redirect()->route('adopcion.create');
-        }
+        
+            session()->flash('mensaje', ['danger', 'Se ha Producido un error al registrar la adopción.']);
+            return redirect()->route('adopcion.create');
+           }  
     }
 
    
-    public function show($id)
+    public function show(Adopcion $info)
     {
-        //
+        return view('adopcion.show', compact(['info']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Adopcion $info)
     {
-        //
+        $usuarios = Usuario::all();
+        $mascotas = Mascota::all();
+        return view('adopcion.edit',compact(['usuarios','mascotas','info']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Adopcion $info, AdopcionRequest $request)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        $update = $info->update([
+            'usuario_id' =>$request->select_usuario,
+            'mascota_id' =>$request->select_mascota,
+            'nombre_cuidad' =>$request->nombre_cuidad,
+            'fecha_adopcion' =>$request->fecha_adopcion,
+            'descripcion_adopcion'=>$request->descripcion_adopcion
+          ]);
+    
+          if ($update){
+            session()->flash('mensaje', ['success', 'Los datos de la adopción se han modificado correctamente.']);
+            return redirect()->route('adopcion.show', ['info'=>$info->id]);
+        
+            session()->flash('mensaje', ['danger', 'Se ha Producido un error al Modificar los datos de la adopción.']);
+            return redirect()->route('home');
+           }    
+        }
+    
     public function destroy($id)
     {
         //

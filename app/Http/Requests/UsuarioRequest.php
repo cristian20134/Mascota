@@ -29,9 +29,19 @@ class UsuarioRequest extends FormRequest
                     'nombre_usuario' => 'required|min:3|max:30',
                     'apellido_paterno' => 'required|min:3|max:30',
                     'apellido_materno' => 'required|min:3|max:30',
-                    'rut_usuario' => 'required|numeric|min:9',
+                    'rut_usuario' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:10',
                     'email_usuario' => 'required|email|unique:usuario',
-                    'telefono_usuario' => 'required|numeric|min:9',
+                    'telefono_usuario' => 'required|numeric|digits:9',
+                ];
+            }
+            case "PUT":{
+                return[
+                    'nombre_usuario' => 'required|min:3|max:30',
+                    'apellido_paterno' => 'required|min:3|max:30',
+                    'apellido_materno' => 'required|min:3|max:30',
+                    'rut_usuario' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:10',
+                    'email_usuario' => 'required|email',
+                    'telefono_usuario' => 'required|numeric|digits:9',
                 ];
             }
         }
@@ -48,8 +58,9 @@ class UsuarioRequest extends FormRequest
             'telefono_usuario.required'=>'Este campo es obligatorio',
 
             'rut_usuario.numeric'=>'El rut debe ser un número.',
-            'email_usuario.unique'=>'El correo ya ha sido tomado.',
             'telefono_usuario.numeric'=>'El telefóno debe ser número',
+
+              'email_usuario.unique'=>'El correo ya ha sido tomado.',
         ];
     }
 }

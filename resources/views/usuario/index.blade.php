@@ -27,17 +27,24 @@
                                         <th>Apellidos</th>
                                         <th>Correo</th>
                                         <th>Telefóno</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($usuarios as $u)
+                                    @foreach($usuarios as $usuario)
                                     <tr>
-                                        <td>{{ $u -> id }}</td>
-                                        <td>{{ $u -> rut_usuario }}</td>
-                                        <td>{{ $u -> nombre_usuario }}</td>
-                                        <td>{{ $u -> apellido_paterno}} {{$u-> apellido_materno}}</td>
-                                        <td>{{ $u -> email_usuario }}</td>
-                                        <td>{{ $u -> telefono_usuario }}</td>
+                                        <td>{{ $usuario -> id }}</td>
+                                        <td>{{ $usuario -> rut_usuario }}</td>
+                                        <td>{{ $usuario -> nombre_usuario }}</td>
+                                        <td>{{ $usuario -> apellido_paterno}} {{$usuario-> apellido_materno}}</td>
+                                        <td>{{ $usuario -> email_usuario }}</td>
+                                        <td>{{ $usuario -> telefono_usuario }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ route('usuario.show', ['u'=>$usuario->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
+                                            <a href="{{ route('usuario.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>
+                                            <a href="{{ route('usuario.edit', ['u'=>$usuario->id])}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
+                                            <a href="{{ route('home')}}" class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
