@@ -90,6 +90,7 @@
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                   </div>
+                  
                   <div class="form-group">
                     <label class="@error ('telefono_usuario') text-danger @enderror" for="telefono_usuario">Telefono</label>
                     <input 

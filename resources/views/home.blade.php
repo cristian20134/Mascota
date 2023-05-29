@@ -30,27 +30,35 @@
                             <tr>
                                 <td>
                                     <a href="{{ route('usuario.index') }}" class="nav-link bg-danger btn-lg">
-                                        <i class="nav-icon fas fa-user-plus"></i>
-                                        <p class="text-center">Usuario</p>  
-                                        </a>
+                                    <i class="nav-icon fas fa-user-plus"></i>
+                                    <p class="text-center">Usuario</p>  
+                                    </a>
                                 </td>
                                 <td>
                                     <a href="{{ route('mascota.index') }}" class="nav-link bg-info btn-lg">
                                     <i class="nav-icon fas fa-paw"></i>
                                     <p class="text-center">Mascota</p>  
-                                    </a></td>
+                                    </a>
+                                </td>
                                 <td>
                                     <a href="{{ route('adopcion.index') }}" class="nav-link bg-pink btn-lg">
                                     <i class="nav-icon fas fa-heart"></i>
                                     <p class="text-center">Adopción</p>  
-                                    </a></td>
+                                    </a>
+                                </td>
                                 <td>
                                     <a href="{{ route('seguimiento.index') }}" class="nav-link bg-purple btn-lg">
                                     <i class="nav-icon fas fa-walking"></i>
                                     <p class="text-center">Seguimiento</p>  
-                                    </a></td>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('historial.index') }}" class="nav-link bg-purple btn-lg">
+                                    <i class="nav-icon fas fa-walking"></i>
+                                    <p class="text-center">Historial</p>  
+                                    </a>
+                                </td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>

@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class HistorialMedicoController extends Controller
 {
-  
+    public function __construct( )
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-       $historiales=HistorialMedico::all(); 
-       return view('home', compact(['historiales']));
+       $historiales=HistorialMedico::paginate(8);
+       return view('historial.index', compact(['historiales']));
     }
 
     public function create()
@@ -29,46 +33,46 @@ class HistorialMedicoController extends Controller
             'comentarios' => $request->comentarios,
           
            ]);
-           if ($historiales){
-            return view('home');
-           }    
+
+            if ($historiales){
+            session()->flash('mensaje', ['success', 'EL historial medico mascota se ha registrado correctamente.']);
+            return redirect()->route('historial.create');
+        
+            session()->flash('mensaje', ['danger', 'Se ha producido un error al registrar el historial medico mascota.']);
+            return redirect()->route('home');
+           }   
     }
     
 
-    public function show($id)
+    public function show(HistorialMedico $his)
     {
-        //
+        return view('historial.show', compact(['his'])); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit(HistorialMedico $his)
     {
-        //
+        return view('historial.edit', compact(['his'])); 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function update(HistorialMedico $his, HistorialRequest $request)
+    {
+        $update = $his->update([
+            'vacuna' => $request->vacuna,
+            'enfermedades' => $request->enfermedades,
+            'comentarios' => $request->comentarios,
+          ]);
+    
+          if ($update){
+            session()->flash('mensaje', ['success', 'Los datos del historial medico mascota se han modificado correctamente.']);
+            return redirect()->route('historial.create');
+        
+            session()->flash('mensaje', ['danger', 'Se ha producido un error al modificar los datos del historial medico mascota.']);
+            return redirect()->route('home');
+           }    
+     }
+    
     public function destroy($id)
     {
         //

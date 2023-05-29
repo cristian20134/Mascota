@@ -30,7 +30,7 @@ class Mascota extends Model
     }
 
     public function historial_medico() {
-        return $this->belongsTo(HistorialMedico::class);
+        return $this->hasOne(HistorialMedico::class);
     }
 
     public function raza() {

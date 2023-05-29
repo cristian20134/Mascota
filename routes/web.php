@@ -64,9 +64,15 @@ Route::get('/raza/create', [App\Http\Controllers\RazaController::class, 'create'
 Route::post('/raza/store', [App\Http\Controllers\RazaController::class, 'store'])->name('raza.store');
 Route::get('/raza/edit/{id}', [App\Http\Controllers\RazaController::class, 'edit'])->name('raza.edit');
 Route::put('/raza/update/{id}', [App\Http\Controllers\RazaController::class, 'update'])->name('raza.update');
+Route::get('/raza/delete/{info}', [App\Http\Controllers\RazaController::class, 'delete'])->name('raza.delete');
+Route::get('/raza/restore/{info}', [App\Http\Controllers\RazaController::class, 'restore'])->name('raza.restore');
 
+Route::get('/historial/index', [App\Http\Controllers\HistorialMedicoController::class, 'index'])->name('historial.index');
+Route::get('/historial/show{his}', [App\Http\Controllers\HistorialMedicoController::class, 'show'])->name('historial.show');
 Route::get('/historial/create', [App\Http\Controllers\HistorialMedicoController::class, 'create'])->name('historial.create');
 Route::post('/historial/store', [App\Http\Controllers\HistorialMedicoController::class, 'store'])->name('historial.store');
+Route::get('/historial/edit/{his}', [App\Http\Controllers\HistorialMedicoController::class, 'edit'])->name('historial.edit');
+Route::put('/historial/update/{his}', [App\Http\Controllers\HistorialMedicoController::class, 'update'])->name('historial.update');
 
 Route::get('/tamano/create', [App\Http\Controllers\TamanoController::class, 'create'])->name('tamano.create');
 Route::post('/tamano/store', [App\Http\Controllers\TamanoController::class, 'store'])->name('tamano.store');

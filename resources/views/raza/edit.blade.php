@@ -35,7 +35,7 @@
                     @enderror
                   </div>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button type="submit" class="btn btn-primary">Editar Raza</button>
                   </div>
               </div>
               </form>
@@ -51,30 +51,20 @@
              <div class="table-responsive">
               <table class="table-table-hover table condensed">
                   <thead>
-                      <tr>
+                      <tr class="text-center">
                           <th>Nombre</th>
                           <th>Acciones</th>
                       </tr>
                   </thead>
                   <tbody>
                       @foreach($razas as $raza)
-                          <tr>
+                          <tr class="text-center">
                               <td>{{ $raza->raza_mascota }}</td>
                               <td>
                                   <a 
                                       href="{{ route('raza.edit', ['id'=>$raza->id] ) }}" 
                                       class="btn btn-sm btn-success">
                                       <i class="fas fa-pencil-alt"></i>
-                                  </a>
-                                  <a  
-                                      href="" 
-                                      class="btn btn-sm btn-warning">
-                                      <i class="fas fa-undo"></i>
-                                  </a>
-                                  <a 
-                                      href="" 
-                                      class="btn btn-sm btn-danger">
-                                      <i class="fas fa-trash-alt"></i>
                                   </a>
                               </td>
                           </tr>

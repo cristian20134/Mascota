@@ -26,20 +26,36 @@ class HistorialRequest extends FormRequest
         switch($this->method()){
             case "POST": {
                 return[
-                    'vacuna'=> 'required',
-                    'enfermedades' => 'required',
-                    'comentarios'=> 'required|min:10|max:1000',
+                    'vacuna' => 'required|min:2|max:2',
+                    'enfermedades' => 'required|min:2|max:2',
+                    'comentarios' => 'required|min:5|max:100',
                 ];
             }
+            case "PUT":{
+                return[
+                    'vacuna' => 'required|min:2|max:2',
+                    'enfermedades' => 'required|min:2|max:2',
+                    'comentarios' => 'required|min:5|max:100',
+                ];
+            }
+            
         }
         
     }
 
     public function messages(){   
         return [
-            'vacuna.required'=>'Este campo es Obligatorio',
+            'vacuna.required'=>'Este campo es obligatorio',
             'enfermedades.required'=>'Este campo es obligatorio',
             'comentarios.required'=>'Este campo es obligatorio',
+
+            'vacuna.min'=>'Los caracteres minimo son :min.',
+            'enfermedades.min'=>'Los caracteres minimo son :min.',
+            'comentarios.min'=>'Los caracteres minimo son :min.',
+
+            'vacuna.max'=>'Los caracteres maximos son :max.',
+            'enfermedades.max'=>'Los caracteres maximos son :max.',
+            'comentarios.max'=>'Los caracteres maximos son :max.',
         ];
     }
 }

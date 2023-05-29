@@ -16,7 +16,7 @@ class RazaController extends Controller
 
     public function create()
     {
-        $razas = Raza::all();
+        $razas = Raza::withTrashed()->get();
         $id=new Mascota();
         return view('raza.create',compact('razas','id'));
     }
@@ -56,8 +56,33 @@ class RazaController extends Controller
             return redirect()->route('raza.create');
     }
 
-    public function destroy($id)
+    public function delete(Raza $info)
     {
-        //
+        try {
+            if ($info->delete()){
+                session()->flash('mensaje', ['success', 'Se elimino la raza']);
+                return redirect()->route('raza.create');
+            }
+            session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar raza']);
+            return redirect()->route('raza.create');
+
+        } catch( \Exception $e) {
+            abort(403);
+        }
     }
+
+    public function restore($info) {
+        try {
+            if (Raza::withTrashed()->findOrFail($info)->restore() ){
+                session()->flash('mensaje', ['success', 'Se recuperó la raza.']);
+                return redirect()->route('raza.create');
+            }
+            session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar la raza']);
+            return redirect()->route('raza.create');
+
+        } catch( \Exception $e) {
+            abort(403);
+        }
+    }
+    
 }

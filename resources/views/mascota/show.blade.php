@@ -42,7 +42,7 @@
                 </ul>
                 <div class="text-center">
                     <a href="{{ route('mascota.index') }}" class="btn btn-info"><i class="material-icons">volver</i></a>
-                    <a href="" class="btn btn-success"><i class="material-icons">Historial Medico</i></a>
+                    <a href="{{ route ('historial.show', ['his'=>$m->id]) }}" class="btn btn-success"><i class="material-icons">Historial Medico</i></a>
                 </div>
             </div>
         </div>
