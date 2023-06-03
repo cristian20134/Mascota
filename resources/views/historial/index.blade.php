@@ -5,7 +5,7 @@
 @endsection
 
 @section('titulo_seccion')
-    Listado de Mascotas
+    Información Historial Medico Mascota
 @endsection
 
 @section('breadcrumb')
@@ -15,7 +15,7 @@
 @section('contenido')
     <div class="col-md-10 offset-md-1">
             <div class="card">
-                <div class="card-header">Mascotas</div>
+                <div class="card-header">Listado Historial Medico de Mascota</div>
                     <div class="card-body p-0 m-0">
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed table-striped">
@@ -37,9 +37,20 @@
                                         <td>{{ $historial->enfermedades}}</td>
                                         <td>
                                             <a href="{{ route('historial.show', ['his'=>$historial->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
-                                            <a href="{{ route('historial.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>
-                                            <a href="{{ route('historial.edit', ['his'=>$historial->id])}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
-                                            <a href="{{ route('home')}}" class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                            <a href="{{ route('historial.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            <a href="{{ route('historial.edit', ['his'=>$historial->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
+
+                                            @if( $historial->trashed())
+                                            <a
+                                                href="{{ route('historial.restore', ['his'=>$historial->id]) }}"
+                                                class="btn btn-warning"><i class="material-icons">Restaurar</i>
+                                            </a>
+                                            @else
+                                            <a
+                                                href="{{ route('historial.delete', ['his'=>$historial->id]) }}"
+                                                class="btn btn-danger"><i class="material-icons">Eliminar</i>
+                                            </a>
+                                        @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -49,7 +60,7 @@
                     </div>
             </div>
             <div class=" d-flex justify-content-end">
-                {{$historiales->links()}}
+                {{$historialPaginate->links()}}
             </div> 
     </div>
 

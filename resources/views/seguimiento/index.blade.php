@@ -15,7 +15,7 @@
 @section('contenido')
     <div class="col-md-10 offset-md-1">
             <div class="card">
-                <div class="card-header">Listado de Seguimientos</div>
+                <div class="card-header">Listado de Seguimientos Mascotas</div>
                     <div class="card-body p-0 m-0">
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed table-striped">

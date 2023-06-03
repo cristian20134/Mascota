@@ -81,6 +81,8 @@ Route::get('/historial/create', [App\Http\Controllers\HistorialMedicoController:
 Route::post('/historial/store', [App\Http\Controllers\HistorialMedicoController::class, 'store'])->name('historial.store');
 Route::get('/historial/edit/{his}', [App\Http\Controllers\HistorialMedicoController::class, 'edit'])->name('historial.edit');
 Route::put('/historial/update/{his}', [App\Http\Controllers\HistorialMedicoController::class, 'update'])->name('historial.update');
+Route::get('/historial/delete/{his}', [App\Http\Controllers\HistorialMedicoController::class, 'delete'])->name('historial.delete');
+Route::get('/historial/restore/{his}', [App\Http\Controllers\HistorialMedicoController::class, 'restore'])->name('historial.restore');
 
 Route::get('/tamano/create', [App\Http\Controllers\TamanoController::class, 'create'])->name('tamano.create');
 Route::post('/tamano/store', [App\Http\Controllers\TamanoController::class, 'store'])->name('tamano.store');

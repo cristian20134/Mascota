@@ -15,8 +15,9 @@ class HistorialMedicoController extends Controller
 
     public function index()
     {
-       $historiales=HistorialMedico::paginate(8);
-       return view('historial.index', compact(['historiales']));
+        $historiales = HistorialMedico::withTrashed()->get();
+        $historialPaginate = HistorialMedico::paginate(2);
+       return view('historial.index', compact(['historiales','historialPaginate']));
     }
 
     public function create()
@@ -75,8 +76,33 @@ class HistorialMedicoController extends Controller
            }    
      }
     
-    public function destroy($id)
-    {
-        //
-    }
-}
+     public function delete(HistorialMedico $his)
+     {
+         try {
+             if ($his->delete()){
+                 session()->flash('mensaje', ['success', 'Se elimino el historial medico mascota.']);
+                 return redirect()->route('historial.index');
+             }
+             session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar el historial medico mascota.']);
+             return redirect()->route('historial.index');
+ 
+         } catch( \Exception $his) {
+             abort(403);
+         }
+     }
+ 
+     public function restore($his) {
+         try {
+             if (HistorialMedico::withTrashed()->findOrFail($his)->restore() ){
+                 session()->flash('mensaje', ['success', 'Se recuperó el historial medico mascota.']);
+                 return redirect()->route('historial.index');
+             }
+             session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar el historial medico mascota.']);
+             return redirect()->route('home');
+ 
+         } catch( \Exception $his) {
+             abort(403);
+         }
+     }
+ 
+ }
