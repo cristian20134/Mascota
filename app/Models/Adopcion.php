@@ -23,14 +23,14 @@ class Adopcion extends Model
     protected $dates = ['fecha_adopcion','deleted_at'];
 
     public function seguimientos() {
-        return $this->hasMany(Seguimiento::class);
+        return $this->hasMany(Seguimiento::class)->withTrashed();
     }
 
     public function usuario() {
-        return $this->belongsTo(Usuario::class);
+        return $this->belongsTo(Usuario::class)->withTrashed();
     }
 
     public function mascota() {
-        return $this->belongsTo(Mascota::class);
+        return $this->belongsTo(Mascota::class)->withTrashed();
     }
 }

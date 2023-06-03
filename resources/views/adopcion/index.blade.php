@@ -39,9 +39,17 @@
                                         <td>{{ $adopcion->fecha_adopcion->format('d-m-Y') }}</td>
                                         <td>
                                             <a href="{{ route('adopcion.show', ['info'=>$adopcion->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
-                                            <a href="{{ route('adopcion.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>
-                                            <a href="{{ route('adopcion.edit', ['info'=>$adopcion->id])}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
-                                            <a href="{{ route('home')}}" class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                            <a href="{{ route('adopcion.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            <a href="{{ route('adopcion.edit', ['info'=>$adopcion->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
+                                            @if( $adopcion->trashed())
+                                            <a
+                                                href="{{ route('adopcion.restore', ['info'=>$adopcion->id]) }}"
+                                                class="btn btn-warning"><i class="material-icons">Restaurar</i></a>
+                                            @else
+                                            <a
+                                                href="{{ route('adopcion.delete', ['info'=>$adopcion->id]) }}"
+                                                class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                        @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -51,7 +59,7 @@
                     </div>
             </div>
             <div class=" d-flex justify-content-end">
-                {{$adopciones->links()}}
+                {{$adop->links()}}
             </div> 
     </div>
 

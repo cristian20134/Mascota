@@ -22,7 +22,7 @@ class TamanoController extends Controller
 
     public function create()
     {
-        $tamanos = Tamano::all();
+        $tamanos = Tamano::withTrashed()->get();
         $id=new Mascota();
         return view('tamano.create',compact(['tamanos','id']));
     }
@@ -35,10 +35,10 @@ class TamanoController extends Controller
         ]);
         
         if ($tamanos){
-            session()->flash('mensaje', ['success', 'La Raza se ha registrado correctamente']);
+            session()->flash('mensaje', ['success', 'El tamaño se ha registrado correctamente.']);
             return redirect()->route('tamano.create');
         
-            session()->flash('mensaje', ['danger', 'Se ha Producido un error al registrar la Raza']);
+            session()->flash('mensaje', ['danger', 'Se ha Producido un error al registrar el tamaño.']);
             return redirect()->route('tamano.create');
            }    
     }
@@ -68,21 +68,40 @@ class TamanoController extends Controller
         ]);
 
         if ($update){
-            session()->flash('mensaje', ['success', 'Los datos de la raza se ha modificado correctamente']);
+            session()->flash('mensaje', ['success', 'Los datos del tamaño se han modificado correctamente.']);
             return redirect()->route('tamano.create');
         }
-            session()->flash('mensaje', ['danger', 'Se ha Producido un error al modificar los datos de Raza']);
+            session()->flash('mensaje', ['danger', 'Se ha producido un error al modificar los datos del tamaño.']);
             return redirect()->route('tamano.create');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete(Tamano $info)
     {
-        //
+        try {
+            if ($info->delete()){
+                session()->flash('mensaje', ['success', 'Se elimino el tamaño']);
+                return redirect()->route('tamano.create');
+            }
+            session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar tamaño']);
+            return redirect()->route('tamano.create');
+
+        } catch( \Exception $e) {
+            abort(403);
+        }
     }
+
+    public function restore($info) {
+        try {
+            if (Tamano::withTrashed()->findOrFail($info)->restore() ){
+                session()->flash('mensaje', ['success', 'Se recuperó el tamaño.']);
+                return redirect()->route('tamano.create');
+            }
+            session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar el tamaño']);
+            return redirect()->route('tamano.create');
+
+        } catch( \Exception $e) {
+            abort(403);
+        }
+    }
+
 }

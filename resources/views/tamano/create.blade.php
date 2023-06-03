@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-8">
+    <div class="col-md-6 offset-md-1">
         <div class="card card-indigo">
             <div class="card-header">
               <h3 class="card-title">Formulario Registro Tamaño</h3>
@@ -27,7 +27,7 @@
                   type="text" name='tamano_mascota' 
                   class="form-control  @error ('tamano_mascota') is-invalid @enderror" 
                   id="tamano_mascota" 
-                  placeholder="Ingrese una Raza"
+                  placeholder="Ingrese un tamaño"
                   value="{{ old('tamano_mascota') ?: $id->tamano_mascota}}">
                   @error('tamano_mascota')
                   <span class="error invalid-feedback">{{ $message }}</span>
@@ -43,24 +43,49 @@
 
     <div class="col-md-4">
       <div class="card card-indigo">
-        <div class="card-header">
-          <h3 class="card-title">Listado de Tamaño</h3>
-        </div>
-        <div class="card-body">
-          <ul>
-            @foreach ($tamanos as $tamano)
-                <li class="py-1">{{ $tamano->tamano_mascota }}
-                  <a href="{{ route('tamano.edit',['id'=>$tamano->id]) }}" 
-                    class="btn btn-sm btn-success">
-                    <i class="fas fa-pencil-alt"></i></a>
-                  <a href="" 
-                  class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
-                </li>
-            @endforeach
-          </ul>
-        </div>
+          <div class="card-header">
+              <h3 class="card-title">Listado de Tamaños</h3>
+          </div>
+          <div class="card-body p-0 m-0">
+             <div class="table-responsive">
+              <table class="table-table-hover table condensed">
+                  <thead>
+                      <tr>
+                          <th>Nombre</th>
+                          <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach($tamanos as $tamano)
+                          <tr>
+                              <td>{{ $tamano->tamano_mascota }}</td>
+                              <td>
+                                <a 
+                                    href="{{ route('tamano.edit', ['id'=>$tamano->id] ) }}" 
+                                    class="btn btn-sm btn-success">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                @if( $tamano->trashed())
+                                  <a  
+                                    href="{{ route('tamano.restore', ['info'=>$tamano->id]) }}" 
+                                    class="btn btn-sm btn-warning">
+                                    <i class="fas fa-undo"></i>
+                                    </a>
+                                  @else  
+                                  <a 
+                                    href="{{ route('tamano.delete', ['info'=>$tamano->id]) }}" 
+                                    class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                  </a>
+                                @endif
+                            </td>
+                          </tr>
+                       @endforeach   
+                  </tbody>
+              </table>
+             </div> 
+          </div>
       </div>
-
     </div>
-
 @endsection
+

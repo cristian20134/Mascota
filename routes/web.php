@@ -38,6 +38,8 @@ Route::get('/usuario/create', [App\Http\Controllers\UsuarioController::class, 'c
 Route::post('/usuario/store', [App\Http\Controllers\UsuarioController::class, 'store'])->name('usuario.store');
 Route::get('/usuario/edit/{u}', [App\Http\Controllers\UsuarioController::class, 'edit'])->name('usuario.edit');
 Route::put('/usuario/update/{u}', [App\Http\Controllers\UsuarioController::class, 'update'])->name('usuario.update');
+Route::get('/usuario/delete/{u}', [App\Http\Controllers\UsuarioController::class, 'delete'])->name('usuario.delete');
+Route::get('/usuario/restore/{u}', [App\Http\Controllers\UsuarioController::class, 'restore'])->name('usuario.restore');
 
 Route::get('/mascota/index', [App\Http\Controllers\MascotaController::class, 'index'])->name('mascota.index');
 Route::get('/mascota/show/{m}', [App\Http\Controllers\MascotaController::class, 'show'])->name('mascota.show');
@@ -45,6 +47,8 @@ Route::get('/mascota/create', [App\Http\Controllers\MascotaController::class, 'c
 Route::post('/mascota/store', [App\Http\Controllers\MascotaController::class, 'store'])->name('mascota.store');
 Route::get('/mascota/edit/{m}', [App\Http\Controllers\MascotaController::class, 'edit'])->name('mascota.edit');
 Route::put('/mascota/update/{m}', [App\Http\Controllers\MascotaController::class, 'update'])->name('mascota.update');
+Route::get('/mascota/delete/{m}', [App\Http\Controllers\MascotaController::class, 'delete'])->name('mascota.delete');
+Route::get('/mascota/restore/{m}', [App\Http\Controllers\MascotaController::class, 'restore'])->name('mascota.restore');
 
 Route::get('/adopcion/index', [App\Http\Controllers\AdopcionController::class, 'index'])->name('adopcion.index');
 Route::get('/adopcion/show/{info}', [App\Http\Controllers\AdopcionController::class, 'show'])->name('adopcion.show');
@@ -52,6 +56,8 @@ Route::get('/adopcion/create', [App\Http\Controllers\AdopcionController::class, 
 Route::post('/adopcion/store', [App\Http\Controllers\AdopcionController::class, 'store'])->name('adopcion.store');
 Route::get('/adopcion/edit/{info}', [App\Http\Controllers\AdopcionController::class, 'edit'])->name('adopcion.edit');
 Route::put('/adopcion/update/{info}', [App\Http\Controllers\AdopcionController::class, 'update'])->name('adopcion.update');
+Route::get('/adopcion/delete/{info}', [App\Http\Controllers\AdopcionController::class, 'delete'])->name('adopcion.delete');
+Route::get('/adopcion/restore/{info}', [App\Http\Controllers\AdopcionController::class, 'restore'])->name('adopcion.restore');
 
 Route::get('/seguimiento/index', [App\Http\Controllers\SeguimientoController::class, 'index'])->name('seguimiento.index');
 Route::get('/seguimiento/show{seg}', [App\Http\Controllers\SeguimientoController::class, 'show'])->name('seguimiento.show');
@@ -59,6 +65,8 @@ Route::get('/seguimiento/create', [App\Http\Controllers\SeguimientoController::c
 Route::post('/seguimiento/store', [App\Http\Controllers\SeguimientoController::class, 'store'])->name('seguimiento.store');
 Route::get('/seguimiento/edit/{seg}', [App\Http\Controllers\SeguimientoController::class, 'edit'])->name('seguimiento.edit');
 Route::put('/seguimiento/update/{seg}', [App\Http\Controllers\SeguimientoController::class, 'update'])->name('seguimiento.update');
+Route::get('/seguimiento/delete/{seg}', [App\Http\Controllers\SeguimientoController::class, 'delete'])->name('seguimiento.delete');
+Route::get('/seguimiento/restore/{seg}', [App\Http\Controllers\SeguimientoController::class, 'restore'])->name('seguimiento.restore');
 
 Route::get('/raza/create', [App\Http\Controllers\RazaController::class, 'create'])->name('raza.create');
 Route::post('/raza/store', [App\Http\Controllers\RazaController::class, 'store'])->name('raza.store');
@@ -78,6 +86,8 @@ Route::get('/tamano/create', [App\Http\Controllers\TamanoController::class, 'cre
 Route::post('/tamano/store', [App\Http\Controllers\TamanoController::class, 'store'])->name('tamano.store');
 Route::get('/tamano/edit/{id}', [App\Http\Controllers\TamanoController::class, 'edit'])->name('tamano.edit');
 Route::put('/tamano/update/{id}', [App\Http\Controllers\TamanoController::class, 'update'])->name('tamano.update');
+Route::get('/tamano/delete/{info}', [App\Http\Controllers\TamanoController::class, 'delete'])->name('tamano.delete');
+Route::get('/tamano/restore/{info}', [App\Http\Controllers\TamanoController::class, 'restore'])->name('tamano.restore');
 
 Route::get('/genero/create', [App\Http\Controllers\GeneroController::class, 'create'])->name('genero.create');
 Route::post('/genero/store', [App\Http\Controllers\GeneroController::class, 'store'])->name('genero.store');

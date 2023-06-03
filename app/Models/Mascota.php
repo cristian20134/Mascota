@@ -26,26 +26,26 @@ class Mascota extends Model
     protected $dates = ['fecha_nacimiento_mascota','deleted_at'];
 
     public function adopciones() {
-        return $this->hasMany(Adopcion::class);
+        return $this->hasMany(Adopcion::class)->withTrashed();
     }
 
     public function historial_medico() {
-        return $this->hasOne(HistorialMedico::class);
+        return $this->hasOne(HistorialMedico::class)->withTrashed();
     }
 
     public function raza() {
-        return $this->belongsTo(Raza::class);
+        return $this->belongsTo(Raza::class)->withTrashed();
     }
 
     public function tamano() {
-        return $this->belongsTo(Tamano::class);
+        return $this->belongsTo(Tamano::class)->withTrashed();
     }
 
     public function genero_mascota() {
-        return $this->belongsTo(GeneroMascota::class);
+        return $this->belongsTo(GeneroMascota::class)->withTrashed();
     }
 
     public function personalidad_mascota() {
-        return $this->belongsTo(PersonalidadMascota::class);
+        return $this->belongsTo(PersonalidadMascota::class)->withTrashed();
     }
 }

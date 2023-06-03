@@ -18,8 +18,9 @@ class AdopcionController extends Controller
 
     public function index()
     {
-        $adopciones = Adopcion::paginate(10);
-        return view('adopcion.index',compact(['adopciones']));
+        $adopciones = Adopcion::withTrashed()->get();
+        $adop = Adopcion::paginate(2);
+        return view('adopcion.index',compact(['adopciones','adop']));
     }
 
 
@@ -81,8 +82,34 @@ class AdopcionController extends Controller
            }    
         }
     
-    public function destroy($id)
-    {
-        //
+        public function delete(Adopcion $info)
+        {
+            try {
+                if ($info->delete()){
+                    session()->flash('mensaje', ['success', 'Se elimino la adopción.']);
+                    return redirect()->route('adopcion.index');
+                }
+                session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar la adopción']);
+                return redirect()->route('adopcion.index');
+    
+            } catch( \Exception $info) {
+                abort(403);
+            }
+        }
+    
+        public function restore($info) {
+            try {
+                if (Adopcion::withTrashed()->findOrFail($info)->restore() ){
+                    session()->flash('mensaje', ['success', 'Se recuperó la adopción.']);
+                    return redirect()->route('adopcion.index');
+                }
+                session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar la adopción.']);
+                return redirect()->route('adopcion.index');
+    
+            } catch( \Exception $info) {
+                abort(403);
+            }
+        }
+    
     }
-}
+    

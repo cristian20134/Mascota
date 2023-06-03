@@ -39,9 +39,17 @@
                                         <td>{{ $seguimiento ->fecha_seguimiento->format('d-m-Y')}}</td>
                                         <td>
                                             <a href="{{ route('seguimiento.show', ['seg'=>$seguimiento->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
-                                            <a href="{{ route('seguimiento.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>
-                                            <a href="{{ route('seguimiento.edit', ['seg'=>$seguimiento->id])}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
-                                            <a href="{{ route('home')}}" class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                            <a href="{{ route('seguimiento.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            <a href="{{ route('seguimiento.edit', ['seg'=>$seguimiento->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
+                                            @if( $seguimiento->trashed())
+                                            <a
+                                                href="{{ route('seguimiento.restore', ['seg'=>$seguimiento->id]) }}"
+                                                class="btn btn-warning"><i class="material-icons">Restaurar</i></a>
+                                            @else
+                                            <a
+                                                href="{{ route('seguimiento.delete', ['seg'=>$seguimiento->id]) }}"
+                                                class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                        @endif
                                         </td>                 
                                     </tr>
                                     @endforeach
@@ -50,8 +58,9 @@
                         </div>
                     </div>
             </div>
-            <div class=" d-flex justify-content-end">
-          
+                <div class=" d-flex justify-content-end">
+                    {{$segu->links()}}
+                </div> 
             </div> 
     </div>
 

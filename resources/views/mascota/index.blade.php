@@ -39,9 +39,17 @@
                                         <td>{{ $mascota->tamano->tamano_mascota }}</td>
                                         <td>
                                             <a href="{{ route('mascota.show', ['m'=>$mascota->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
-                                            <a href="{{ route('mascota.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>
-                                            <a href="{{ route('mascota.edit', ['m'=>$mascota->id])}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
-                                            <a href="{{ route('home')}}" class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                            <a href="{{ route('mascota.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            <a href="{{ route('mascota.edit', ['m'=>$mascota->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
+                                            @if( $mascota->trashed())
+                                            <a
+                                                href="{{ route('mascota.restore', ['m'=>$mascota->id]) }}"
+                                                class="btn btn-warning"><i class="material-icons">Restaurar</i></a>
+                                            @else
+                                            <a
+                                                href="{{ route('mascota.delete', ['m'=>$mascota->id]) }}"
+                                                class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                        @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -51,8 +59,7 @@
                     </div>
             </div>
             <div class=" d-flex justify-content-end">
-                {{$mascotas->links()}}
+                {{$mas->links()}}
             </div> 
     </div>
-
 @endsection

@@ -17,7 +17,7 @@
         <div class="card card-pink card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img class="profile-user-img img-fluid img-circle" src="{{ asset ('assets/img/perro2.jpg') }}" alt="User profile picture" style="width: 300px; height: 300px;">
+                <img class="profile-user-img img-fluid img-circle" src="{{ asset ('assets/img/adopcion3.jpg') }}" alt="User profile picture" style="width: 300px; height: 300px;">
               </div>
               <h3 class="profile-username text-center"></h3>
                 <ul class="list-group list-group-unbordered mb-3">

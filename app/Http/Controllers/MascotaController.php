@@ -21,8 +21,9 @@ class MascotaController extends Controller
     
     public function index()
     {
-        $mascotas = Mascota::paginate(10);
-        return view('mascota.index', compact('mascotas'));
+        $mascotas = Mascota::withTrashed()->get();
+        $mas = Mascota::paginate(2);
+        return view('mascota.index', compact('mascotas','mas'));
     }
 
    
@@ -99,8 +100,33 @@ class MascotaController extends Controller
        }    
     }
 
-    public function destroy($id)
+    public function delete(Mascota $m)
     {
-        //
+        try {
+            if ($m->delete()){
+                session()->flash('mensaje', ['success', 'Se elimino la mascota.']);
+                return redirect()->route('mascota.index');
+            }
+            session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar la mascota']);
+            return redirect()->route('mascota.index');
+
+        } catch( \Exception $e) {
+            abort(403);
+        }
     }
+
+    public function restore($m) {
+        try {
+            if (Mascota::withTrashed()->findOrFail($m)->restore() ){
+                session()->flash('mensaje', ['success', 'Se recuperó la mascota..']);
+                return redirect()->route('mascota.index');
+            }
+            session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar la mascota']);
+            return redirect()->route('mascota.index');
+
+        } catch( \Exception $e) {
+            abort(403);
+        }
+    }
+
 }

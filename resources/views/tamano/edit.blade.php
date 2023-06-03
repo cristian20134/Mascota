@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-8">
+    <div class="col-md-6 offset-md-1">
         <div class="card card-indigo">
             <div class="card-header">
               <h3 class="card-title">Formulario de Edición Raza</h3>
@@ -35,7 +35,7 @@
                     @enderror
                   </div>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button type="submit" class="btn btn-primary">Editar Tamaño</button>
                   </div>
               </div>
               </form>
@@ -44,24 +44,38 @@
 
     <div class="col-md-4">
       <div class="card card-indigo">
-        <div class="card-header">
-          <h3 class="card-title">listado de tamano</h3>
-        </div>
-        <div class="card-body">
-          <ul>
-            @foreach ($tamanos as $tamano)
-                <li class="py-1">{{ $tamano->tamano_mascota }}
-                  <a href="{{ route('tamano.edit',['id'=>$tamano->id]) }}" 
-                    class="btn btn-sm btn-success">
-                    <i class="fas fa-pencil-alt"></i></a>
-                  <a href="" 
-                  class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
-                </li>
-            @endforeach
-          </ul>
-        </div>
+          <div class="card-header">
+              <h3 class="card-title">Listado de Tamaños</h3>
+          </div>
+          <div class="card-body p-0 m-0">
+             <div class="table-responsive">
+              <table class="table-table-hover table condensed">
+                  <thead>
+                      <tr>
+                          <th>Nombre</th>
+                          <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach($tamanos as $tamano)
+                          <tr>
+                              <td>{{ $tamano->tamano_mascota }}</td>
+                              <td>
+                                <a 
+                                    href="{{ route('tamano.edit', ['id'=>$tamano->id] ) }}" 
+                                    class="btn btn-sm btn-success">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                            </td>
+                          </tr>
+                       @endforeach   
+                  </tbody>
+              </table>
+             </div> 
+          </div>
       </div>
-
     </div>
-
 @endsection
+
+
+

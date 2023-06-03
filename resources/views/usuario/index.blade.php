@@ -41,9 +41,18 @@
                                         <td>{{ $usuario -> telefono_usuario }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('usuario.show', ['u'=>$usuario->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
-                                            <a href="{{ route('usuario.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>
-                                            <a href="{{ route('usuario.edit', ['u'=>$usuario->id])}}" class="btn btn-warning"><i class="material-icons">Editar</i></a>
-                                            <a href="{{ route('home')}}" class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                            <a href="{{ route('usuario.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            <a href="{{ route('usuario.edit', ['u'=>$usuario->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
+
+                                            @if( $usuario->trashed())
+                                                <a
+                                                    href="{{ route('usuario.restore', ['u'=>$usuario->id]) }}"
+                                                    class="btn btn-warning"><i class="material-icons">Restaurar</i></a>
+                                                @else
+                                                <a
+                                                    href="{{ route('usuario.delete', ['u'=>$usuario->id]) }}"
+                                                    class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -53,8 +62,7 @@
                     </div>
             </div>
             <div class=" d-flex justify-content-end">
-                {{$usuarios->links()}}
-            </div> 
+                {{$us->links()}}
+            </div>
     </div>
-
 @endsection

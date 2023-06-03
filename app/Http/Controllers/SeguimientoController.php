@@ -16,8 +16,9 @@ class SeguimientoController extends Controller
 
     public function index()
     {
-        $seguimientos = Seguimiento::all();
-        return view('seguimiento.index',compact(['seguimientos']));
+        $seguimientos = Seguimiento::withTrashed()->get();
+        $segu = Seguimiento::paginate(2);
+        return view('seguimiento.index',compact(['seguimientos','segu']));
     }
 
     public function create()
@@ -74,8 +75,34 @@ class SeguimientoController extends Controller
            }    
         }
 
-    public function destroy($id)
-    {
-        //
+        public function delete(Seguimiento $seg)
+        {
+            try {
+                if ($seg->delete()){
+                    session()->flash('mensaje', ['success', 'Se elimino el seguimiento correctamente.']);
+                    return redirect()->route('seguimiento.index');
+                }
+                session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar el seguimiento']);
+                return redirect()->route('seguimiento.index');
+    
+            } catch( \Exception $seg) {
+                abort(403);
+            }
+        }
+    
+        public function restore($seg) {
+            try {
+                if (Seguimiento::withTrashed()->findOrFail($seg)->restore() ){
+                    session()->flash('mensaje', ['success', 'Se recuperó el seguimiento correctamente.']);
+                    return redirect()->route('seguimiento.index');
+                }
+                session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar el seguimiento.']);
+                return redirect()->route('seguimiento.index');
+    
+            } catch( \Exception $seg) {
+                abort(403);
+            }
+        }
+    
     }
-}
+    

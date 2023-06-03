@@ -22,6 +22,6 @@ class Seguimiento extends Model
     protected $dates = ['fecha_seguimiento','deleted_at'];
 
     public function adopcion() {
-        return $this->belongsTo(Adopcion::class);
+        return $this->belongsTo(Adopcion::class)->withTrashed();
     }
 }

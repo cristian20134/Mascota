@@ -16,8 +16,9 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $usuarios = Usuario::paginate(9);
-        return view('usuario.index', compact(['usuarios']));
+        $usuarios = Usuario::withTrashed()->get();
+        $us = Usuario::paginate(2);
+        return view('usuario.index', compact(['usuarios','us']));
     }
 
     public function create()
@@ -78,9 +79,33 @@ class UsuarioController extends Controller
        }  
     }
 
- 
-    public function destroy($id)
+    public function delete(Usuario $u)
     {
-        //
+        try {
+            if ($u->delete()){
+                session()->flash('mensaje', ['success', 'Se elimino el usuario']);
+                return redirect()->route('usuario.index');
+            }
+            session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar usuario']);
+            return redirect()->route('usuario.index');
+
+        } catch( \Exception $e) {
+            abort(403);
+        }
     }
+
+    public function restore($u) {
+        try {
+            if (Usuario::withTrashed()->findOrFail($u)->restore() ){
+                session()->flash('mensaje', ['success', 'Se recuperó el usuario.']);
+                return redirect()->route('usuario.index');
+            }
+            session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar el usuario']);
+            return redirect()->route('home');
+
+        } catch( \Exception $e) {
+            abort(403);
+        }
+    }
+
 }

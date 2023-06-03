@@ -41,7 +41,8 @@
                 <div class="text-center">
                     <a href="{{ route('usuario.show', ['u'=>$seg->id]) }}" class="btn btn-danger"><i class="material-icons">Datos Usuario</i></a>
                     <a href="{{ route('mascota.show', ['m'=>$seg->id]) }}" class="btn btn-info"><i class="material-icons">Datos Mascota</i></a>
-                    <a href="{{ route('adopcion.index') }}" class="btn btn-success"><i class="material-icons">volver</i></a>
+                    <a href="{{ route('adopcion.show', ['info'=>$seg->id]) }}" class="btn btn-info"><i class="material-icons">Datos Adopción</i></a>
+                    <a href="{{ route('seguimiento.index') }}" class="btn btn-success"><i class="material-icons">volver</i></a>
                 </div>
             </div>
         </div>

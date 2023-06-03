@@ -61,11 +61,10 @@
                           <tr class="text-center">
                               <td>{{ $raza->raza_mascota }}</td>
                               <td>
-                                  <a 
-                                      href="{{ route('raza.edit', ['id'=>$raza->id] ) }}" 
-                                      class="btn btn-sm btn-success">
-                                      <i class="fas fa-pencil-alt"></i>
-                                  </a>
+                                <a href="{{ route('raza.edit', ['id'=>$raza->id])}}" 
+                                    class="btn btn-success">
+                                    <i class="material-icons">Editar</i>
+                                </a>
                               </td>
                           </tr>
                        @endforeach   
