@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('historial_medico', function (Blueprint $table) {
             $table->id();
-            $table->string('vacuna',15);
-            $table->string('enfermedades',15);
+            $table->string('nombre_ficha');
+            $table->string('vacuna',4);
+            $table->string('enfermedades',4);
             $table->text('comentarios');
             $table->softDeletes();
             $table->timestamps();

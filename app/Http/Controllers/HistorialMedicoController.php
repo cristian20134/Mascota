@@ -28,6 +28,7 @@ class HistorialMedicoController extends Controller
     public function store(HistorialRequest $request)
     {
         $historiales = HistorialMedico::create([
+            'nombre_ficha'=>$request->nombre_ficha,
             'vacuna' => $request->vacuna,
             'enfermedades' => $request->enfermedades,
             'comentarios' => $request->comentarios,
@@ -35,7 +36,7 @@ class HistorialMedicoController extends Controller
            ]);
 
             if ($historiales){
-            session()->flash('mensaje', ['success', 'EL historial medico mascota se ha registrado correctamente.']);
+            session()->flash('mensaje', ['success', 'El historial medico mascota se ha registrado correctamente.']);
             return redirect()->route('historial.create');
         
             session()->flash('mensaje', ['danger', 'Se ha producido un error al registrar el historial medico mascota.']);
@@ -59,6 +60,7 @@ class HistorialMedicoController extends Controller
     public function update(HistorialMedico $his, HistorialRequest $request)
     {
         $update = $his->update([
+            'nombre_ficha'=>$request->nombre_ficha,
             'vacuna' => $request->vacuna,
             'enfermedades' => $request->enfermedades,
             'comentarios' => $request->comentarios,

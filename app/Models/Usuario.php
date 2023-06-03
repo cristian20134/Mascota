@@ -19,7 +19,7 @@ class Usuario extends Model
         'apellido_materno',
         'rut_usuario',
         'email_usuario',
-        'telefono_usuario'
+        'telefono_usuario',
     ];
 
     public function adopciones() {

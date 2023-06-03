@@ -30,7 +30,7 @@ class AdopcionController extends Controller
         return view('adopcion.create',compact(['usuarios','mascotas']));
     }
 
-    public function store(Request $request)
+    public function store(AdopcionRequest $request)
     {
         $adopciones = Adopcion::create([
             'usuario_id' =>$request->select_usuario,

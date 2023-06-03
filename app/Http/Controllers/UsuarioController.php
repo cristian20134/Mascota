@@ -26,8 +26,8 @@ class UsuarioController extends Controller
         return view('usuario.create');
     }
 
-    public function store( UsuarioRequest $request)
-    {
+    public function store( UsuarioRequest $request )
+    {  
            $usuarios = Usuario::create([
             'nombre_usuario' => $request->nombre_usuario,
             'apellido_paterno' => $request->apellido_paterno,
@@ -36,7 +36,7 @@ class UsuarioController extends Controller
             'email_usuario' => $request->email_usuario,
             'telefono_usuario' => $request->telefono_usuario,
             ]);
-
+          
             if ($usuarios){
                 session()->flash('mensaje', ['success', 'El usuario se ha registrado correctamente.']);
                 return redirect()->route('usuario.index');

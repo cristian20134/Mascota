@@ -26,7 +26,7 @@
                                         <th>Raza</th>
                                         <th>Genero</th>
                                         <th>Tamaño</th>
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>

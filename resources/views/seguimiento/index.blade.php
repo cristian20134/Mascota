@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-12">
+    <div class="col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">Listado de Seguimientos</div>
                     <div class="card-body p-0 m-0">
@@ -26,7 +26,7 @@
                                         <th>Adoptador</th>
                                         <th>Estado Mascota</th>
                                         <th>Fecha Seguimiento</th>
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>

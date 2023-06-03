@@ -98,7 +98,7 @@
                     <option value="">Seleccione una Opción</option>
                     @foreach($historiales as $historial)
                     <option value="{{$historial->id}}"
-                    {{ ( (int) old('historial_medico') === $historial->id or (int) $m->historial_medico_id === $historial->id )? 'selected' : ''}}>{{$historial->id}}</option>
+                    {{ ( (int) old('historial_medico') === $historial->id or (int) $m->historial_medico_id === $historial->id )? 'selected' : ''}}>{{$historial->nombre_ficha}}</option>
                     @endforeach
                   </select>
                     @error('historial_medico')

@@ -14,7 +14,7 @@ class HistorialMedico extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['vacuna','enfermedades','comentarios'];
+    protected $fillable = ['nombre_ficha','vacuna','enfermedades','comentarios'];
 
     public function mascota() {
         return $this->hasOne(Mascota::class);

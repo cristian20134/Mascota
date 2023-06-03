@@ -96,7 +96,7 @@
                     <option value="">Seleccione una Opción</option>
                     @foreach($historiales as $historial)
                     <option value="{{$historial->id}}"
-                    {{ (int) old('historial_medico') === $historial->id ? 'selected' : ''}}>{{$historial->id}}</option>
+                    {{ (int) old('historial_medico') === $historial->id ? 'selected' : ''}}>{{$historial->nombre_ficha}}</option>
                     @endforeach
                   </select>
                     @error('historial_medico')
@@ -131,7 +131,7 @@
                   @enderror
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Crear Mascota</button>
+                  <button type="submit" class="btn btn-primary">Guardar Mascota</button>
                 </div>
             </div>
             </form>

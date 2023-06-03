@@ -19,22 +19,22 @@
                     <div class="card-body p-0 m-0">
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed table-striped">
-                                <thead class="bg-info">
+                                <thead class="bg-gray">
                                     <tr class="text-center">
                                         <th>#</th>
+                                        <th>Ficha</th>
                                         <th>Vacunas</th>
                                         <th>Enfermedades</th>
-                                        <th>Comentarios</th>
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($historiales as $historial)
                                     <tr class="text-center">
                                         <td>{{ $historial ->id }}</td>
+                                        <td>{{ $historial ->nombre_ficha }}</td>
                                         <td>{{ $historial->vacuna }}</td>
                                         <td>{{ $historial->enfermedades}}</td>
-                                        <td>{{ $historial->comentarios}}</td>
                                         <td>
                                             <a href="{{ route('historial.show', ['his'=>$historial->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
                                             <a href="{{ route('historial.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>

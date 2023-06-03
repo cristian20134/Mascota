@@ -30,7 +30,7 @@
                         <b>Rut</b> <a class="float-right">{{ $u->rut_usuario}}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Correo Electronico</b> <a class="float-right">{{ $u->email_usuario}}</a>
+                        <b>Correo Electrónico</b> <a class="float-right">{{ $u->email_usuario}}</a>
                     </li>
                     <li class="list-group-item">
                         <b>Telefóno</b> <a class="float-right">{{ $u->telefono_usuario }}</a>

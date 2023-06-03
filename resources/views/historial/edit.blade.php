@@ -24,6 +24,20 @@
                 @method('PUT')
 
                 <div class="form-group">
+                  <label class="@error ('nombre_ficha') text-danger @enderror" for="nombre_ficha">Ficha Nombre</label>
+                  <input 
+                  type="tel" 
+                  name='nombre_ficha' 
+                  class="form-control @error ('nombre_ficha') is-invalid @enderror" 
+                  id="vacuna" 
+                  placeholder="Ingrese nombre ficha"
+                  value="{{ old('nombre_ficha') ?: $his->nombre_ficha}}">
+                  @error('nombre_ficha')
+                  <span class="error invalid-feedback">{{ $message }}</span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
                   <label class="@error ('vacuna') text-danger @enderror" for="vacuna">Vacuna de Mascota</label>
                   <input 
                   type="tel" 

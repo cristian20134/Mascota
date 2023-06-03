@@ -5,7 +5,7 @@
 @endsection
 
 @section('titulo_seccion')
-    Listado de Adpociones
+    Listado de Adopciones
 @endsection
 
 @section('breadcrumb')
@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-12">
+    <div class="col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">Adopciones</div>
                     <div class="card-body p-0 m-0">
@@ -26,8 +26,7 @@
                                         <th>Mascota</th>
                                         <th>Ciudad</th>
                                         <th>Fecha Adopción</th>
-                                        <th>Descripción</th>
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,7 +37,6 @@
                                         <td>{{ $adopcion->mascota->nombre_mascota }}</td>
                                         <td>{{ $adopcion->nombre_cuidad }}</td>
                                         <td>{{ $adopcion->fecha_adopcion->format('d-m-Y') }}</td>
-                                        <td>{{ $adopcion->descripcion_adopcion }}</td>
                                         <td>
                                             <a href="{{ route('adopcion.show', ['info'=>$adopcion->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
                                             <a href="{{ route('adopcion.create')}}" class="btn btn-success"><i class="material-icons">Crear</i></a>

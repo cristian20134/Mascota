@@ -18,7 +18,7 @@
             <div class="card-header">
               <h3 class="card-title">Formulario Registro Usuario</h3>
             </div>
-            <form method="POST" action="{{ route('usuario.store')}}">
+            <form method="POST" action="{{ route('usuario.store')}}" enctype="multipart/form-data">
               <div class="card-body">
                 @csrf
                 
@@ -42,7 +42,7 @@
                     name='apellido_paterno' 
                     class="form-control @error ('apellido_paterno') is-invalid @enderror" 
                     id="apellido_paterno" 
-                    placeholder="Ingresar Apellido Paterno"
+                    placeholder="Ingrese Apellido Paterno"
                     value="{{ old('apellido_paterno') ?: ""}}">
                     @error('apellido_paterno')
                     <span class="error invalid-feedback">{{ $message }}</span>
@@ -56,7 +56,7 @@
                     name='apellido_materno'
                     class="form-control @error ('apellido_materno') is-invalid @enderror" 
                     id="apellido_materno" 
-                    placeholder="Ingresar Apellido Materno"
+                    placeholder="Ingrese Apellido Materno"
                     value="{{ old('apellido_materno') ?: ""}}">
                     @error('apellido_materno')
                     <span class="error invalid-feedback">{{ $message }}</span>
@@ -70,7 +70,7 @@
                     name='rut_usuario' 
                     class="form-control @error ('rut_usuario') is-invalid @enderror" 
                     id="rut_usuario" 
-                    placeholder="Ingresar Rut"
+                    placeholder="Ingrese Rut"
                     value="{{ old('rut_usuario') ?: ""}}">
                     @error('rut_usuario')
                     <span class="error invalid-feedback">{{ $message }}</span>
@@ -104,14 +104,11 @@
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                   </div>
-              <!-- /.card-body -->
-
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                  <button type="submit" class="btn btn-primary">Guardar Usuario</button>
                 </div>
             </div>
             </form>
           </div>
     </div>
-
 @endsection

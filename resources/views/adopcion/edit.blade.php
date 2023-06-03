@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="@error ('select_mascota') text-danger @enderror" for="select_mascota">Mascotas</label>
+                  <label class="@error ('select_mascota') text-danger @enderror" for="select_mascota">Mascota</label>
                   <select name="select_mascota" id="select_mascota" class="form-control @error('select_mascota') is-invalid @enderror">
                     <option value="">Seleccione una Opción</option>
                     @foreach($mascotas as $m)

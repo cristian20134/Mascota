@@ -13,21 +13,21 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-12">
+    <div class="col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">Listado de Usuario</div>
                     <div class="card-body p-0 m-0">
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed table-striped">
                                 <thead class="bg-danger">
-                                    <tr>
+                                    <tr class="text-center">
                                         <th>#</th>
                                         <th>Rut</th>
                                         <th>Nombres</th>
                                         <th>Apellidos</th>
                                         <th>Correo</th>
                                         <th>Telefóno</th>
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
