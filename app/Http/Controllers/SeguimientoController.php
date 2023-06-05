@@ -16,9 +16,8 @@ class SeguimientoController extends Controller
 
     public function index()
     {
-        $seguimientos = Seguimiento::withTrashed()->get();
-        $segu = Seguimiento::paginate(2);
-        return view('seguimiento.index',compact(['seguimientos','segu']));
+        $seguimientos = Seguimiento::withTrashed()->paginate(8);
+        return view('seguimiento.index',compact(['seguimientos']));
     }
 
     public function create()

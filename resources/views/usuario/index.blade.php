@@ -62,7 +62,7 @@
                     </div>
             </div>
             <div class=" d-flex justify-content-end">
-                {{$usuarioPaginate->links()}}
+                {{$usuarios->links()}}
             </div>
     </div>
 @endsection

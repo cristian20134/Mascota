@@ -95,8 +95,12 @@ Route::get('/genero/create', [App\Http\Controllers\GeneroController::class, 'cre
 Route::post('/genero/store', [App\Http\Controllers\GeneroController::class, 'store'])->name('genero.store');
 Route::get('/genero/edit/{id}', [App\Http\Controllers\GeneroController::class, 'edit'])->name('genero.edit');
 Route::put('/genero/update/{id}', [App\Http\Controllers\GeneroController::class, 'update'])->name('genero.update');
+Route::get('/genero/delete/{info}', [App\Http\Controllers\GeneroController::class, 'delete'])->name('genero.delete');
+Route::get('/genero/restore/{info}', [App\Http\Controllers\GeneroController::class, 'restore'])->name('genero.restore');
 
 Route::get('/personalidad/create', [App\Http\Controllers\PersonalidadController::class, 'create'])->name('personalidad.create');
 Route::post('/personalidad/store', [App\Http\Controllers\PersonalidadController::class, 'store'])->name('personalidad.store');
 Route::get('/personalidad/edit/{id}', [App\Http\Controllers\PersonalidadController::class, 'edit'])->name('personalidad.edit');
 Route::put('/personalidad/update/{id}', [App\Http\Controllers\PersonalidadController::class, 'update'])->name('personalidad.update');
+Route::get('/personalidad/delete/{info}', [App\Http\Controllers\PersonalidadController::class, 'delete'])->name('personalidad.delete');
+Route::get('/personalidad/restore/{info}', [App\Http\Controllers\PersonalidadController::class, 'restore'])->name('personalidad.restore');

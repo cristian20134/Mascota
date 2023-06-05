@@ -33,7 +33,7 @@
                                     @foreach($adopciones as $adopcion)
                                     <tr class="text-center">
                                         <td>{{ $adopcion -> id }}</td>
-                                        <td>{{ $adopcion->usuario->nombre_usuario }}</td>
+                                        <td>{{ $adopcion->usuario->nombre_usuario}} {{ $adopcion->usuario->apellido_paterno}} {{ $adopcion->usuario->apellido_materno}}</td>
                                         <td>{{ $adopcion->mascota->nombre_mascota }}</td>
                                         <td>{{ $adopcion->nombre_cuidad }}</td>
                                         <td>{{ $adopcion->fecha_adopcion->format('d-m-Y') }}</td>
@@ -59,7 +59,7 @@
                     </div>
             </div>
             <div class=" d-flex justify-content-end">
-                {{$adop->links()}}
+                {{$adopciones->links()}}
             </div> 
     </div>
 

@@ -60,7 +60,7 @@
                     </div>
             </div>
             <div class=" d-flex justify-content-end">
-                {{$historialPaginate->links()}}
+                {{$historiales->links()}}
             </div> 
     </div>
 

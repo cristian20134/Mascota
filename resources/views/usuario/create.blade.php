@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-8 offset-md-2">
         <div class="card card-danger">
             <div class="card-header">
               <h3 class="card-title">Formulario Registro Usuario</h3>
@@ -70,7 +70,7 @@
                     name='rut_usuario' 
                     class="form-control @error ('rut_usuario') is-invalid @enderror" 
                     id="rut_usuario" 
-                    placeholder="Ingrese Rut"
+                    placeholder="12345678-9"
                     value="{{ old('rut_usuario') ?: ""}}">
                     @error('rut_usuario')
                     <span class="error invalid-feedback">{{ $message }}</span>
@@ -98,7 +98,7 @@
                     name='telefono_usuario' 
                     class="form-control @error ('telefono_usuario') is-invalid @enderror" 
                     id="telefono_usuario" 
-                    placeholder="Ingrese Telefono"
+                    placeholder="987654321"
                     value="{{ old('telefono_usuario') ?: ""}}">
                     @error('telefono_usuario')
                     <span class="error invalid-feedback">{{ $message }}</span>

@@ -21,9 +21,8 @@ class MascotaController extends Controller
     
     public function index()
     {
-        $mascotas = Mascota::withTrashed()->get();
-        $mas = Mascota::paginate(2);
-        return view('mascota.index', compact('mascotas','mas'));
+        $mascotas = Mascota::withTrashed()->paginate(8);
+        return view('mascota.index', compact('mascotas'));
     }
 
    

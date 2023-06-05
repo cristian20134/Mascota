@@ -49,16 +49,16 @@
           </div>
           <div class="card-body p-0 m-0">
              <div class="table-responsive">
-              <table class="table-table-hover table condensed">
+              <table class="table-table-hover table condensed text-center">
                   <thead>
-                      <tr class="text-center">
+                      <tr>
                           <th>Nombre</th>
                           <th>Acciones</th>
                       </tr>
                   </thead>
                   <tbody>
                       @foreach($razas as $raza)
-                          <tr class="text-center">
+                          <tr>
                               <td>{{ $raza->raza_mascota }}</td>
                               <td>
                                 <a href="{{ route('raza.edit', ['id'=>$raza->id])}}" 

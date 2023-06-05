@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-8 offset-md-2">
         <div class="card card-pink">
             <div class="card-header">
               <h3 class="card-title">Formulario Adopción de Mascota</h3>
@@ -29,7 +29,7 @@
                       <option value="">Seleccione una Opción</option>
                       @foreach($usuarios as $u)
                       <option value="{{ $u->id }}"
-                        {{ ( (int) old('select_usuario') === $u->id or (int) $info->usuario_id === $u->id)? 'selected' : ''}}>{{$u->nombre_usuario}}</option>
+                        {{ ( (int) old('select_usuario') === $u->id or (int) $info->usuario_id === $u->id)? 'selected' : ''}}>{{$u->nombre_usuario}} {{ $u->apellido_paterno }} {{ $u->apellido_materno }}</option>
                       @endforeach
                     </select>
                      @error('select_usuario')

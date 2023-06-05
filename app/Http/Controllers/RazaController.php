@@ -14,10 +14,9 @@ class RazaController extends Controller
         $this->middleware('auth');
     }
 
-    public function create()
+    public function create(Raza $id)
     {
         $razas = Raza::withTrashed()->get();
-        $id=new Mascota();
         return view('raza.create',compact('razas','id'));
     }
 

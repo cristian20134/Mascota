@@ -34,7 +34,7 @@
                     <b>Fecha Adopción</b> <a class="float-right">{{ $info->fecha_adopcion->format('d-m-Y')}}</a>
                     </li>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item text-justify">
                     <b>Descripción</b> <a class="float-right">{{ $info->descripcion_adopcion}}</a>
                     </li>
                 </ul>

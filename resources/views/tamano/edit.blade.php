@@ -49,7 +49,7 @@
           </div>
           <div class="card-body p-0 m-0">
              <div class="table-responsive">
-              <table class="table-table-hover table condensed">
+              <table class="table-table-hover table condensed text-center">
                   <thead>
                       <tr>
                           <th>Nombre</th>
@@ -63,8 +63,8 @@
                               <td>
                                 <a 
                                     href="{{ route('tamano.edit', ['id'=>$tamano->id] ) }}" 
-                                    class="btn btn-sm btn-success">
-                                    <i class="fas fa-pencil-alt"></i>
+                                    class="btn btn-success">
+                                    <i class="material-icons">Editar</i>
                                 </a>
                             </td>
                           </tr>

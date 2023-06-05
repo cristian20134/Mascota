@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-8 offset-md-2">
         <div class="card card-info">
             <div class="card-header">
               <h3 class="card-title">Formulario Edición Mascota</h3>
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="@error ('genero_mascota') text-danger @enderror" for="genero_mascota">Genero Mascota</label>
+                  <label class="@error ('genero_mascota') text-danger @enderror" for="genero_mascota">Género Mascota</label>
                   <select name="genero_mascota" id="genero_mascota" class="form-control @error('genero_mascota') is-invalid @enderror">
                     <option value="">Seleccione una Opción</option>
                     @foreach($generos as $g)

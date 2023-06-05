@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-8">
+    <div class="col-md-6 offset-md-1">
         <div class="card card-navy">
             <div class="card-header">
               <h3 class="card-title">Formulario Registro Personalidad</h3>
@@ -22,7 +22,7 @@
               <div class="card-body">
                 @csrf
                 <div class="form-group">
-                  <label class="@error ('personalidad_mascota') text-danger @enderror" for="personalidad_mascota">Nombre de Raza</label>
+                  <label class="@error ('personalidad_mascota') text-danger @enderror" for="personalidad_mascota">Nombre de Personalidad Mascota</label>
                   <input 
                   type="text" name='personalidad_mascota' 
                   class="form-control  @error ('personalidad_mascota') is-invalid @enderror" 
@@ -34,7 +34,7 @@
                   @enderror
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary"> Crear Personalidad</button>
+                  <button type="submit" class="btn btn-primary"> Guardar Personalidad</button>
                 </div>
             </div>
             </form>
@@ -43,24 +43,47 @@
 
     <div class="col-md-4">
       <div class="card card-navy">
-        <div class="card-header">
-          <h3 class="card-title">listado Personalidad de Mascota</h3>
-        </div>
-        <div class="card-body">
-          <ul>
-            @foreach ($personalidades as $personalidad)
-                <li class="py-1">{{ $personalidad->personalidad_mascota }}
-                  <a href="{{ route('personalidad.edit',['id'=>$personalidad->id]) }}" 
-                    class="btn btn-sm btn-success">
-                    <i class="fas fa-pencil-alt"></i></a>
-                  <a href="" 
-                  class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
-                </li>
-            @endforeach
-          </ul>
-        </div>
+          <div class="card-header">
+              <h3 class="card-title">Listado de Personalidades</h3>
+          </div>
+          <div class="card-body p-0 m-0">
+             <div class="table-responsive">
+              <table class="table-table-hover table condensed text-center">
+                  <thead>
+                      <tr>
+                          <th>Nombre</th>
+                          <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach($personalidades as $personalidad)
+                          <tr>
+                              <td>{{ $personalidad->personalidad_mascota }}</td>
+                              <td>
+                                <a 
+                                    href="{{ route('personalidad.edit', ['id'=>$personalidad->id] ) }}" 
+                                    class="btn btn-success">
+                                    <i class="material-icons">Editar</i>
+                                </a>
+                                @if( $personalidad->trashed())
+                                  <a  
+                                    href="{{ route('personalidad.restore', ['info'=>$personalidad->id]) }}" 
+                                    class="btn btn-warning">
+                                    <i class="material-icons">Restaurar</i>
+                                  @else  
+                                  <a 
+                                    href="{{ route('personalidad.delete', ['info'=>$personalidad->id]) }}" 
+                                    class="btn btn-danger">
+                                    <i class="material-icons">Eliminar</i>
+                                  </a>
+                                @endif
+                            </td>
+                          </tr>
+                       @endforeach   
+                  </tbody>
+              </table>
+             </div> 
+          </div>
       </div>
-
     </div>
-
 @endsection

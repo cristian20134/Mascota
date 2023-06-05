@@ -72,7 +72,7 @@
                 <li class="nav-item">
                     <a href="{{ route('genero.create') }}" class="nav-link">
                     <i class="nav-icon fas fa-venus-mars"></i>
-                    <p>Agregar Genero</p>   
+                    <p>Agregar Género</p>   
                     </a>
                 </li>
                 <li class="nav-item">

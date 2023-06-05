@@ -20,10 +20,9 @@ class TamanoController extends Controller
     }
 
 
-    public function create()
+    public function create(Tamano $id)
     {
         $tamanos = Tamano::withTrashed()->get();
-        $id=new Mascota();
         return view('tamano.create',compact(['tamanos','id']));
     }
 

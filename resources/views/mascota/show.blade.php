@@ -25,7 +25,7 @@
                     <b>Raza</b> <a class="float-right">{{$m->raza->raza_mascota }}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Genero</b> <a class="float-right">{{ $m->genero_mascota->genero_mascota}}</a>
+                    <b>Género</b> <a class="float-right">{{ $m->genero_mascota->genero_mascota}}</a>
                     </li>
                     <li class="list-group-item">
                     <b>Tamaño</b> <a class="float-right">{{ $m->tamano->tamano_mascota }}</a>
@@ -36,7 +36,7 @@
                     <li class="list-group-item">
                         <b>Fecha Nacimiento</b> <a class="float-right">{{ $m->fecha_nacimiento_mascota->format('d-m-Y') }}</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item text-justify">
                         <b>Comentario</b> <a class="float-right">{{ $m->comentario_mascota }}</a>
                     </li>
                 </ul>

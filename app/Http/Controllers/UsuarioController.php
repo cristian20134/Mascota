@@ -16,9 +16,8 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $usuarios = Usuario::withTrashed()->get();
-        $usuarioPaginate = Usuario::paginate(2);
-        return view('usuario.index', compact(['usuarios','usuarioPaginate']));
+        $usuarios = Usuario::withTrashed()->paginate(8);
+        return view('usuario.index', compact(['usuarios']));
     }
 
     public function create()

@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-8 offset-md-2">
         <div class="card card-gray">
             <div class="card-header">
               <h3 class="card-title">Formulario Historial Medico Mascota</h3>
@@ -28,8 +28,8 @@
                   type="tel" 
                   name='nombre_ficha' 
                   class="form-control @error ('nombre_ficha') is-invalid @enderror" 
-                  id="vacuna" 
-                  placeholder="Ingrese nombre ficha"
+                  id="nombre_ficha" 
+                  placeholder="Ingrese Ficha nombre"
                   value="{{ old('nombre_ficha') ?: ""}}">
                   @error('nombre_ficha')
                   <span class="error invalid-feedback">{{ $message }}</span>
@@ -43,7 +43,7 @@
                   name='vacuna' 
                   class="form-control @error ('vacuna') is-invalid @enderror" 
                   id="vacuna" 
-                  placeholder="Ingrese vacuna"
+                  placeholder="Ingrese Vacuna"
                   value="{{ old('vacuna') ?: ""}}">
                   @error('vacuna')
                   <span class="error invalid-feedback">{{ $message }}</span>

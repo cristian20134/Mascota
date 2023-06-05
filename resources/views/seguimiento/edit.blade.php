@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-8 offset-md-2">
         <div class="card card-purple">
             <div class="card-header">
               <h3 class="card-title">Registro Seguimiento Adopción de Mascota</h3>
@@ -24,7 +24,7 @@
                 @method('PUT')
 
                 <div class="form-group">
-                  <label class="@error ('select_seguimiento') text-danger @enderror" for="select_mascota"># Adopción</label>
+                  <label class="@error ('select_seguimiento') text-danger @enderror" for="select_mascota">Número Adopción</label>
                   <select name="select_seguimiento" id="select_seguimiento" class="form-control @error('select_seguimiento') is-invalid @enderror">
                     <option value="">Seleccione una Opción</option>
                     @foreach($adopciones as $a)

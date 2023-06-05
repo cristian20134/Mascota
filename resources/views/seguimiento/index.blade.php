@@ -59,7 +59,7 @@
                     </div>
             </div>
                 <div class=" d-flex justify-content-end">
-                    {{$segu->links()}}
+                    {{$seguimientos->links()}}
                 </div> 
             </div> 
     </div>

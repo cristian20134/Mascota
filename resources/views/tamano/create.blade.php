@@ -48,7 +48,7 @@
           </div>
           <div class="card-body p-0 m-0">
              <div class="table-responsive">
-              <table class="table-table-hover table condensed">
+              <table class="table-table-hover table condensed text-center">
                   <thead>
                       <tr>
                           <th>Nombre</th>
@@ -62,20 +62,19 @@
                               <td>
                                 <a 
                                     href="{{ route('tamano.edit', ['id'=>$tamano->id] ) }}" 
-                                    class="btn btn-sm btn-success">
-                                    <i class="fas fa-pencil-alt"></i>
+                                    class="btn btn-success">
+                                    <i class="material-icons">Editar</i>
                                 </a>
                                 @if( $tamano->trashed())
                                   <a  
                                     href="{{ route('tamano.restore', ['info'=>$tamano->id]) }}" 
-                                    class="btn btn-sm btn-warning">
-                                    <i class="fas fa-undo"></i>
-                                    </a>
+                                    class="btn btn-warning">
+                                    <i class="material-icons">Restaurar</i>
                                   @else  
                                   <a 
                                     href="{{ route('tamano.delete', ['info'=>$tamano->id]) }}" 
-                                    class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash-alt"></i>
+                                    class="btn btn-danger">
+                                    <i class="material-icons">Eliminar</i>
                                   </a>
                                 @endif
                             </td>

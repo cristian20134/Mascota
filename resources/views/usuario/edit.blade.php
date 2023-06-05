@@ -13,7 +13,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-8 offset-md-2">
         <div class="card card-danger">
             <div class="card-header">
               <h3 class="card-title">Formulario Editar Registro Usuario</h3>
