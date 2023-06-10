@@ -42,19 +42,19 @@
                 <li class="nav-item">
                     <a href="{{ route('adopcion.create') }}" class="nav-link">
                     <i class="nav-icon fas fa-heart"></i>
-                    <p>Adopción de Mascota</p>   
+                    <p>Crear Adopción</p>   
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('seguimiento.create') }}" class="nav-link">
                     <i class="nav-icon fas fa-walking"></i>
-                    <p>Seguimiento Adopción</p>   
+                    <p>Crear Seguimiento</p>   
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('historial.create') }}" class="nav-link">
                     <i class="nav-icon fas fa-notes-medical"></i>
-                    <p>Crear Historial Medico</p>   
+                    <p>Crear Historial Médico</p>   
                     </a>
                 </li>
                 <li class="nav-item">

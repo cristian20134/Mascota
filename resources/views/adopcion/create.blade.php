@@ -64,6 +64,19 @@
                 </div>
 
                 <div class="form-group">
+                  <label class="@error ('direccion_adopcion') text-danger @enderror" for="direccion_adopcion">Dirección</label>
+                  <input 
+                  type="text" name='direccion_adopcion' 
+                  class="form-control  @error ('direccion_adopcion') is-invalid @enderror" 
+                  id="direccion_adopcion" 
+                  placeholder="Ingrese Dirección"
+                  value="{{ old('direccion_adopcion') ?: ""}}">
+                  @error('direccion_adopcion')
+                  <span class="error invalid-feedback">{{ $message }}</span>
+                  @enderror
+              </div>
+
+                <div class="form-group">
                   <label class="@error ('fecha_adopcion') text-danger @enderror" for="fecha_adopcion">Fecha Adopción Mascota</label>
                   <input 
                   type="date" name='fecha_adopcion' 
@@ -91,7 +104,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Adopción Mascota</button>
+                  <button type="submit" class="btn btn-primary">Guardar Adopción</button>
                 </div>
             </div>
             </form>

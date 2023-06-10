@@ -16,6 +16,7 @@ class Adopcion extends Model
         'usuario_id',
         'mascota_id',
         'nombre_cuidad',
+        'direccion_adopcion',
         'fecha_adopcion',
         'descripcion_adopcion'      
     ];

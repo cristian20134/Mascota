@@ -104,6 +104,20 @@
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                   </div>
+
+                  <div class="form-group">
+                    <label class="@error ('image_usuario') text-danger @enderror" for="image_usuario">Foto Perfil</label>
+                    <input
+                    type="file"
+                    name='image_usuario'
+                    class="form-control @error ('image_usuario') is-invalid @enderror"
+                    id="image_usuario"
+                    value="{{ old('image_usuario') ?: ""}}">
+                    @error('image_usuario')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                  </div>
+
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Guardar Usuario</button>
                 </div>

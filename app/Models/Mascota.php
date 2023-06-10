@@ -20,7 +20,8 @@ class Mascota extends Model
         'personalidad_mascota_id',
         'nombre_mascota',
         'fecha_nacimiento_mascota',
-        'comentario_mascota'
+        'comentario_mascota',
+        'image_mascota'
     ];
 
     protected $dates = ['fecha_nacimiento_mascota','deleted_at'];

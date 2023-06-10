@@ -20,6 +20,7 @@ class Usuario extends Model
         'rut_usuario',
         'email_usuario',
         'telefono_usuario',
+        'image_usuario'
     ];
 
     public function adopciones() {

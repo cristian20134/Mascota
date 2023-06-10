@@ -38,4 +38,7 @@
     </div>
             @include('layouts.lista-js')
 </body>
+
+@include('layouts.sweetAlert.sweetAlert')
+
 </html>

@@ -29,6 +29,7 @@ class AdopcionRequest extends FormRequest
                     'select_usuario'=>'required|exists:usuario,id',
                     'select_mascota'=>'required|exists:mascota,id',
                     'nombre_cuidad'=>'required',
+                    'direccion_adopcion'=>'required|min:5|max:20',
                     'fecha_adopcion'=>'required|date_format:Y-m-d',
                     'descripcion_adopcion'=>'required|min:5',
                 ];
@@ -38,6 +39,7 @@ class AdopcionRequest extends FormRequest
                     'select_usuario'=>'required|exists:usuario,id',
                     'select_mascota'=>'required|exists:mascota,id',
                     'nombre_cuidad'=>'required',
+                    'direccion_adopcion'=>'required|min:5|max:20',
                     'fecha_adopcion'=>'required|date_format:Y-m-d',
                     'descripcion_adopcion'=>'required|min:5',
                 ];
@@ -52,6 +54,7 @@ class AdopcionRequest extends FormRequest
             'select_usuario'=>'Este campo es obligatorio',
             'select_mascota'=>'Este campo es obligatorio',
             'nombre_cuidad'=>'Este campo es obligatorio',
+            'direccion_adopcion'=>'Este campo es obligatorio',
             'fecha_adopcion'=>'Este campo es obligatorio',
             'descripcion_adopcion'=>'Este campo es obligatorio',
         ];

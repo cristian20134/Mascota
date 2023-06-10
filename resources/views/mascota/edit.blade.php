@@ -18,7 +18,7 @@
             <div class="card-header">
               <h3 class="card-title">Formulario Edición Mascota</h3>
             </div>
-            <form method="POST" action="{{ route('mascota.update', ['m'=>$m->id])}}">
+            <form method="POST" action="{{ route('mascota.update', ['m'=>$m->id])}}" enctype="multipart/form-data">
               <div class="card-body">
                 @csrf
                 @method('PUT')
@@ -70,7 +70,7 @@
                     <option value="">Seleccione una Opción</option>
                     @foreach($tamanos as $tamano)
                     <option value="{{$tamano->id}}"
-                    {{ ( (int) old('tamano') === $tamano->id or (int) $m->tamano_id === $m->id)? 'selected' : ''}}>{{$tamano->tamano_mascota}}</option>
+                    {{ ( (int) old('tamano') === $tamano->id or (int) $m->tamano_id === $tamano->id)? 'selected' : ''}}>{{$tamano->tamano_mascota}}</option>
                     @endforeach
                   </select>
                     @error('tamano')
@@ -84,7 +84,7 @@
                     <option value="">Seleccione una Opción</option>
                     @foreach($personalidades as $p)
                     <option value="{{$p->id}}"
-                    {{ ( (int) old('personalidad_mascota') === $p->id or (int) $m->personalidad_mascota_id === $m->id)? 'selected' : ''}}>{{$p->personalidad_mascota}}</option>
+                    {{ ( (int) old('personalidad_mascota') === $p->id or (int) $m->personalidad_mascota_id === $p->id)? 'selected' : ''}}>{{$p->personalidad_mascota}}</option>
                     @endforeach
                   </select>
                     @error('personalidad_mascota')
@@ -122,7 +122,7 @@
                 <div class="form-group">
                   <label class="@error('comentario_mascota') text-danger @enderror" for="comentario_mascota">Comentarios</label>
                   <textarea 
-                  class="form-control @error ('comentario_mascota') is-invalid @enderror" 
+                  class="form-control text-justify @error ('comentario_mascota') is-invalid @enderror" 
                   name="comentario_mascota" 
                   id="comentario_mascota" 
                   cols="30" rows="10" 
@@ -132,6 +132,21 @@
                   <span class="error invalid-feedback d-block">{{ $message }}</span>
                   @enderror
                 </div>
+
+                <div class="form-group">
+                  <label class="@error ('image_mascota') text-danger @enderror" for="image_mascota">Foto Mascota</label>
+                  <input
+                  type="file"
+                  name='image_mascota'
+                  class="form-control @error ('image_mascota') is-invalid @enderror"
+                  id="image_mascota"
+                  value="{{ old('image_mascota') ?: $m->image_mascota}}">
+                  <img src="{{asset($m->image_mascota) }}" class="rounded-circle mt-3" style="height: 100px;width:100px;">
+                  @error('image_mascota')
+                  <span class="error invalid-feedback">{{ $message }}</span>
+                  @enderror
+                </div>
+
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Editar Mascota</button>
                 </div>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('mascota_id');
             $table->foreign('mascota_id')->references('id')->on('mascota');
             $table->string('nombre_cuidad');
+            $table->string('direccion_adopcion');
             $table->dateTime('fecha_adopcion');
             $table->text('descripcion_adopcion');
             $table->softDeletes();

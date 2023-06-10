@@ -48,7 +48,7 @@
                                             @else
                                             <a
                                                 href="{{ route('historial.delete', ['his'=>$historial->id]) }}"
-                                                class="btn btn-danger"><i class="material-icons">Eliminar</i>
+                                                class="btn btn-danger delete-confirm"><i class="material-icons">Eliminar</i>
                                             </a>
                                         @endif
                                         </td>

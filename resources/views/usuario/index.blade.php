@@ -22,6 +22,7 @@
                                 <thead class="bg-danger">
                                     <tr class="text-center">
                                         <th>#</th>
+                                        <th>Foto Perfil</th>
                                         <th>Rut</th>
                                         <th>Nombres</th>
                                         <th>Apellidos</th>
@@ -33,12 +34,13 @@
                                 <tbody>
                                     @foreach($usuarios as $usuario)
                                     <tr>
-                                        <td>{{ $usuario -> id }}</td>
-                                        <td>{{ $usuario -> rut_usuario }}</td>
-                                        <td>{{ $usuario -> nombre_usuario }}</td>
-                                        <td>{{ $usuario -> apellido_paterno}} {{$usuario-> apellido_materno}}</td>
-                                        <td>{{ $usuario -> email_usuario }}</td>
-                                        <td>{{ $usuario -> telefono_usuario }}</td>
+                                        <td>{{ $usuario ->id }}</td>
+                                        <td><img src="{{asset($usuario->image_usuario) }}" width="60px" height="60px" class="rounded-circle"></td>
+                                        <td>{{ $usuario ->rut_usuario }}</td>
+                                        <td>{{ $usuario ->nombre_usuario }}</td>
+                                        <td>{{ $usuario ->apellido_paterno}} {{$usuario->apellido_materno}}</td>
+                                        <td>{{ $usuario ->email_usuario }}</td>
+                                        <td>{{ $usuario ->telefono_usuario }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('usuario.show', ['u'=>$usuario->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
                                             <a href="{{ route('usuario.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
@@ -51,7 +53,7 @@
                                                 @else
                                                 <a
                                                     href="{{ route('usuario.delete', ['u'=>$usuario->id]) }}"
-                                                    class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                                    class="btn btn-danger delete-confirm"><i class="material-icons">Eliminar</i></a>
                                             @endif
                                         </td>
                                     </tr>

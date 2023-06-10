@@ -48,7 +48,7 @@
                                             @else
                                             <a
                                                 href="{{ route('seguimiento.delete', ['seg'=>$seguimiento->id]) }}"
-                                                class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                                class="btn btn-danger delete-confirm"><i class="material-icons">Eliminar</i></a>
                                         @endif
                                         </td>                 
                                     </tr>

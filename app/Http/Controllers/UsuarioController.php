@@ -28,22 +28,35 @@ class UsuarioController extends Controller
 
     public function store( UsuarioRequest $request )
     {  
-           $usuarios = Usuario::create([
-            'nombre_usuario' => $request->nombre_usuario,
-            'apellido_paterno' => $request->apellido_paterno,
-            'apellido_materno' => $request->apellido_materno,
-            'rut_usuario' => $request->rut_usuario,
-            'email_usuario' => $request->email_usuario,
-            'telefono_usuario' => $request->telefono_usuario,
-            ]);
-          
-            if ($usuarios){
-                session()->flash('mensaje', ['success', 'El usuario se ha registrado correctamente.']);
-                return redirect()->route('usuario.index');
+        if ( $request->hasFile('image_usuario')) {
+
+            $peso_archivo = $request->file('image_usuario')->getSize();
+            $extension_archivo = $request->file('image_usuario')->getClientOriginalExtension();
+
+            $ruta_archivo = "uploads/usuarios/";
+            $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
+
+            $subida_archivo = $request->file('image_usuario')->move($ruta_archivo, $nombre_archivo);
+
+            }
+        
+            $usuarios = Usuario::create([
+                'nombre_usuario' => $request->nombre_usuario,
+                'apellido_paterno' => $request->apellido_paterno,
+                'apellido_materno' => $request->apellido_materno,
+                'rut_usuario' => $request->rut_usuario,
+                'email_usuario' => $request->email_usuario,
+                'telefono_usuario' => $request->telefono_usuario,
+                'image_usuario' => ( $ruta_archivo . $nombre_archivo ),
+                ]);
             
-                session()->flash('mensaje', ['danger', 'Se ha Producido un error al momento de registrar un usuario.']);
-                return redirect()->route('usuario.create');
-               }      
+                if ($usuarios){
+                    session()->flash('mensaje', ['success', 'El usuario se ha registrado correctamente.']);
+                    return redirect()->route('usuario.index');
+                
+                    session()->flash('mensaje', ['danger', 'Se ha Producido un error al momento de registrar un usuario.']);
+                    return redirect()->route('usuario.create');
+                }      
     }
 
     public function show(Usuario $u)
@@ -60,23 +73,41 @@ class UsuarioController extends Controller
   
     public function update(Usuario $u, UsuarioRequest $request)
     {
-     $update = $u->update([
-        'nombre_usuario' => $request->nombre_usuario,
-        'apellido_paterno' => $request->apellido_paterno,
-        'apellido_materno' => $request->apellido_materno,
-        'rut_usuario' => $request->rut_usuario,
-        'email_usuario' => $request->email_usuario,
-        'telefono_usuario' => $request->telefono_usuario,
-      ]);
+        if ( $request->hasFile('image_usuario')) {
 
-      if ($update){
-        session()->flash('mensaje', ['success', 'Los datos del usuario se han modificado correctamente.']);
-        return redirect()->route('usuario.show', ['u'=>$u->id]);
-    
-        session()->flash('mensaje', ['danger', 'Se ha Producido un error al Modificar los datos del usuario.']);
-        return redirect()->route('usuario.create');
-       }  
-    }
+            $peso_archivo = $request->file('image_usuario')->getSize();
+            $extension_archivo = $request->file('image_usuario')->getClientOriginalExtension();
+
+            $ruta_archivo = "uploads/usuarios/";
+            $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
+
+            $subida_archivo = $request->file('image_usuario')->move($ruta_archivo, $nombre_archivo);
+
+            }
+
+            else{
+                unset($request['image_usuario']);
+            }
+
+
+            $update = $u->update([
+                'nombre_usuario' => $request->nombre_usuario,
+                'apellido_paterno' => $request->apellido_paterno,
+                'apellido_materno' => $request->apellido_materno,
+                'rut_usuario' => $request->rut_usuario,
+                'email_usuario' => $request->email_usuario,
+                'telefono_usuario' => $request->telefono_usuario,
+                'image_usuario' => ( $ruta_archivo . $nombre_archivo),
+            ]);
+
+            if ($update){
+                session()->flash('mensaje', ['success', 'Los datos del usuario se han modificado correctamente.']);
+                return redirect()->route('usuario.show', ['u'=>$u->id]);
+            
+                session()->flash('mensaje', ['danger', 'Se ha producido un error al modificar los datos del usuario.']);
+                return redirect()->route('usuario.create');
+            }  
+     }
 
     public function delete(Usuario $u)
     {

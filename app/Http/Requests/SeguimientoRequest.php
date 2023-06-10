@@ -43,7 +43,7 @@ class SeguimientoRequest extends FormRequest
             'fecha_seguimiento'=>'Este campo es obligatorio',
             'descripcion_seguimiento'=>'Este campo es obligatorio',
 
-            'estado_mascota'=>'Los caracteres minimos son :min.'
+            'estado_mascota.min'=>'Los caracteres minimos son :min.'
         ];
     }
 }

@@ -72,7 +72,7 @@
                                   @else  
                                   <a 
                                     href="{{ route('raza.delete', ['info'=>$raza->id]) }}" 
-                                    class="btn btn-danger">
+                                    class="btn btn-danger delete-confirm">
                                     <i class="material-icons">Eliminar</i>
                                   </a>
                                 @endif

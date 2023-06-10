@@ -23,12 +23,12 @@
                 @csrf
 
                 <div class="form-group">
-                  <label class="@error ('select_seguimiento') text-danger @enderror" for="select_mascota">Número Adopción</label>
+                  <label class="@error ('select_seguimiento') text-danger @enderror" for="select_mascota">Persona Responsable - Mascota</label>
                   <select name="select_seguimiento" id="select_seguimiento" class="form-control @error('select_seguimiento') is-invalid @enderror">
                     <option value="">Seleccione una Opción</option>
                     @foreach($adopciones as $a)
                     <option value="{{$a->id}}"
-                    {{ (int) old('select_seguimiento') === $a->id ? 'selected' : ''}}>{{$a->id}}</option>
+                    {{ (int) old('select_seguimiento') === $a->id ? 'selected' : ''}}>{{$a->usuario->nombre_usuario.' '.$a->usuario->apellido_paterno.' '.$a->usuario->apellido_materno.' - '.$a->mascota->nombre_mascota}}</option>
                     @endforeach
                   </select>
                     @error('select_seguimiento')
@@ -64,11 +64,11 @@
 
                 <div class="form-group">
                   <label class="@error('descripcion_seguimiento') text-danger @enderror" for="descripcion_seguimiento">Comentario Seguimiento Mascota</label>
-                  <textarea class="form-control @error ('descripcion_seguimiento') is-invalid @enderror" 
+                  <textarea class="form-control text-justify @error ('descripcion_seguimiento') is-invalid @enderror" 
                   name="descripcion_seguimiento" id="descripcion_seguimiento" 
                   cols="30" rows="10" 
                   style="resize: none;"
-                  ></textarea>
+                  >{{ old('descripcion_seguimiento') ?: ""}}</textarea>
                   @error('descripcion_seguimiento')
                   <span class="error invalid-feedback d-block">{{ $message }}</span>
                   @enderror

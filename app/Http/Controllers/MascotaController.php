@@ -39,6 +39,14 @@ class MascotaController extends Controller
   
     public function store(MascotaRequest $request)
     {
+        if ( $request->hasFile('image_mascota')) {
+            $extension_archivo = $request->file('image_mascota')->getClientOriginalExtension();
+            $ruta_archivo = "uploads/mascotas/";
+            $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
+            $subida_archivo = $request->file('image_mascota')->move($ruta_archivo, $nombre_archivo);
+
+            }
+
         $mascotas = Mascota::create([
             'historial_medico_id' =>$request->historial_medico,
             'raza_id' =>$request->select_raza,
@@ -47,7 +55,8 @@ class MascotaController extends Controller
             'personalidad_mascota_id' =>$request->personalidad_mascota,
             'nombre_mascota'=>$request->nombre_mascota,
             'fecha_nacimiento_mascota' =>$request->fecha_nacimiento_mascota,
-            'comentario_mascota'=>$request->comentario_mascota
+            'comentario_mascota'=>$request->comentario_mascota,
+            'image_mascota'=> ( $ruta_archivo . $nombre_archivo )
         ]);
 
         if ($mascotas){
@@ -79,15 +88,25 @@ class MascotaController extends Controller
 
     public function update(Mascota $m, MascotaRequest $request )
     {
-      $update = $m->update([
-        'historial_medico_id' =>$request->historial_medico,
-            'raza_id' =>$request->select_raza,
-            'tamano_id' =>$request->tamano,
-            'genero_mascota_id' =>$request->genero_mascota,
-            'personalidad_mascota_id' =>$request->personalidad_mascota,
-            'nombre_mascota'=>$request->nombre_mascota,
-            'fecha_nacimiento_mascota' =>$request->fecha_nacimiento_mascota,
-            'comentario_mascota'=>$request->comentario_mascota
+
+        if ( $request->hasFile('image_mascota')) {
+            $extension_archivo = $request->file('image_mascota')->getClientOriginalExtension();
+            $ruta_archivo = "uploads/mascotas/";
+            $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
+            $subida_archivo = $request->file('image_mascota')->move($ruta_archivo, $nombre_archivo);
+
+            }
+
+            $update = $m->update([
+                'historial_medico_id' =>$request->historial_medico,
+                'raza_id' =>$request->select_raza,
+                'tamano_id' =>$request->tamano,
+                'genero_mascota_id' =>$request->genero_mascota,
+                'personalidad_mascota_id' =>$request->personalidad_mascota,
+                'nombre_mascota'=>$request->nombre_mascota,
+                'fecha_nacimiento_mascota' =>$request->fecha_nacimiento_mascota,
+                'comentario_mascota'=>$request->comentario_mascota,
+                'image_mascota'=> ( $ruta_archivo . $nombre_archivo )
       ]);
 
       if ($update){

@@ -37,6 +37,7 @@ class AdopcionController extends Controller
             'mascota_id' =>$request->select_mascota,
             'nombre_cuidad' =>$request->nombre_cuidad,
             'fecha_adopcion' =>$request->fecha_adopcion,
+            'direccion_adopcion' =>$request->direccion_adopcion,
             'descripcion_adopcion'=>$request->descripcion_adopcion
         ]);
 
@@ -68,6 +69,7 @@ class AdopcionController extends Controller
             'usuario_id' =>$request->select_usuario,
             'mascota_id' =>$request->select_mascota,
             'nombre_cuidad' =>$request->nombre_cuidad,
+            'direccion_adopcion' =>$request->direccion_adopcion,
             'fecha_adopcion' =>$request->fecha_adopcion,
             'descripcion_adopcion'=>$request->descripcion_adopcion
           ]);

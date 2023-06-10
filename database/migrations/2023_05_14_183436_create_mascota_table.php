@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('nombre_mascota');
             $table->dateTime('fecha_nacimiento_mascota');
             $table->text('comentario_mascota');
+            $table->string('image_mascota');
             $table->softDeletes();
             $table->timestamps();
         });

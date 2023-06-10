@@ -18,7 +18,7 @@
             <div class="card-header">
               <h3 class="card-title">Formulario Editar Registro Usuario</h3>
             </div>
-            <form method="POST" action="{{ route('usuario.update', ['u'=>$u->id] )}}">
+            <form method="POST" action="{{ route('usuario.update', ['u'=>$u->id] )}}" enctype="multipart/form-data">
               <div class="card-body">
                 @csrf
               @method('PUT')
@@ -90,6 +90,7 @@
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                   </div>
+
                   <div class="form-group">
                     <label class="@error ('telefono_usuario') text-danger @enderror" for="telefono_usuario">Telefono</label>
                     <input 
@@ -103,7 +104,20 @@
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                   </div>
-              <!-- /.card-body -->
+                  
+                  <div class="form-group">
+                    <label class="@error ('image_usuario') text-danger @enderror" for="image_usuario">Foto</label>
+                    <input
+                    type="file"
+                    name='image_usuario'
+                    class="form-control @error ('image_usuario') is-invalid @enderror"
+                    id="image_usuario"
+                    value="{{ old('image_usuario') ?: $u->image_usuario}}">
+                    <img src="{{asset($u->image_usuario) }}" class="rounded-circle mt-3" style="height: 100px;width:100px;">
+                    @error('image_usuario')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                  </div>
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Editar Usuario</button>

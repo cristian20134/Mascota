@@ -17,9 +17,9 @@
         <div class="card card-info card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img class="profile-user-img img-fluid img-circle" src="{{ asset ('assets/img/perro2.jpg') }}" alt="User profile picture" style="width: 300px; height: 300px;">
+                <img class="profile-user-img img-fluid img-circle" src="{{asset($m->image_mascota)}}" alt="User profile picture" style="width: 300px; height: 300px;">
               </div>
-              <h3 class="profile-username text-center">{{ $m->nombre_mascota }}</h3>
+              <h2 class="text-center my-3">{{ $m->nombre_mascota }}</h2>
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
                     <b>Raza</b> <a class="float-right">{{$m->raza->raza_mascota }}</a>

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('rut_usuario',10);
             $table->string('email_usuario')->unique();
             $table->string('telefono_usuario');
+            $table->string('image_usuario');
             $table->softDeletes();
             $table->timestamps();
         });

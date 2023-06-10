@@ -26,12 +26,13 @@ class UsuarioRequest extends FormRequest
         switch($this->method()){
             case "POST": {
                 return[
-                    'nombre_usuario' => 'required|min:3|max:30',
+                    'nombre_usuario' => 'required|min:3|max:30|',
                     'apellido_paterno' => 'required|min:3|max:30|alpha',
                     'apellido_materno' => 'required|min:3|max:30|alpha',
                     'rut_usuario' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:10',
                     'email_usuario' => 'required|email|unique:usuario',
                     'telefono_usuario' => 'required|numeric|digits:9',
+                    'image_usuario' => 'required',
                 ];
             }
             case "PUT":{
@@ -56,6 +57,7 @@ class UsuarioRequest extends FormRequest
             'rut_usuario.required'=>'Este campo es obligatorio',
             'email_usuario.required'=>'Este campo es obligatorio',
             'telefono_usuario.required'=>'Este campo es obligatorio',
+            'image_usuario'=>'Este campo es obligatorio.',
 
             'telefono_usuario.numeric'=>'El telefóno debe ser número',
 

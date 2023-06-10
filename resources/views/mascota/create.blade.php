@@ -18,7 +18,7 @@
             <div class="card-header">
               <h3 class="card-title">Formulario Registro Mascota</h3>
             </div>
-            <form method="POST" action="{{ route('mascota.store')}}">
+            <form method="POST" action="{{ route('mascota.store')}}" enctype="multipart/form-data">
               <div class="card-body">
                 @csrf
                 <div class="form-group">
@@ -130,6 +130,20 @@
                   <span class="error invalid-feedback d-block">{{ $message }}</span>
                   @enderror
                 </div>
+
+                <div class="form-group">
+                  <label class="@error ('image_mascota') text-danger @enderror" for="image_mascota">Foto Mascota</label>
+                  <input
+                  type="file"
+                  name='image_mascota'
+                  class="form-control @error ('image_mascota') is-invalid @enderror"
+                  id="image_mascota"
+                  value="{{ old('image_mascota') ?: ""}}">
+                  @error('image_mascota')
+                  <span class="error invalid-feedback">{{ $message }}</span>
+                  @enderror
+                </div>
+
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Guardar Mascota</button>
                 </div>

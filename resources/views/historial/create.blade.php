@@ -5,18 +5,18 @@
 @endsection
 
 @section('titulo_seccion')
-    Historial Medico Macota
+    Historial Médico Macota
 @endsection
 
 @section('breadcrumb')
-<li class="breadcrumb-item active">Registro Historial Medico Mascota</li>
+<li class="breadcrumb-item active">Registro Historial Médico Mascota</li>
 @endsection
 
 @section('contenido')
     <div class="col-md-8 offset-md-2">
         <div class="card card-gray">
             <div class="card-header">
-              <h3 class="card-title">Formulario Historial Medico Mascota</h3>
+              <h3 class="card-title">Formulario Historial Médico Mascota</h3>
             </div>
             <form method="POST" action="{{ route('historial.store')}}">
               <div class="card-body">
@@ -67,10 +67,10 @@
                 <div class="form-group">
                   <label class="@error('comentarios') text-danger @enderror" for="comentarios">Comentarios</label>
                   <textarea 
-                  class="form-control @error ('comentarios') is-invalid @enderror" 
+                  class="form-control text-justify @error ('comentarios') is-invalid @enderror" 
                   name="comentarios" 
                   id="comentarios" 
-                  cols="30" rows="10" 
+                  cols="30" rows="08" 
                   style="resize: none;"
                   >{{ old('comentarios') ?: ""}}</textarea>
                   @error('comentarios')
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Crear Historial Mascota</button>
+                  <button type="submit" class="btn btn-primary">Guardar Historial Médico</button>
                 </div>
             </div>
             </form>

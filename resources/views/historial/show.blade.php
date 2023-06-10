@@ -17,7 +17,7 @@
         <div class="card card-gray card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img class="profile-user-img img-fluid img-circle" src="{{ asset ('assets/img/perromedico.jpg') }}" alt="User profile picture" style="width: 300px; height: 300px;">
+                <img class="profile-user-img img-fluid img-circle" src="{{asset($his->mascota->image_mascota) }}" alt="User profile picture" style="width: 300px; height: 300px;">
               </div>
               <h3 class="profile-username text-center"></h3>
                 <ul class="list-group list-group-unbordered mb-3">
@@ -25,12 +25,12 @@
                     <b>Nombre Mascota</b> <a class="float-right">{{ $his->mascota->nombre_mascota}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Vacuna</b> <a class="float-right">{{$his->vacuna}}</a>
+                    <b>Vacunas</b> <a class="float-right">{{$his->vacuna}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Ciudad</b> <a class="float-right">{{ $his->enfermedades}}</a>
+                    <b>enfermedades</b> <a class="float-right">{{ $his->enfermedades}}</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item text-justify">
                     <b>Comentarios</b> <a class="float-right">{{ $his->comentarios}}</a>
                     </li>
                 </ul>

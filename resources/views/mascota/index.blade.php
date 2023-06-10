@@ -22,6 +22,7 @@
                                 <thead class="bg-info">
                                     <tr class="text-center">
                                         <th>#</th>
+                                        <th>Foto Mascota</th>
                                         <th>Nombre Mascota</th>
                                         <th>Raza</th>
                                         <th>Genero</th>
@@ -33,6 +34,7 @@
                                     @foreach($mascotas as $mascota)
                                     <tr class="text-center">
                                         <td>{{ $mascota -> id }}</td>
+                                        <td><img src="{{asset($mascota->image_mascota) }}" width="60px" height="60px" class="rounded-circle"></td>
                                         <td>{{ $mascota->nombre_mascota }}</td>
                                         <td>{{ $mascota->raza->raza_mascota }}</td>
                                         <td>{{ $mascota->genero_mascota->genero_mascota }}</td>
@@ -48,7 +50,7 @@
                                             @else
                                             <a
                                                 href="{{ route('mascota.delete', ['m'=>$mascota->id]) }}"
-                                                class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                                class="btn btn-danger delete-confirm"><i class="material-icons">Eliminar</i></a>
                                         @endif
                                         </td>
                                     </tr>

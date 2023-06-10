@@ -22,7 +22,7 @@
                                 <thead class="bg-pink">
                                     <tr class="text-center">
                                         <th>#</th>
-                                        <th>Adoptador</th>
+                                        <th>Persona Responsable</th>
                                         <th>Mascota</th>
                                         <th>Ciudad</th>
                                         <th>Fecha Adopción</th>
@@ -48,7 +48,7 @@
                                             @else
                                             <a
                                                 href="{{ route('adopcion.delete', ['info'=>$adopcion->id]) }}"
-                                                class="btn btn-danger"><i class="material-icons">Eliminar</i></a>
+                                                class="btn btn-danger delete-confirm"><i class="material-icons">Eliminar</i></a>
                                         @endif
                                         </td>
                                     </tr>

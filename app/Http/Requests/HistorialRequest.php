@@ -29,7 +29,7 @@ class HistorialRequest extends FormRequest
                     'nombre_ficha' => 'required|min:5|max:20',
                     'vacuna' => 'required|min:2|max:2',
                     'enfermedades' => 'required|min:2|max:2',
-                    'comentarios' => 'required|min:5|max:500',
+                    'comentarios' => 'required|min:5|max:700',
                 ];
             }
             case "PUT":{
@@ -37,7 +37,7 @@ class HistorialRequest extends FormRequest
                     'nombre_ficha' => 'required|min:5|max:20',
                     'vacuna' => 'required|min:2|max:2',
                     'enfermedades' => 'required|min:2|max:2',
-                    'comentarios' => 'required|min:5|max:500',
+                    'comentarios' => 'required|min:5|max:700',
                 ];
             }
             
