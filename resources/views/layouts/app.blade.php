@@ -17,7 +17,7 @@
     <!-- Scripts -->
     @vite(['resources/js/app.js']) 
 </head>
-<body class="m">
+<body class="login">
     <div id="app">
         <nav class="navbar navbar-expand-md  navbar-dark bg-dark shadow-sm">
             <div class="container">

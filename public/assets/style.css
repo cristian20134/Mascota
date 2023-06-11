@@ -1,20 +1,16 @@
-.m{
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('https://cdn.pixabay.com/photo/2021/01/21/16/17/english-cocker-spaniel-5937757_1280.jpg');
+
+.menu-imagen{
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url('img/menu.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 80vh;
+}
+
+.login{
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url('img/menu2.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     height: 100vh;
-}
-
-.m{
-    height: 300px;;
-}
-
-.menu-imagen{
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),url('https://cdn.pixabay.com/photo/2022/01/16/13/49/dog-6942065_1280.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100%;
-
 }

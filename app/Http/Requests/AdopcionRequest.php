@@ -29,7 +29,7 @@ class AdopcionRequest extends FormRequest
                     'select_usuario'=>'required|exists:usuario,id',
                     'select_mascota'=>'required|exists:mascota,id',
                     'nombre_cuidad'=>'required|min:4|max:20',
-                    'direccion_adopcion'=>'required|min:20|max:50',
+                    'direccion_adopcion'=>'required|min:10|max:50',
                     'fecha_adopcion'=>'required|date_format:Y-m-d',
                     'descripcion_adopcion'=>'required|min:5|max:600',
                 ];

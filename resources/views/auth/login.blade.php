@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card bg-black text-light">
-                <div class="card-header">{{ __('Inicio Sesión') }}</div>
+            <div class="card login border border-light">
+                <div class="card-header bg-dark text-light">{{ __('Inicio Sesión') }}</div>
 
-                <div class="card-body m">
+                <div class="card-body text-light">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
