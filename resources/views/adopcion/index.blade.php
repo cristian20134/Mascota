@@ -1,15 +1,11 @@
 @extends('layouts.dashboard')
 
-@section('titulo_pagina')
-    Adopcion | Home
-@endsection
-
 @section('titulo_seccion')
     Información de Adopciones
 @endsection
 
 @section('breadcrumb')
-{{-- <li class="breadcrumb-item active">Starter Page</li> --}}
+<li class="breadcrumb-item active">Adopción</li>
 @endsection
 
 @section('contenido')
@@ -24,7 +20,6 @@
                                         <th>#</th>
                                         <th>Persona Responsable</th>
                                         <th>Mascota</th>
-                                        <th>Ciudad</th>
                                         <th>Fecha Adopción</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -33,12 +28,11 @@
                                     @foreach($adopciones as $adopcion)
                                     <tr class="text-center">
                                         <td>{{ $adopcion -> id }}</td>
-                                        <td>{{ $adopcion->usuario->nombre_usuario}} {{ $adopcion->usuario->apellido_paterno}} {{ $adopcion->usuario->apellido_materno}}</td>
+                                        <td>{{ $adopcion->usuario->nombre_usuario.' '.$adopcion->usuario->apellido_paterno.' '.$adopcion->usuario->apellido_materno}}</td>
                                         <td>{{ $adopcion->mascota->nombre_mascota }}</td>
-                                        <td>{{ $adopcion->nombre_cuidad }}</td>
                                         <td>{{ $adopcion->fecha_adopcion->format('d-m-Y') }}</td>
                                         <td>
-                                            <a href="{{ route('adopcion.show', ['info'=>$adopcion->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
+                                            <a href="{{ route('adopcion.show', ['info'=>$adopcion->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
                                             <a href="{{ route('adopcion.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
                                             <a href="{{ route('adopcion.edit', ['info'=>$adopcion->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
                                             @if( $adopcion->trashed())

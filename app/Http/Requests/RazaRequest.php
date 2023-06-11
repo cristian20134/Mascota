@@ -26,12 +26,12 @@ class RazaRequest extends FormRequest
         switch($this->method()){
             case "POST": {
                 return[
-                    'raza_mascota' => 'required|min:3|max:25',
+                    'raza_mascota' => 'required|min:3|max:15',
                 ];
             }
             case "PUT":{
                 return[
-                    'raza_mascota' => 'required|min:3|max:25',
+                    'raza_mascota' => 'required|min:3|max:15',
                 ];
             }
             
@@ -41,7 +41,9 @@ class RazaRequest extends FormRequest
 
     public function messages(){   
         return [
-            'raza_mascota.required'=>'Este campo es obligatorio',
+            'raza_mascota.required'=>'Este campo es obligatorio.',
+            'raza_mascota.min'=>'El campo debe tener minimo :min caracteres.',
+            'raza_mascota.max'=>'El campo debe tener máximo :max caracteres.',
         ];
     }
 }

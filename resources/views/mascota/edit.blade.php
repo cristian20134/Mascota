@@ -125,7 +125,7 @@
                   class="form-control text-justify @error ('comentario_mascota') is-invalid @enderror" 
                   name="comentario_mascota" 
                   id="comentario_mascota" 
-                  cols="30" rows="10" 
+                  cols="30" rows="07" 
                   style="resize: none;"
                   >{{ old('comentario_mascota') ?: $m->comentario_mascota}}</textarea>
                   @error('comentario_mascota')

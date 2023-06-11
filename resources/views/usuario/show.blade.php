@@ -9,7 +9,7 @@
 @endsection
 
 @section('breadcrumb')
-{{-- <li class="breadcrumb-item active">Starter Page</li> --}}
+<li class="breadcrumb-item active">Datos del Usuario</li>
 @endsection
 
 @section('contenido')
@@ -38,7 +38,7 @@
                 </ul>
                 <div class="text-center">
                     <a href="{{ route('usuario.index') }}" class="btn btn-success"><i class="material-icons">volver</i></a>
-                    <a href="{{ route('adopcion.show', ['info'=>$u->id]) }}" class="btn btn-info"><i class="material-icons">Datos Adopción</i></a>
+                    {{--  <a href="{{ route('adopcion.show', ['info'=>$u->id]) }}" class="btn btn-info"><i class="material-icons">Datos Adopción</i></a>--}}
                 </div>
             </div>
         </div>

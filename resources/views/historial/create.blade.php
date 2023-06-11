@@ -70,7 +70,7 @@
                   class="form-control text-justify @error ('comentarios') is-invalid @enderror" 
                   name="comentarios" 
                   id="comentarios" 
-                  cols="30" rows="08" 
+                  cols="30" rows="07" 
                   style="resize: none;"
                   >{{ old('comentarios') ?: ""}}</textarea>
                   @error('comentarios')

@@ -27,16 +27,16 @@ class HistorialRequest extends FormRequest
             case "POST": {
                 return[
                     'nombre_ficha' => 'required|min:5|max:20',
-                    'vacuna' => 'required|min:2|max:2',
-                    'enfermedades' => 'required|min:2|max:2',
+                    'vacuna' => 'required|min:2|max:2|alpha',
+                    'enfermedades' => 'required|min:2|max:2|alpha',
                     'comentarios' => 'required|min:5|max:700',
                 ];
             }
             case "PUT":{
                 return[
                     'nombre_ficha' => 'required|min:5|max:20',
-                    'vacuna' => 'required|min:2|max:2',
-                    'enfermedades' => 'required|min:2|max:2',
+                    'vacuna' => 'required|min:2|max:2|alpha',
+                    'enfermedades' => 'required|min:2|max:2|alpha',
                     'comentarios' => 'required|min:5|max:700',
                 ];
             }
@@ -47,18 +47,23 @@ class HistorialRequest extends FormRequest
 
     public function messages(){   
         return [
-            'nombre_ficha.required'=>'Este campo es obligatorio',
-            'vacuna.required'=>'Este campo es obligatorio',
-            'enfermedades.required'=>'Este campo es obligatorio',
-            'comentarios.required'=>'Este campo es obligatorio',
+            'nombre_ficha.required'=>'Este campo es obligatorio.',
+            'vacuna.required'=>'Este campo es obligatorio.',
+            'enfermedades.required'=>'Este campo es obligatorio.',
+            'comentarios.required'=>'Este campo es obligatorio.',
 
-            'vacuna.min'=>'Los caracteres minimo son :min.',
-            'enfermedades.min'=>'Los caracteres minimo son :min.',
-            'comentarios.min'=>'Los caracteres minimo son :min.',
+            'nombre_ficha.min'=>'El campo debe tener mínimo :min caracteres.',
+            'vacuna.min'=>'El campo debe tener mínimo :min caracteres.',
+            'enfermedades.min'=>'El campo debe tener mínimo :min caracteres.',
+            'comentarios.min'=>'El campo debe tener mínimo :min caracteres.',
 
-            'vacuna.max'=>'Los caracteres maximos son :max.',
-            'enfermedades.max'=>'Los caracteres maximos son :max.',
-            'comentarios.max'=>'Los caracteres maximos son :max.',
+            'nombre_ficha.max'=>'El campo debe tener máximo :max caracteres.',
+            'vacuna.max'=>'El campo debe tener máximo :max caracteres.',
+            'enfermedades.max'=>'El campo debe tener máximo :max caracteres.',
+            'comentarios.max'=>'El campo debe tener máximo :max caracteres.',
+
+            'vacuna.alpha'=>'El campo solo debe contener letras.',
+            'enfermedades.alpha'=>'El campo solo debe contener letras.',
         ];
     }
 }

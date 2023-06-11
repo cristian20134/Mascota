@@ -92,10 +92,10 @@
                 <div class="form-group">
                   <label class="@error('descripcion_adopcion') text-danger @enderror" for="descripcion_adopcion">Descripcion Adopción</label>
                   <textarea 
-                  class="form-control @error ('descripcion_adopcion') is-invalid @enderror" 
+                  class="form-control text-justify @error ('descripcion_adopcion') is-invalid @enderror" 
                   name="descripcion_adopcion" 
                   id="descripcion_adopcion" 
-                  cols="30" rows="10" 
+                  cols="30" rows="07" 
                   style="resize: none;"
                   >{{ old('descripcion_adopcion') ?: ""}}</textarea>
                   @error('descripcion_adopcion')

@@ -66,7 +66,7 @@
                   <label class="@error('descripcion_seguimiento') text-danger @enderror" for="descripcion_seguimiento">Comentario Seguimiento Mascota</label>
                   <textarea class="form-control text-justify @error ('descripcion_seguimiento') is-invalid @enderror" 
                   name="descripcion_seguimiento" id="descripcion_seguimiento" 
-                  cols="30" rows="10" 
+                  cols="30" rows="07" 
                   style="resize: none;"
                   >{{ old('descripcion_seguimiento') ?: ""}}</textarea>
                   @error('descripcion_seguimiento')

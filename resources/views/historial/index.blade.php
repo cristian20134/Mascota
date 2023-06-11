@@ -1,15 +1,11 @@
 @extends('layouts.dashboard')
 
-@section('titulo_pagina')
-    Adopcion | Home
-@endsection
-
 @section('titulo_seccion')
     Información Historial Medico Mascota
 @endsection
 
 @section('breadcrumb')
-{{-- <li class="breadcrumb-item active">Starter Page</li> --}}
+<li class="breadcrumb-item active">Historial Médico</li>
 @endsection
 
 @section('contenido')
@@ -36,7 +32,7 @@
                                         <td>{{ $historial->vacuna }}</td>
                                         <td>{{ $historial->enfermedades}}</td>
                                         <td>
-                                            <a href="{{ route('historial.show', ['his'=>$historial->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
+                                            <a href="{{ route('historial.show', ['his'=>$historial->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
                                             <a href="{{ route('historial.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
                                             <a href="{{ route('historial.edit', ['his'=>$historial->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
 

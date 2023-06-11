@@ -34,7 +34,7 @@
                   @enderror
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary"> Crear Raza</button>
+                  <button type="submit" class="btn btn-primary">Guardar Raza</button>
                 </div>
             </div>
             </form>

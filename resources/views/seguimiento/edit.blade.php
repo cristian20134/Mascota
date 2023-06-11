@@ -9,7 +9,7 @@
 @endsection
 
 @section('breadcrumb')
-<li class="breadcrumb-item active">Editar Registro Seguimiento Adopción de Mascota</li>
+<li class="breadcrumb-item active">Editar Seguimiento Adopción de Mascota</li>
 @endsection
 
 @section('contenido')
@@ -24,12 +24,13 @@
                 @method('PUT')
 
                 <div class="form-group">
-                  <label class="@error ('select_seguimiento') text-danger @enderror" for="select_mascota">Número Adopción</label>
+                  <label class="@error ('select_seguimiento') text-danger @enderror" for="select_mascota">Persona Responsable - Mascota</label>
                   <select name="select_seguimiento" id="select_seguimiento" class="form-control @error('select_seguimiento') is-invalid @enderror">
                     <option value="">Seleccione una Opción</option>
                     @foreach($adopciones as $a)
                     <option value="{{$a->id}}"
-                    {{ ( (int) old('select_seguimiento') === $a->id  or (int) $seg->adopcion_id === $a->id) ? 'selected' : ''}}>{{$a->id}}</option>
+                    {{ ( (int) old('select_seguimiento') === $a->id  or (int) $seg->adopcion_id === $a->id) ? 'selected' : ''}}>
+                    {{$a->usuario->nombre_usuario.' '.$a->usuario->apellido_paterno.' '.$a->usuario->apellido_materno.' - '.$a->mascota->nombre_mascota}}</option>
                     @endforeach
                   </select>
                     @error('select_seguimiento')
@@ -66,10 +67,10 @@
                 <div class="form-group">
                   <label class="@error('descripcion_seguimiento') text-danger @enderror" for="descripcion_seguimiento">Descripcion Seguimiento</label>
                   <textarea 
-                  class="form-control @error ('descripcion_seguimiento') is-invalid @enderror" 
+                  class="form-control text-justify @error ('descripcion_seguimiento') is-invalid @enderror" 
                   name="descripcion_seguimiento" 
                   id="descripcion_seguimiento" 
-                  cols="30" rows="10" 
+                  cols="30" rows="07" 
                   style="resize: none;"
                   >{{ old('descripcion_seguimiento') ?: $seg->descripcion_seguimiento}}</textarea>
                   @error('descripcion_seguimiento')
@@ -78,7 +79,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Guardar Seguimiento</button>
+                  <button type="submit" class="btn btn-primary">Editar Seguimiento</button>
                 </div>
             </div>
             </form>

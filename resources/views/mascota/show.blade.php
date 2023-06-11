@@ -1,15 +1,11 @@
 @extends('layouts.dashboard')
 
-@section('titulo_pagina')
-    Adopcion | Home
-@endsection
-
 @section('titulo_seccion')
-   Ficha Mascota
+   Datos de Mascota
 @endsection
 
 @section('breadcrumb')
-{{-- <li class="breadcrumb-item active">Starter Page</li> --}}
+<li class="breadcrumb-item active">Datos de Mascota</li>
 @endsection
 
 @section('contenido')
@@ -41,8 +37,8 @@
                     </li>
                 </ul>
                 <div class="text-center">
-                    <a href="{{ route('mascota.index') }}" class="btn btn-info"><i class="material-icons">volver</i></a>
-                    <a href="{{ route ('historial.show', ['his'=>$m->id]) }}" class="btn btn-success"><i class="material-icons">Historial Medico</i></a>
+                    <a href="{{ route('mascota.index') }}" class="btn btn-success"><i class="material-icons">volver</i></a>
+                    {{-- <a href="{{ route ('historial.show', ['his'=>$m->id]) }}" class="btn btn-success"><i class="material-icons">Historial Medico</i></a>--}}
                 </div>
             </div>
         </div>

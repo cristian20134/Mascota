@@ -1,33 +1,26 @@
 @extends('layouts.dashboard')
 
-@section('titulo_pagina')
-    Adopcion | Home
-@endsection
-
 @section('titulo_seccion')
     Información de Usuarios Registrados
 @endsection
 
 @section('breadcrumb')
-{{-- <li class="breadcrumb-item active">Starter Page</li> --}}
+<li class="breadcrumb-item active">Usuarios</li>
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-10 mx-auto">
             <div class="card">
-                <div class="card-header">Listado de Usuario</div>
+                <div class="card-header">Listado de Usuarios</div>
                     <div class="card-body p-0 m-0">
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed table-striped">
                                 <thead class="bg-danger">
                                     <tr class="text-center">
                                         <th>#</th>
-                                        <th>Foto Perfil</th>
-                                        <th>Rut</th>
+                                        <th>Foto Perfil</th>          
                                         <th>Nombres</th>
-                                        <th>Apellidos</th>
-                                        <th>Correo</th>
-                                        <th>Telefóno</th>
+                                        <th>Apellidos</th>                             
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -36,13 +29,10 @@
                                     <tr>
                                         <td>{{ $usuario ->id }}</td>
                                         <td><img src="{{asset($usuario->image_usuario) }}" width="60px" height="60px" class="rounded-circle"></td>
-                                        <td>{{ $usuario ->rut_usuario }}</td>
                                         <td>{{ $usuario ->nombre_usuario }}</td>
                                         <td>{{ $usuario ->apellido_paterno}} {{$usuario->apellido_materno}}</td>
-                                        <td>{{ $usuario ->email_usuario }}</td>
-                                        <td>{{ $usuario ->telefono_usuario }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('usuario.show', ['u'=>$usuario->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
+                                            <a href="{{ route('usuario.show', ['u'=>$usuario->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
                                             <a href="{{ route('usuario.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
                                             <a href="{{ route('usuario.edit', ['u'=>$usuario->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
 

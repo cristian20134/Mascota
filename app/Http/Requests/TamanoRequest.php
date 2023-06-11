@@ -16,12 +16,12 @@ class TamanoRequest extends FormRequest
         switch($this->method()){
             case "POST": {
                 return[
-                    'tamano_mascota' => 'required|min:5|max:100',
+                    'tamano_mascota' => 'required|min:5|max:15',
                 ];
             }
             case "PUT":{
                 return[
-                    'tamano_mascota' => 'required|min:5|max:100',
+                    'tamano_mascota' => 'required|min:5|max:15',
                 ];
             }
             
@@ -32,6 +32,8 @@ class TamanoRequest extends FormRequest
     public function messages(){   
         return [
             'tamano_mascota.required'=>'Este campo es obligatorio',
+            'tamano_mascota.min'=>'El campo debe tener mínimo :min caracteres.',
+            'tamano_mascota.max'=>'El campo debe tener máximo :max caracteres.',
         ];
     }
 }

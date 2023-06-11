@@ -34,7 +34,7 @@
                   @enderror
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary"> Crear Tamaño</button>
+                  <button type="submit" class="btn btn-primary">Guardar Tamaño</button>
                 </div>
             </div>
             </form>

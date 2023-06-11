@@ -1,15 +1,11 @@
 @extends('layouts.dashboard')
 
-@section('titulo_pagina')
-    Adopcion | Home
-@endsection
-
 @section('titulo_seccion')
     Información de Mascotas
 @endsection
 
 @section('breadcrumb')
-{{-- <li class="breadcrumb-item active">Starter Page</li> --}}
+<li class="breadcrumb-item active">Mascotas</li>
 @endsection
 
 @section('contenido')
@@ -25,8 +21,6 @@
                                         <th>Foto Mascota</th>
                                         <th>Nombre Mascota</th>
                                         <th>Raza</th>
-                                        <th>Genero</th>
-                                        <th>Tamaño</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -37,10 +31,8 @@
                                         <td><img src="{{asset($mascota->image_mascota) }}" width="60px" height="60px" class="rounded-circle"></td>
                                         <td>{{ $mascota->nombre_mascota }}</td>
                                         <td>{{ $mascota->raza->raza_mascota }}</td>
-                                        <td>{{ $mascota->genero_mascota->genero_mascota }}</td>
-                                        <td>{{ $mascota->tamano->tamano_mascota }}</td>
                                         <td>
-                                            <a href="{{ route('mascota.show', ['m'=>$mascota->id])}}" class="btn btn-info"><i class="material-icons">Ficha</i></a>
+                                            <a href="{{ route('mascota.show', ['m'=>$mascota->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
                                             <a href="{{ route('mascota.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
                                             <a href="{{ route('mascota.edit', ['m'=>$mascota->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
                                             @if( $mascota->trashed())

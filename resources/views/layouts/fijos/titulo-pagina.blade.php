@@ -9,7 +9,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home')}}"><i class="fas fa-home fa-lg"></i></a></li>
                 @yield('breadcrumb')
                 </ol>
             </div><!-- /.col -->

@@ -41,10 +41,10 @@ class GeneroRequest extends FormRequest
 
     public function messages(){   
         return [
-            'genero_mascota.required'=>'Este campo es obligatorio',
-            'genero_mascota.min'=>'El género mascota debe tener al menos :min caracteres mínimo.',
-            'genero_mascota.max'=>'El género mascota debe tener :max caracteres máximo.',
-            'genero_mascota.alpha'=>'El género mascota solo debe contener letras.',
+            'genero_mascota.required'=>'Este campo es obligatorio.',
+            'genero_mascota.min'=>'El campo debe tener minimo :min caracteres.',
+            'genero_mascota.max'=>'El campo debe tener máximo :max caracteres.',
+            'genero_mascota.alpha'=>'El campo solo debe contener letras.',
         ];
     }
 }

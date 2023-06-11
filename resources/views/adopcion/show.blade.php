@@ -1,15 +1,11 @@
 @extends('layouts.dashboard')
 
-@section('titulo_pagina')
-    Adopcion | Home
-@endsection
-
 @section('titulo_seccion')
    Datos de Adopción
 @endsection
 
 @section('breadcrumb')
-{{-- <li class="breadcrumb-item active">Starter Page</li> --}}
+<li class="breadcrumb-item active">Dato de Adopción</li>
 @endsection
 
 @section('contenido')
@@ -22,7 +18,7 @@
               <h3 class="profile-username text-center"></h3>
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                    <b>Persona Responsable</b> <a class="float-right">{{$info->usuario->nombre_usuario}} {{$info->usuario->apellido_paterno}} {{$info->usuario->apellido_materno}}</a>
+                    <b>Persona Responsable</b> <a class="float-right">{{$info->usuario->nombre_usuario.' '.$info->usuario->apellido_paterno.' '.$info->usuario->apellido_materno}}</a>
                     </li>
                     <li class="list-group-item">
                     <b>Nombre Mascota</b> <a class="float-right">{{ $info->mascota->nombre_mascota}}</a>

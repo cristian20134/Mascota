@@ -63,7 +63,7 @@
                               <td>
                                 <a href="{{ route('raza.edit', ['id'=>$raza->id])}}" 
                                     class="btn btn-success">
-                                    <i class="material-icons">Editar</i>
+                                    <i class="material-icons">Editar Raza</i>
                                 </a>
                               </td>
                           </tr>

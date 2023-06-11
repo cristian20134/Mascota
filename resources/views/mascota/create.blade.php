@@ -120,10 +120,10 @@
                 <div class="form-group">
                   <label class="@error('comentario_mascota') text-danger @enderror" for="comentario_mascota">Comentarios</label>
                   <textarea 
-                  class="form-control @error ('comentario_mascota') is-invalid @enderror" 
+                  class="form-control text-justify @error ('comentario_mascota') is-invalid @enderror" 
                   name="comentario_mascota" 
                   id="comentario_mascota" 
-                  cols="30" rows="10" 
+                  cols="30" rows="07" 
                   style="resize: none;"
                   >{{ old('comentario_mascota') ?: ""}}</textarea>
                   @error('comentario_mascota')
