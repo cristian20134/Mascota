@@ -18,7 +18,7 @@
                                 <thead class="bg-gray">
                                     <tr class="text-center">
                                         <th>#</th>
-                                        <th>Ficha</th>
+                                        <th>Nombre Mascota</th>
                                         <th>Vacunas</th>
                                         <th>Enfermedades</th>
                                         <th>Acciones</th>
@@ -28,7 +28,7 @@
                                     @foreach($historiales as $historial)
                                     <tr class="text-center">
                                         <td>{{ $historial ->id }}</td>
-                                        <td>{{ $historial ->nombre_ficha }}</td>
+                                        <td>{{ $historial ->mascota->nombre_mascota }}</td>
                                         <td>{{ $historial->vacuna }}</td>
                                         <td>{{ $historial->enfermedades}}</td>
                                         <td>

@@ -32,7 +32,6 @@ class MascotaRequest extends FormRequest
                     'genero_mascota'=>'required|exists:genero_mascota,id',
                     'tamano'=>'required|exists:tamano,id',
                     'personalidad_mascota'=>'required|exists:personalidad_mascota,id',
-                    'historial_medico'=>'required|exists:historial_medico,id',
                     'fecha_nacimiento_mascota'=>'required|date_format:Y-m-d',
                     'comentario_mascota'=>'required|min:5|max:600',
                     'image_mascota'=>'required|image|max:5120'
@@ -45,9 +44,8 @@ class MascotaRequest extends FormRequest
                     'genero_mascota'=>'required|exists:genero_mascota,id',
                     'tamano'=>'required|exists:tamano,id',
                     'personalidad_mascota'=>'required|exists:personalidad_mascota,id',
-                    'historial_medico'=>'required|exists:historial_medico,id',
                     'fecha_nacimiento_mascota'=>'required|date_format:Y-m-d',
-                    'comentario_mascota'=>'required|image|min:5',
+                    'comentario_mascota'=>'required|min:5|max:600',
                     'image_mascota'=>'required|image|max:5120'
                 ];
             }
@@ -63,7 +61,6 @@ class MascotaRequest extends FormRequest
             'genero_mascota.required'=>'Este campo es obligatorio.',
             'tamano.required'=>'Este campo es obligatorio.',
             'personalidad_mascota.required'=>'Este campo es obligatorio.',
-            'historial_medico.required'=>'Este campo es obligatorio.',
             'fecha_nacimiento_mascota.required'=>'Este campo es obligatorio.',
             'comentario_mascota.required'=>'Este campo es obligatorio.',
             'image_mascota.required'=>'Este campo es obligatorio.',

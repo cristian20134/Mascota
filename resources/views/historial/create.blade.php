@@ -23,18 +23,18 @@
                 @csrf
 
                 <div class="form-group">
-                  <label class="@error ('nombre_ficha') text-danger @enderror" for="nombre_ficha">Ficha Nombre</label>
-                  <input 
-                  type="tel" 
-                  name='nombre_ficha' 
-                  class="form-control @error ('nombre_ficha') is-invalid @enderror" 
-                  id="nombre_ficha" 
-                  placeholder="Ingrese Ficha nombre"
-                  value="{{ old('nombre_ficha') ?: ""}}">
-                  @error('nombre_ficha')
-                  <span class="error invalid-feedback">{{ $message }}</span>
-                  @enderror
-                </div>
+                  <label class="@error ('mascota') text-danger @enderror" for="mascota">Nombre Mascota</label>
+                  <select name="mascota" id="mascota" class="form-control @error('mascota') is-invalid @enderror">
+                    <option value="">Seleccione una Opción</option>
+                    @foreach($mascotas as $mascota)
+                    <option value="{{ $mascota->id }}"
+                      {{ (int) old('mascota') === $mascota->id ? 'selected' : ''}}>{{$mascota->nombre_mascota}}</option>
+                    @endforeach
+                  </select>
+                   @error('mascota')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+              </div>
 
                 <div class="form-group">
                   <label class="@error ('vacuna') text-danger @enderror" for="vacuna">Vacuna de Mascota</label>

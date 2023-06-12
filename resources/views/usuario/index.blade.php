@@ -26,7 +26,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($usuarios as $usuario)
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>{{ $usuario ->id }}</td>
                                         <td><img src="{{asset($usuario->image_usuario) }}" width="60px" height="60px" class="rounded-circle"></td>
                                         <td>{{ $usuario ->nombre_usuario }}</td>

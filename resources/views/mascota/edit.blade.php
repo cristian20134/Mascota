@@ -93,20 +93,6 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="@error ('historial_medico') text-danger @enderror" for="historial_medico">Historial Medico Mascota</label>
-                  <select name="historial_medico" id="historial_medico" class="form-control @error('historial_medico') is-invalid @enderror">
-                    <option value="">Seleccione una Opción</option>
-                    @foreach($historiales as $historial)
-                    <option value="{{$historial->id}}"
-                    {{ ( (int) old('historial_medico') === $historial->id or (int) $m->historial_medico_id === $historial->id )? 'selected' : ''}}>{{$historial->nombre_ficha}}</option>
-                    @endforeach
-                  </select>
-                    @error('historial_medico')
-                      <span class="error invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
                   <label class="@error ('fecha_nacimiento_mascota') text-danger @enderror" for="fecha_nacimiento_mascota">Fecha Nacimiento Mascota</label>
                   <input 
                   type="date" name='fecha_nacimiento_mascota' 

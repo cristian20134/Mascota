@@ -57,7 +57,5 @@
                 <div class=" d-flex justify-content-end">
                     {{$seguimientos->links()}}
                 </div> 
-            </div> 
-    </div>
-
+    </div> 
 @endsection

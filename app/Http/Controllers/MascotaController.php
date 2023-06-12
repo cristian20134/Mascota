@@ -32,8 +32,7 @@ class MascotaController extends Controller
         $generos = GeneroMascota::all();
         $personalidades = PersonalidadMascota::all();
         $tamanos = Tamano::all();
-        $historiales = HistorialMedico::all();
-        return view('mascota.create', compact('razas','generos','personalidades','tamanos','historiales'));
+        return view('mascota.create', compact('razas','generos','personalidades','tamanos'));
     }
 
   
@@ -48,7 +47,6 @@ class MascotaController extends Controller
             }
 
         $mascotas = Mascota::create([
-            'historial_medico_id' =>$request->historial_medico,
             'raza_id' =>$request->select_raza,
             'tamano_id' =>$request->tamano,
             'genero_mascota_id' =>$request->genero_mascota,
@@ -81,8 +79,7 @@ class MascotaController extends Controller
         $generos = GeneroMascota::all();
         $personalidades = PersonalidadMascota::all();
         $tamanos = Tamano::all();
-        $historiales = HistorialMedico::all();
-        return view('mascota.edit', compact('razas','generos','personalidades','tamanos','historiales','m'));
+        return view('mascota.edit', compact('razas','generos','personalidades','tamanos','m'));
     }
 
 
@@ -98,7 +95,6 @@ class MascotaController extends Controller
             }
 
             $update = $m->update([
-                'historial_medico_id' =>$request->historial_medico,
                 'raza_id' =>$request->select_raza,
                 'tamano_id' =>$request->tamano,
                 'genero_mascota_id' =>$request->genero_mascota,

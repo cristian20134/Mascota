@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('historial_medico', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_ficha');
+            $table->unsignedBigInteger('mascota_id');
+            $table->foreign('mascota_id')->references('id')->on('mascota');
             $table->string('vacuna',4);
             $table->string('enfermedades',4);
             $table->text('comentarios');

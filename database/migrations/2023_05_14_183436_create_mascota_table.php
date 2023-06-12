@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('mascota', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('historial_medico_id');
-            $table->foreign('historial_medico_id')->references('id')->on('historial_medico');
             $table->unsignedBigInteger('raza_id');
             $table->foreign('raza_id')->references('id')->on('raza');
             $table->unsignedBigInteger('tamano_id');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HistorialRequest;
 use App\Models\HistorialMedico;
+use App\Models\Mascota;
 use Illuminate\Http\Request;
 
 class HistorialMedicoController extends Controller
@@ -21,14 +22,15 @@ class HistorialMedicoController extends Controller
 
     public function create()
     {
-        return view('historial.create'); 
+        $mascotas = Mascota::all();
+        return view('historial.create',compact(['mascotas'])); 
     }
 
 
     public function store(HistorialRequest $request)
     {
         $historiales = HistorialMedico::create([
-            'nombre_ficha'=>$request->nombre_ficha,
+            'mascota_id'=>$request->mascota,
             'vacuna' => $request->vacuna,
             'enfermedades' => $request->enfermedades,
             'comentarios' => $request->comentarios,
@@ -53,14 +55,15 @@ class HistorialMedicoController extends Controller
 
     public function edit(HistorialMedico $his)
     {
-        return view('historial.edit', compact(['his'])); 
+        $mascotas = Mascota::all();
+        return view('historial.edit', compact(['his','mascotas'])); 
     }
 
 
     public function update(HistorialMedico $his, HistorialRequest $request)
     {
         $update = $his->update([
-            'nombre_ficha'=>$request->nombre_ficha,
+            'mascota_id'=>$request->mascota,
             'vacuna' => $request->vacuna,
             'enfermedades' => $request->enfermedades,
             'comentarios' => $request->comentarios,
@@ -99,7 +102,7 @@ class HistorialMedicoController extends Controller
              session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar el historial medico mascota.']);
              return redirect()->route('home');
  
-         } catch( \Exception $his) {
+         } catch( \Exception $e) {
              abort(403);
          }
      }

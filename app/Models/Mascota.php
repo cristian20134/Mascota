@@ -13,7 +13,6 @@ class Mascota extends Model
     protected $table = 'mascota';
 
     protected $fillable = [
-        'historial_medico_id',
         'raza_id',
         'tamano_id',
         'genero_mascota_id',
