@@ -33,7 +33,7 @@
                         <b>Correo Electrónico</b> <a class="float-right">{{ $u->email_usuario}}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Telefóno</b> <a class="float-right">{{ $u->telefono_usuario }}</a>
+                        <b>Teléfono</b> <a class="float-right">{{ $u->telefono_usuario }}</a>
                     </li>
                 </ul>
                 <div class="text-center">

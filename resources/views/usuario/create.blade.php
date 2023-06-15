@@ -78,7 +78,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="@error ('email_usuario') text-danger @enderror" for="email_usuario">Correo Electronico</label>
+                    <label class="@error ('email_usuario') text-danger @enderror" for="email_usuario">Correo Electrónico</label>
                     <input 
                     type="email" 
                     name='email_usuario' 
@@ -92,7 +92,7 @@
                   </div>
                   
                   <div class="form-group">
-                    <label class="@error ('telefono_usuario') text-danger @enderror" for="telefono_usuario">Telefono</label>
+                    <label class="@error ('telefono_usuario') text-danger @enderror" for="telefono_usuario">Teléfono</label>
                     <input 
                     type="tel" 
                     name='telefono_usuario' 

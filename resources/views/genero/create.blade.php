@@ -34,7 +34,7 @@
                   @enderror
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Crear Género</button>
+                  <button type="submit" class="btn btn-primary">Guardar Género</button>
                 </div>
             </div>
             </form>

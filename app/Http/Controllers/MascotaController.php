@@ -85,34 +85,41 @@ class MascotaController extends Controller
 
     public function update(Mascota $m, MascotaRequest $request )
     {
-
         if ( $request->hasFile('image_mascota')) {
-            $extension_archivo = $request->file('image_mascota')->getClientOriginalExtension();
-            $ruta_archivo = "uploads/mascotas/";
-            $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
-            $subida_archivo = $request->file('image_mascota')->move($ruta_archivo, $nombre_archivo);
+                $ruta_archivo = "uploads/mascotas/";
 
+                if($m->image_mascota != ''  && $m->image_mascota != null){
+                    $file_old =$m->image_mascota;
+                    unlink($file_old);
             }
-
-            $update = $m->update([
-                'raza_id' =>$request->select_raza,
-                'tamano_id' =>$request->tamano,
-                'genero_mascota_id' =>$request->genero_mascota,
-                'personalidad_mascota_id' =>$request->personalidad_mascota,
-                'nombre_mascota'=>$request->nombre_mascota,
-                'fecha_nacimiento_mascota' =>$request->fecha_nacimiento_mascota,
-                'comentario_mascota'=>$request->comentario_mascota,
-                'image_mascota'=> ( $ruta_archivo . $nombre_archivo )
-      ]);
-
-      if ($update){
-        session()->flash('mensaje', ['success', 'Los datos de la mascota se han modificado correctamente.']);
-        return redirect()->route('mascota.create');
-    
-        session()->flash('mensaje', ['danger', 'Se ha Producido un error al Modificar los datos de la Mascota.']);
-        return redirect()->route('mascota.create');
-       }    
-    }
+            }
+                if ( $request->hasFile('image_mascota')) {
+                    $extension_archivo = $request->file('image_mascota')->getClientOriginalExtension();
+                    $ruta_archivo = "uploads/mascotas/";
+                    $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
+                    $subida_archivo = $request->file('image_mascota')->move($ruta_archivo, $nombre_archivo);
+        
+                    }
+        
+                    $update = $m->update([
+                        'raza_id' =>$request->select_raza,
+                        'tamano_id' =>$request->tamano,
+                        'genero_mascota_id' =>$request->genero_mascota,
+                        'personalidad_mascota_id' =>$request->personalidad_mascota,
+                        'nombre_mascota'=>$request->nombre_mascota,
+                        'fecha_nacimiento_mascota' =>$request->fecha_nacimiento_mascota,
+                        'comentario_mascota'=>$request->comentario_mascota,
+                        'image_mascota'=> ( $ruta_archivo . $nombre_archivo )
+              ]);
+        
+              if ($update){
+                session()->flash('mensaje', ['success', 'Los datos de la mascota se han modificado correctamente.']);
+                return redirect()->route('mascota.create');
+            
+                session()->flash('mensaje', ['danger', 'Se ha Producido un error al Modificar los datos de la Mascota.']);
+                return redirect()->route('mascota.create');
+               }    
+     }
 
     public function delete(Mascota $m)
     {

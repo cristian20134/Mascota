@@ -16,7 +16,7 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $usuarios = Usuario::withTrashed()->paginate(8);
+        $usuarios = Usuario::withTrashed()->paginate(5);
         return view('usuario.index', compact(['usuarios']));
     }
 
@@ -73,22 +73,28 @@ class UsuarioController extends Controller
   
     public function update(Usuario $u, UsuarioRequest $request)
     {
+
         if ( $request->hasFile('image_usuario')) {
+                $ruta_archivo = "uploads/usuarios/";
 
-            $peso_archivo = $request->file('image_usuario')->getSize();
-            $extension_archivo = $request->file('image_usuario')->getClientOriginalExtension();
+                if($u->image_usuario != ''  && $u->image_usuario != null){
+                    $file_old =$u->image_usuario;
 
-            $ruta_archivo = "uploads/usuarios/";
-            $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
-
-            $subida_archivo = $request->file('image_usuario')->move($ruta_archivo, $nombre_archivo);
-
+                    unlink($file_old);
+                }
             }
 
-            else{
-                unset($request['image_usuario']);
-            }
+            if ( $request->hasFile('image_usuario')) {
 
+                $peso_archivo = $request->file('image_usuario')->getSize();
+                $extension_archivo = $request->file('image_usuario')->getClientOriginalExtension();
+
+                $ruta_archivo = "uploads/usuarios/";
+                $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
+
+                $subida_archivo = $request->file('image_usuario')->move($ruta_archivo, $nombre_archivo);
+
+                }
 
             $update = $u->update([
                 'nombre_usuario' => $request->nombre_usuario,
@@ -103,10 +109,10 @@ class UsuarioController extends Controller
             if ($update){
                 session()->flash('mensaje', ['success', 'Los datos del usuario se han modificado correctamente.']);
                 return redirect()->route('usuario.show', ['u'=>$u->id]);
-            
+
                 session()->flash('mensaje', ['danger', 'Se ha producido un error al modificar los datos del usuario.']);
                 return redirect()->route('usuario.create');
-            }  
+            }
      }
 
     public function delete(Usuario $u)

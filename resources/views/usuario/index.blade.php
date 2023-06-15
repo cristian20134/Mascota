@@ -33,7 +33,7 @@
                                         <td>{{ $usuario ->apellido_paterno}} {{$usuario->apellido_materno}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('usuario.show', ['u'=>$usuario->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
-                                            <a href="{{ route('usuario.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            {{--<a href="{{ route('usuario.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>--}}
                                             <a href="{{ route('usuario.edit', ['u'=>$usuario->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
 
                                             @if( $usuario->trashed())

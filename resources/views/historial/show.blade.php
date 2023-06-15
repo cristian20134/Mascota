@@ -28,10 +28,10 @@
                     <b>Vacunas</b> <a class="float-right">{{$his->vacuna}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>enfermedades</b> <a class="float-right">{{ $his->enfermedades}}</a>
+                    <b>Enfermedades</b> <a class="float-right">{{ $his->enfermedades}}</a>
                     </li>
                     <li class="list-group-item text-justify">
-                    <b>Comentarios</b> <a class="float-right">{{ $his->comentarios}}</a>
+                    <b>Comentario</b> <a class="float-right">{{ $his->comentarios}}</a>
                     </li>
                 </ul>
                 <div class="text-center">
