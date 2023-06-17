@@ -35,7 +35,7 @@
                                         <td>{{ $seguimiento ->fecha_seguimiento->format('d-m-Y')}}</td>
                                         <td>
                                             <a href="{{ route('seguimiento.show', ['seg'=>$seguimiento->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
-                                            <a href="{{ route('seguimiento.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            {{-- <a href="{{ route('seguimiento.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a> --}}
                                             <a href="{{ route('seguimiento.edit', ['seg'=>$seguimiento->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
                                             @if( $seguimiento->trashed())
                                             <a

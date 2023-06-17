@@ -9,9 +9,18 @@
 @endsection
 
 @section('contenido')
+
     <div class="col-md-10 mx-auto">
             <div class="card">
-                <div class="card-header">Listado de Usuarios</div>
+                <div class="d-flex justify-content-between mt-3 mr-3">
+                    <div class="card-header" >Listado de Usuarios</div>
+                    <div>
+                        <form method="GET" class="d-flex justify-content-end ">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" name="search">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </form>
+                    </div>
+                </div>
                     <div class="card-body p-0 m-0">
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed table-striped">
@@ -53,7 +62,7 @@
                         </div>
                     </div>
             </div>
-            <div class=" d-flex justify-content-end">
+            <div class=" d-flex justify-content-start">
                 {{$usuarios->links()}}
             </div>
     </div>

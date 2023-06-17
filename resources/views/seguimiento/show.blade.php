@@ -31,7 +31,7 @@
                     </li>
                     </li>
                     <li class="list-group-item">
-                    <b>Descripción</b> <a class="float-right text-justify">{{ $seg->descripcion_seguimiento}}</a>
+                    <b>Descripción del Seguimiento</b> <a class="float-right text-justify mt-3">{{ $seg->descripcion_seguimiento}}</a>
                     </li>
                 </ul>
                 <div class="text-center">

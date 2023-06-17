@@ -33,7 +33,7 @@
                                         <td>{{ $historial->enfermedades}}</td>
                                         <td>
                                             <a href="{{ route('historial.show', ['his'=>$historial->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
-                                            <a href="{{ route('historial.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            {{-- <a href="{{ route('historial.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a> --}}
                                             <a href="{{ route('historial.edit', ['his'=>$historial->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
 
                                             @if( $historial->trashed())

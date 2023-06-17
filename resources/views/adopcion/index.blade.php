@@ -22,6 +22,7 @@
                                         <th>Mascota</th>
                                         <th>Fecha Adopción</th>
                                         <th>Acciones</th>
+                                        <th>Documento Adopción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,7 +34,7 @@
                                         <td>{{ $adopcion->fecha_adopcion->format('d-m-Y') }}</td>
                                         <td>
                                             <a href="{{ route('adopcion.show', ['info'=>$adopcion->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
-                                            <a href="{{ route('adopcion.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            {{--<a href="{{ route('adopcion.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>--}}
                                             <a href="{{ route('adopcion.edit', ['info'=>$adopcion->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
                                             @if( $adopcion->trashed())
                                             <a
@@ -44,6 +45,9 @@
                                                 href="{{ route('adopcion.delete', ['info'=>$adopcion->id]) }}"
                                                 class="btn btn-danger delete-confirm"><i class="material-icons">Eliminar</i></a>
                                         @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('adopcion.pdf', ['info'=>$adopcion->id])}}" class="btn btn-primary"><i class="material-icons">Ver</i></a>
                                         </td>
                                     </tr>
                                     @endforeach

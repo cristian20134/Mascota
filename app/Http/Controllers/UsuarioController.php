@@ -16,7 +16,17 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $usuarios = Usuario::withTrashed()->paginate(5);
+        $usuarios = Usuario::query()
+        ->withTrashed()
+        ->when(request('search'), function($query){
+            return $query->where('nombre_usuario','like','%'.request('search').'%')
+                ->orWhere('apellido_paterno','like','%'.request('search').'%');
+                /*->orWhereHas('user', function ($q){
+                    $q->where('nombre_usuario', 'like','%'.request('search').'%');
+                });*/
+        })
+        ->paginate(5)
+        ->withQueryString();
         return view('usuario.index', compact(['usuarios']));
     }
 

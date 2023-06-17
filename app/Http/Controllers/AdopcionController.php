@@ -7,6 +7,7 @@ use App\Models\Adopcion;
 use App\Models\Mascota;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class AdopcionController extends Controller
 {
@@ -111,6 +112,11 @@ class AdopcionController extends Controller
                 abort(403);
             }
         }
+
+        public function pdf( Adopcion $info)
+        {
+            $pdf = PDF::loadview('adopcion.pdf', compact(['info']));
+            return $pdf->stream();
+        }
     
     }
-    

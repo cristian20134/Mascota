@@ -58,6 +58,7 @@ Route::get('/adopcion/edit/{info}', [App\Http\Controllers\AdopcionController::cl
 Route::put('/adopcion/update/{info}', [App\Http\Controllers\AdopcionController::class, 'update'])->name('adopcion.update');
 Route::get('/adopcion/delete/{info}', [App\Http\Controllers\AdopcionController::class, 'delete'])->name('adopcion.delete');
 Route::get('/adopcion/restore/{info}', [App\Http\Controllers\AdopcionController::class, 'restore'])->name('adopcion.restore');
+Route::get('/adopcion/pdf/{info}', [App\Http\Controllers\AdopcionController::class, 'pdf'])->name('adopcion.pdf');
 
 Route::get('/seguimiento/index', [App\Http\Controllers\SeguimientoController::class, 'index'])->name('seguimiento.index');
 Route::get('/seguimiento/show{seg}', [App\Http\Controllers\SeguimientoController::class, 'show'])->name('seguimiento.show');

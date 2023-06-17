@@ -33,7 +33,7 @@
                                         <td>{{ $mascota->raza->raza_mascota }}</td>
                                         <td>
                                             <a href="{{ route('mascota.show', ['m'=>$mascota->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
-                                            <a href="{{ route('mascota.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>
+                                            {{-- <a href="{{ route('mascota.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a> --}}
                                             <a href="{{ route('mascota.edit', ['m'=>$mascota->id])}}" class="btn btn-success"><i class="material-icons">Editar</i></a>
                                             @if( $mascota->trashed())
                                             <a
