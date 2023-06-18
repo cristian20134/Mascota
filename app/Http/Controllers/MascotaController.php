@@ -21,10 +21,18 @@ class MascotaController extends Controller
     
     public function index()
     {
-        $mascotas = Mascota::withTrashed()->paginate(8);
+        $mascotas = Mascota::query()
+        ->withTrashed()
+        ->when(request('search'), function($query){
+            return $query->where('nombre_mascota','like','%'.request('search').'%')
+            ->orWhereHas('raza', function ($q){
+                $q->where('raza_mascota', 'like','%'.request('search').'%');
+            });
+        })
+        ->paginate(5)
+        ->withQueryString();
         return view('mascota.index', compact('mascotas'));
     }
-
    
     public function create()
     {

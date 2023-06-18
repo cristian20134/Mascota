@@ -34,7 +34,7 @@
                     </li>
                     </li>
                     <li class="list-group-item text-justify">
-                    <b>Descripción</b> <a class="float-right">{{ $info->descripcion_adopcion}}</a>
+                    <b>Descripción</b> <a class="float-right mt-2">{{ $info->descripcion_adopcion}}</a>
                     </li>
                 </ul>
                 <div class="text-center">

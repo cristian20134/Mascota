@@ -16,7 +16,7 @@
                     <div class="card-header" >Listado de Usuarios</div>
                     <div>
                         <form method="GET" class="d-flex justify-content-end ">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" name="search">
+                            <input class="form-control me-2 mr-1" type="search" placeholder="Buscar" name="search">
                             <button class="btn btn-primary" type="submit">Buscar</button>
                         </form>
                     </div>

@@ -55,7 +55,7 @@
                         </div>
                     </div>
             </div>
-            <div class=" d-flex justify-content-end">
+            <div class=" d-flex justify-content-start">
                 {{$historiales->links()}}
             </div> 
     </div>

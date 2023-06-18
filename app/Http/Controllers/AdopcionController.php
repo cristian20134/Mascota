@@ -19,7 +19,8 @@ class AdopcionController extends Controller
 
     public function index()
     {
-        $adopciones = Adopcion::withTrashed()->paginate(8);
+        $adopciones = Adopcion::withTrashed()
+        ->paginate(5);
         return view('adopcion.index',compact(['adopciones']));
     }
 

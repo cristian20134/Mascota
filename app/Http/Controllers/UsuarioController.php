@@ -20,10 +20,8 @@ class UsuarioController extends Controller
         ->withTrashed()
         ->when(request('search'), function($query){
             return $query->where('nombre_usuario','like','%'.request('search').'%')
-                ->orWhere('apellido_paterno','like','%'.request('search').'%');
-                /*->orWhereHas('user', function ($q){
-                    $q->where('nombre_usuario', 'like','%'.request('search').'%');
-                });*/
+                ->orWhere('apellido_paterno','like','%'.request('search').'%')
+                ->orWhere('apellido_materno','like','%'.request('search').'%');
         })
         ->paginate(5)
         ->withQueryString();
@@ -89,21 +87,16 @@ class UsuarioController extends Controller
 
                 if($u->image_usuario != ''  && $u->image_usuario != null){
                     $file_old =$u->image_usuario;
-
                     unlink($file_old);
                 }
             }
 
             if ( $request->hasFile('image_usuario')) {
-
                 $peso_archivo = $request->file('image_usuario')->getSize();
                 $extension_archivo = $request->file('image_usuario')->getClientOriginalExtension();
-
                 $ruta_archivo = "uploads/usuarios/";
                 $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
-
                 $subida_archivo = $request->file('image_usuario')->move($ruta_archivo, $nombre_archivo);
-
                 }
 
             $update = $u->update([

@@ -9,7 +9,7 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Listado de Adopciones</div>
                     <div class="card-body p-0 m-0">
@@ -19,7 +19,7 @@
                                     <tr class="text-center">
                                         <th>#</th>
                                         <th>Persona Responsable</th>
-                                        <th>Mascota</th>
+                                        <th>Nombre Mascota</th>
                                         <th>Fecha Adopción</th>
                                         <th>Acciones</th>
                                         <th>Documento Adopción</th>
@@ -29,7 +29,7 @@
                                     @foreach($adopciones as $adopcion)
                                     <tr class="text-center">
                                         <td>{{ $adopcion -> id }}</td>
-                                        <td>{{ $adopcion->usuario->nombre_usuario.' '.$adopcion->usuario->apellido_paterno.' '.$adopcion->usuario->apellido_materno}}</td>
+                                        <td class="text-left">{{ $adopcion->usuario->nombre_usuario.' '.$adopcion->usuario->apellido_paterno.' '.$adopcion->usuario->apellido_materno}}</td>
                                         <td>{{ $adopcion->mascota->nombre_mascota }}</td>
                                         <td>{{ $adopcion->fecha_adopcion->format('d-m-Y') }}</td>
                                         <td>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
             </div>
-            <div class=" d-flex justify-content-end">
+            <div class=" d-flex justify-content-start">
                 {{$adopciones->links()}}
             </div> 
     </div>

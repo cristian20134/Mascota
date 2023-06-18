@@ -16,7 +16,8 @@ class HistorialMedicoController extends Controller
 
     public function index()
     {
-        $historiales = HistorialMedico::withTrashed()->paginate(8);
+        $historiales = HistorialMedico::withTrashed()
+        ->paginate(5);
        return view('historial.index', compact(['historiales']));
     }
 

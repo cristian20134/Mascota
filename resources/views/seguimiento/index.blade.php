@@ -54,7 +54,7 @@
                         </div>
                     </div>
             </div>
-                <div class=" d-flex justify-content-end">
+                <div class=" d-flex justify-content-start">
                     {{$seguimientos->links()}}
                 </div> 
     </div> 

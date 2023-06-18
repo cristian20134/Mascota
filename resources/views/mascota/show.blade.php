@@ -33,7 +33,7 @@
                         <b>Fecha Nacimiento</b> <a class="float-right">{{ $m->fecha_nacimiento_mascota->format('d-m-Y') }}</a>
                     </li>
                     <li class="list-group-item text-justify">
-                        <b>Comentario</b> <a class="float-right">{{ $m->comentario_mascota }}</a>
+                        <b>Comentario</b> <a class="float-right mt-2">{{ $m->comentario_mascota }}</a>
                     </li>
                 </ul>
                 <div class="text-center">
