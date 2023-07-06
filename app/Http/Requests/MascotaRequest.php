@@ -49,12 +49,12 @@ class MascotaRequest extends FormRequest
                     'image_mascota'=>'required|image|max:5120'
                 ];
             }
-            
+
         }
-        
+
     }
 
-    public function messages(){   
+    public function messages(){
         return [
             'nombre_mascota.required'=>'Este campo es obligatorio.',
             'select_raza.required'=>'Este campo es obligatorio.',

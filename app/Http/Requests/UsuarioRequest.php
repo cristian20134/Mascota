@@ -29,7 +29,7 @@ class UsuarioRequest extends FormRequest
                     'nombre_usuario' => 'required|min:3|max:30|',
                     'apellido_paterno' => 'required|min:3|max:15|alpha',
                     'apellido_materno' => 'required|min:3|max:15|alpha',
-                    'rut_usuario' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:10',
+                    'rut_usuario' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:10|unique:usuario',
                     'email_usuario' => 'required|email|unique:usuario',
                     'telefono_usuario' => 'required|numeric|digits:9',
                     'image_usuario' => 'required|image|max:5120',
@@ -47,10 +47,10 @@ class UsuarioRequest extends FormRequest
                 ];
             }
         }
-        
+
     }
 
-    public function messages(){   
+    public function messages(){
         return [
             'nombre_usuario.required'=>'Este campo es obligatorio',
             'apellido_paterno.required'=>'Este campo es obligatorio',
@@ -64,7 +64,7 @@ class UsuarioRequest extends FormRequest
             'apellido_paterno.min'=>'El campo debe tener mínimo :min caracteres.',
             'apellido_materno.min'=>'El campo debe tener mínimo :min caracteres.',
             'rut_usuario.min'=>'El campo debe tener mínimo :min caracteres.',
-            
+
             'nombre_usuario.max'=>'El campo debe tener máximo :max caracteres.',
             'apellido_paterno.max'=>'El campo debe tener máximo :max caracteres.',
             'apellido_materno.max'=>'El campo debe tener máximo :max caracteres.',
@@ -74,6 +74,7 @@ class UsuarioRequest extends FormRequest
             'telefono_usuario.numeric'=>'El telefóno debe ser número',
             'telefono_usuario.digits'=>'El campo debe tener :digits digitos.',
 
+            'rut_usuario.unique'=>'El rut ya ha sido registrado.',
             'email_usuario.unique'=>'El correo ya ha sido tomado.',
             'image_usuario.image' => 'Solo se aceptan imágenes. Formatos: jpg, jpeg, png, bmp, gif, svg, or webp.'
         ];

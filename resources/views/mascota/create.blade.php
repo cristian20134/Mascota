@@ -23,10 +23,10 @@
                 @csrf
                 <div class="form-group">
                   <label class="@error ('nombre_mascota') text-danger @enderror" for="nombre_mascota">Nombre Mascota</label>
-                  <input 
-                  type="text" name='nombre_mascota' 
-                  class="form-control  @error ('nombre_mascota') is-invalid @enderror" 
-                  id="nombre_mascota" 
+                  <input
+                  type="text" name='nombre_mascota'
+                  class="form-control  @error ('nombre_mascota') is-invalid @enderror"
+                  id="nombre_mascota"
                   placeholder="Ingrese nombre mascota"
                   value="{{ old('nombre_mascota') ?: ""}}">
                   @error('nombre_mascota')
@@ -92,9 +92,10 @@
 
                 <div class="form-group">
                   <label class="@error ('fecha_nacimiento_mascota') text-danger @enderror" for="fecha_nacimiento_mascota">Fecha Nacimiento Mascota</label>
-                  <input 
-                  type="date" name='fecha_nacimiento_mascota' 
-                  class="form-control  @error ('fecha_nacimiento_mascota') is-invalid @enderror" 
+                  <input
+                  type="date"
+                  name='fecha_nacimiento_mascota'
+                  class="form-control  @error ('fecha_nacimiento_mascota') is-invalid @enderror"
                   id="fecha_nacimiento_mascota"
                   placeholder="Formato: aaaa-mm-dd"
                   value="{{ old('fecha_nacimiento_mascota') ?: ""}}">
@@ -105,11 +106,11 @@
 
                 <div class="form-group">
                   <label class="@error('comentario_mascota') text-danger @enderror" for="comentario_mascota">Comentarios</label>
-                  <textarea 
-                  class="form-control text-justify @error ('comentario_mascota') is-invalid @enderror" 
-                  name="comentario_mascota" 
-                  id="comentario_mascota" 
-                  cols="30" rows="07" 
+                  <textarea
+                  class="form-control text-justify @error ('comentario_mascota') is-invalid @enderror"
+                  name="comentario_mascota"
+                  id="comentario_mascota"
+                  cols="30" rows="07"
                   style="resize: none;"
                   >{{ old('comentario_mascota') ?: ""}}</textarea>
                   @error('comentario_mascota')

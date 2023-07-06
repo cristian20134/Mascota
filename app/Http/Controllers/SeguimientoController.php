@@ -16,8 +16,26 @@ class SeguimientoController extends Controller
 
     public function index()
     {
-        $seguimientos = Seguimiento::withTrashed()
-        ->paginate(5);
+        $seguimientos = Seguimiento::query()
+        ->orderBy('id','DESC')
+        ->withTrashed()
+        ->when(request('search'), function($query){
+            return $query->where('estado_mascota','like','%'.request('search').'%')
+            ->orWhereHas('adopcion.mascota', function ($q){
+                $q->where('nombre_mascota', 'like','%'.request('search').'%');
+            })
+            ->orWhereHas('adopcion.usuario', function ($q){
+                $q->where('nombre_usuario', 'like','%'.request('search').'%');
+            })
+            ->orWhereHas('adopcion.usuario', function ($q){
+                $q->where('apellido_paterno', 'like','%'.request('search').'%');
+            })
+            ->orWhereHas('adopcion.usuario', function ($q){
+                $q->where('apellido_materno', 'like','%'.request('search').'%');
+            });
+        })
+        ->paginate(5)
+        ->withQueryString();
         return view('seguimiento.index',compact(['seguimientos']));
     }
 
@@ -39,18 +57,18 @@ class SeguimientoController extends Controller
         if ($seguimientos){
             session()->flash('mensaje', ['success', 'El seguimniento se ha registrado correctamente.']);
             return redirect()->route('seguimiento.create');
-        
+
             session()->flash('mensaje', ['danger', 'Se ha Producido un error al registrar el seguimiento.']);
             return redirect()->route('seguimiento.create');
            }
     }
-   
+
     public function show(Seguimiento $seg)
     {
         return view('seguimiento.show', compact(['seg']));
     }
 
-  
+
     public function edit(Seguimiento $seg)
     {
         $adopciones = Adopcion::all();
@@ -65,14 +83,14 @@ class SeguimientoController extends Controller
             'fecha_seguimiento' =>$request->fecha_seguimiento,
             'descripcion_seguimiento'=>$request->descripcion_seguimiento
           ]);
-    
+
           if ($update){
             session()->flash('mensaje', ['success', 'Los datos del seguimiento se han modificado correctamente.']);
             return redirect()->route('seguimiento.create');
-        
+
             session()->flash('mensaje', ['danger', 'Se ha producido un error al modificar los datos del seguimiento.']);
             return redirect()->route('home');
-           }    
+           }
         }
 
         public function delete(Seguimiento $seg)
@@ -84,12 +102,12 @@ class SeguimientoController extends Controller
                 }
                 session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar el seguimiento']);
                 return redirect()->route('seguimiento.index');
-    
+
             } catch( \Exception $seg) {
                 abort(403);
             }
         }
-    
+
         public function restore($seg) {
             try {
                 if (Seguimiento::withTrashed()->findOrFail($seg)->restore() ){
@@ -98,11 +116,11 @@ class SeguimientoController extends Controller
                 }
                 session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar el seguimiento.']);
                 return redirect()->route('seguimiento.index');
-    
+
             } catch( \Exception $seg) {
                 abort(403);
             }
         }
-    
+
     }
-    
+

@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('nombre_usuario');
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
-            $table->string('rut_usuario',10);
+            $table->string('rut_usuario',10)->unique();
             $table->string('email_usuario')->unique();
             $table->string('telefono_usuario');
-            $table->string('image_usuario')->nullable();;
+            $table->string('image_usuario')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

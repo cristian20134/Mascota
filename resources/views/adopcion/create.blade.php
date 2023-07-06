@@ -28,7 +28,7 @@
                       <option value="">Seleccione una Opción</option>
                       @foreach($usuarios as $u)
                       <option value="{{ $u->id }}"
-                        {{ (int) old('select_usuario') === $u->id ? 'selected' : ''}}>{{$u->nombre_usuario}} {{ $u->apellido_paterno }} {{ $u->apellido_materno }}</option>
+                        {{ (int) old('select_usuario') === $u->id ? 'selected' : ''}}>{{$u->id.'.- '.$u->nombre_usuario.' '.$u->apellido_paterno.' '.$u->apellido_materno}}</option>
                       @endforeach
                     </select>
                      @error('select_usuario')
@@ -52,10 +52,10 @@
 
                 <div class="form-group">
                     <label class="@error ('nombre_cuidad') text-danger @enderror" for="nombre_cuidad">Ciudad</label>
-                    <input 
-                    type="text" name='nombre_cuidad' 
-                    class="form-control  @error ('nombre_cuidad') is-invalid @enderror" 
-                    id="nombre_cuidad" 
+                    <input
+                    type="text" name='nombre_cuidad'
+                    class="form-control  @error ('nombre_cuidad') is-invalid @enderror"
+                    id="nombre_cuidad"
                     placeholder="Ingrese Comuna"
                     value="{{ old('nombre_cuidad') ?: ""}}">
                     @error('nombre_cuidad')
@@ -65,10 +65,10 @@
 
                 <div class="form-group">
                   <label class="@error ('direccion_adopcion') text-danger @enderror" for="direccion_adopcion">Dirección</label>
-                  <input 
-                  type="text" name='direccion_adopcion' 
-                  class="form-control  @error ('direccion_adopcion') is-invalid @enderror" 
-                  id="direccion_adopcion" 
+                  <input
+                  type="text" name='direccion_adopcion'
+                  class="form-control  @error ('direccion_adopcion') is-invalid @enderror"
+                  id="direccion_adopcion"
                   placeholder="Ingrese Dirección"
                   value="{{ old('direccion_adopcion') ?: ""}}">
                   @error('direccion_adopcion')
@@ -78,9 +78,9 @@
 
                 <div class="form-group">
                   <label class="@error ('fecha_adopcion') text-danger @enderror" for="fecha_adopcion">Fecha Adopción Mascota</label>
-                  <input 
-                  type="date" name='fecha_adopcion' 
-                  class="form-control  @error ('fecha_adopcion') is-invalid @enderror" 
+                  <input
+                  type="date" name='fecha_adopcion'
+                  class="form-control  @error ('fecha_adopcion') is-invalid @enderror"
                   id="fecha_adopcion"
                   placeholder="Formato: aaaa-mm-dd"
                   value="{{ old('fecha_adopcion') ?: ""}}">
@@ -91,11 +91,11 @@
 
                 <div class="form-group">
                   <label class="@error('descripcion_adopcion') text-danger @enderror" for="descripcion_adopcion">Descripcion Adopción</label>
-                  <textarea 
-                  class="form-control text-justify @error ('descripcion_adopcion') is-invalid @enderror" 
-                  name="descripcion_adopcion" 
-                  id="descripcion_adopcion" 
-                  cols="30" rows="07" 
+                  <textarea
+                  class="form-control text-justify @error ('descripcion_adopcion') is-invalid @enderror"
+                  name="descripcion_adopcion"
+                  id="descripcion_adopcion"
+                  cols="30" rows="07"
                   style="resize: none;"
                   >{{ old('descripcion_adopcion') ?: ""}}</textarea>
                   @error('descripcion_adopcion')

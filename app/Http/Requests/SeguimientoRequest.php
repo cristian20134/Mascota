@@ -31,12 +31,12 @@ class SeguimientoRequest extends FormRequest
                     'descripcion_seguimiento'=>'required|min:5|max:600',
                 ];
             }
-            
+
         }
-        
+
     }
 
-    public function messages(){   
+    public function messages(){
         return [
             'select_seguimiento.required'=>'Este campo es obligatorio.',
             'estado_mascota.required'=>'Este campo es obligatorio.',
@@ -49,7 +49,7 @@ class SeguimientoRequest extends FormRequest
             'estado_mascota.max'=>'El campo debe tener máximo :max caracteres.',
             'descripcion_seguimiento.max'=>'El campo debe tener máximo :max caracteres.',
 
-            'fecha_seguimiento' => 'El formato de fecha válido es dd-mm-AAAA.'
+            'fecha_seguimiento' => 'El formato de fecha válido es mm-dd-AAAA.'
         ];
     }
 }

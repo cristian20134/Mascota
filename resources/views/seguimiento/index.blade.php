@@ -9,9 +9,17 @@
 @endsection
 
 @section('contenido')
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Listado de Seguimientos Mascotas</div>
+                <div class="d-flex justify-content-between mt-3 mr-3">
+                    <div class="card-header" >Listado de Seguimientos Mascotas</div>
+                    <div>
+                        <form method="GET" class="d-flex justify-content-end ">
+                            <input class="form-control me-2 mr-1" type="search" placeholder="Buscar" name="search">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </form>
+                    </div>
+                </div>
                     <div class="card-body p-0 m-0">
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed table-striped">
@@ -30,7 +38,7 @@
                                     <tr class="text-center">
                                         <td>{{ $seguimiento -> id }}</td>
                                         <td>{{ $seguimiento ->adopcion->mascota->nombre_mascota}}</td>
-                                        <td>{{ $seguimiento ->adopcion->usuario->nombre_usuario}}</td>
+                                        <td>{{ $seguimiento ->adopcion->usuario->nombre_usuario.' '.$seguimiento ->adopcion->usuario->apellido_paterno.' '.$seguimiento ->adopcion->usuario->apellido_materno}}</td>
                                         <td>{{ $seguimiento ->estado_mascota}}</td>
                                         <td>{{ $seguimiento ->fecha_seguimiento->format('d-m-Y')}}</td>
                                         <td>
@@ -46,7 +54,7 @@
                                                 href="{{ route('seguimiento.delete', ['seg'=>$seguimiento->id]) }}"
                                                 class="btn btn-danger delete-confirm"><i class="material-icons">Eliminar</i></a>
                                         @endif
-                                        </td>                 
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -56,6 +64,6 @@
             </div>
                 <div class=" d-flex justify-content-start">
                     {{$seguimientos->links()}}
-                </div> 
-    </div> 
+                </div>
+    </div>
 @endsection

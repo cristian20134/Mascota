@@ -17,11 +17,13 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuario::query()
+        ->orderBy('id','DESC')
         ->withTrashed()
         ->when(request('search'), function($query){
             return $query->where('nombre_usuario','like','%'.request('search').'%')
                 ->orWhere('apellido_paterno','like','%'.request('search').'%')
-                ->orWhere('apellido_materno','like','%'.request('search').'%');
+                ->orWhere('apellido_materno','like','%'.request('search').'%')
+                ->orWhere('email_usuario','like','%'.request('search').'%');
         })
         ->paginate(5)
         ->withQueryString();
@@ -30,12 +32,12 @@ class UsuarioController extends Controller
 
     public function create()
     {
-        
+
         return view('usuario.create');
     }
 
     public function store( UsuarioRequest $request )
-    {  
+    {
         if ( $request->hasFile('image_usuario')) {
 
             $peso_archivo = $request->file('image_usuario')->getSize();
@@ -47,7 +49,7 @@ class UsuarioController extends Controller
             $subida_archivo = $request->file('image_usuario')->move($ruta_archivo, $nombre_archivo);
 
             }
-        
+
             $usuarios = Usuario::create([
                 'nombre_usuario' => $request->nombre_usuario,
                 'apellido_paterno' => $request->apellido_paterno,
@@ -57,28 +59,28 @@ class UsuarioController extends Controller
                 'telefono_usuario' => $request->telefono_usuario,
                 'image_usuario' => ( $ruta_archivo . $nombre_archivo ),
                 ]);
-            
+
                 if ($usuarios){
                     session()->flash('mensaje', ['success', 'El usuario se ha registrado correctamente.']);
-                    return redirect()->route('usuario.index');
-                
+                    return redirect()->route('usuario.create');
+
                     session()->flash('mensaje', ['danger', 'Se ha Producido un error al momento de registrar un usuario.']);
                     return redirect()->route('usuario.create');
-                }      
+                }
     }
 
     public function show(Usuario $u)
     {
-        return view('usuario.show', compact(['u'])); 
+        return view('usuario.show', compact(['u']));
     }
 
-   
+
     public function edit(Usuario $u)
     {
         return view('usuario.edit', compact(['u']));
     }
 
-  
+
     public function update(Usuario $u, UsuarioRequest $request)
     {
 

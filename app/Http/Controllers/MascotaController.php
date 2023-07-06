@@ -18,10 +18,11 @@ class MascotaController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $mascotas = Mascota::query()
+        ->orderBy('id','DESC')
         ->withTrashed()
         ->when(request('search'), function($query){
             return $query->where('nombre_mascota','like','%'.request('search').'%')
@@ -33,7 +34,7 @@ class MascotaController extends Controller
         ->withQueryString();
         return view('mascota.index', compact('mascotas'));
     }
-   
+
     public function create()
     {
         $razas = Raza::all();
@@ -43,7 +44,7 @@ class MascotaController extends Controller
         return view('mascota.create', compact('razas','generos','personalidades','tamanos'));
     }
 
-  
+
     public function store(MascotaRequest $request)
     {
         if ( $request->hasFile('image_mascota')) {
@@ -68,19 +69,19 @@ class MascotaController extends Controller
         if ($mascotas){
             session()->flash('mensaje', ['success', 'La mascota se ha registrado correctamente.']);
             return redirect()->route('mascota.create');
-        
+
             session()->flash('mensaje', ['danger', 'Se ha Producido un error al registrar la Mascota.']);
             return redirect()->route('mascota.create');
-           }    
+           }
     }
 
-  
+
     public function show(Mascota $m)
     {
         return view('mascota.show', compact(['m']));
     }
 
- 
+
     public function edit(Mascota $m)
     {
         $razas = Raza::all();
@@ -106,9 +107,9 @@ class MascotaController extends Controller
                     $ruta_archivo = "uploads/mascotas/";
                     $nombre_archivo = date('YmdHis'). "." . $extension_archivo;
                     $subida_archivo = $request->file('image_mascota')->move($ruta_archivo, $nombre_archivo);
-        
+
                     }
-        
+
                     $update = $m->update([
                         'raza_id' =>$request->select_raza,
                         'tamano_id' =>$request->tamano,
@@ -119,14 +120,14 @@ class MascotaController extends Controller
                         'comentario_mascota'=>$request->comentario_mascota,
                         'image_mascota'=> ( $ruta_archivo . $nombre_archivo )
               ]);
-        
+
               if ($update){
                 session()->flash('mensaje', ['success', 'Los datos de la mascota se han modificado correctamente.']);
                 return redirect()->route('mascota.create');
-            
+
                 session()->flash('mensaje', ['danger', 'Se ha Producido un error al Modificar los datos de la Mascota.']);
                 return redirect()->route('mascota.create');
-               }    
+               }
      }
 
     public function delete(Mascota $m)

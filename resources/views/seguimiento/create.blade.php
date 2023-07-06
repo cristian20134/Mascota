@@ -38,10 +38,10 @@
 
                 <div class="form-group">
                   <label class="@error ('estado_mascota') text-danger @enderror" for="estado_mascota">Estado Mascota</label>
-                  <input 
-                  type="text" name='estado_mascota' 
-                  class="form-control  @error ('estado_mascota') is-invalid @enderror" 
-                  id="estado_mascota" 
+                  <input
+                  type="text" name='estado_mascota'
+                  class="form-control  @error ('estado_mascota') is-invalid @enderror"
+                  id="estado_mascota"
                   placeholder="Ingrese Estado Mascota"
                   value="{{ old('estado_mascota') ?: ""}}">
                   @error('estado_mascota')
@@ -51,9 +51,9 @@
 
                 <div class="form-group">
                   <label class="@error ('fecha_seguimiento') text-danger @enderror" for="fecha_seguimiento">Fecha Seguimiento Mascota</label>
-                  <input 
-                  type="date" name='fecha_seguimiento' 
-                  class="form-control  @error ('fecha_seguimiento') is-invalid @enderror" 
+                  <input
+                  type="date" name='fecha_seguimiento'
+                  class="form-control  @error ('fecha_seguimiento') is-invalid @enderror"
                   id="fecha_seguimiento"
                   placeholder="Formato: aaaa-mm-dd"
                   value="{{ old('fecha_seguimiento') ?: ""}}">
@@ -64,9 +64,9 @@
 
                 <div class="form-group">
                   <label class="@error('descripcion_seguimiento') text-danger @enderror" for="descripcion_seguimiento">Comentario Seguimiento Mascota</label>
-                  <textarea class="form-control text-justify @error ('descripcion_seguimiento') is-invalid @enderror" 
-                  name="descripcion_seguimiento" id="descripcion_seguimiento" 
-                  cols="30" rows="07" 
+                  <textarea class="form-control text-justify @error ('descripcion_seguimiento') is-invalid @enderror"
+                  name="descripcion_seguimiento" id="descripcion_seguimiento"
+                  cols="30" rows="07"
                   style="resize: none;"
                   >{{ old('descripcion_seguimiento') ?: ""}}</textarea>
                   @error('descripcion_seguimiento')

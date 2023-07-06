@@ -11,7 +11,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class AdopcionController extends Controller
 {
-  
+
     public function __construct( )
     {
         $this->middleware('auth');
@@ -19,8 +19,26 @@ class AdopcionController extends Controller
 
     public function index()
     {
-        $adopciones = Adopcion::withTrashed()
-        ->paginate(5);
+        $adopciones = Adopcion::query()
+        ->orderBy('id','DESC')
+        ->withTrashed()
+        ->when(request('search'), function($query){
+            return $query
+            ->orWhereHas('usuario', function ($q){
+                $q->where('nombre_usuario', 'like','%'.request('search').'%');
+            })
+            ->orWhereHas('usuario', function ($q){
+                $q->where('apellido_paterno', 'like','%'.request('search').'%');
+            })
+            ->orWhereHas('usuario', function ($q){
+                $q->where('apellido_materno', 'like','%'.request('search').'%');
+            })
+            ->orWhereHas('mascota', function ($q){
+                $q->where('nombre_mascota', 'like','%'.request('search').'%');
+            });
+        })
+        ->paginate(5)
+        ->withQueryString();
         return view('adopcion.index',compact(['adopciones']));
     }
 
@@ -46,13 +64,13 @@ class AdopcionController extends Controller
         if ($adopciones){
             session()->flash('mensaje', ['success', 'La adopción se ha registrado correctamente.']);
             return redirect()->route('adopcion.create');
-        
+
             session()->flash('mensaje', ['danger', 'Se ha Producido un error al registrar la adopción.']);
             return redirect()->route('adopcion.create');
-           }  
+           }
     }
 
-   
+
     public function show(Adopcion $info)
     {
         return view('adopcion.show', compact(['info']));
@@ -75,16 +93,16 @@ class AdopcionController extends Controller
             'fecha_adopcion' =>$request->fecha_adopcion,
             'descripcion_adopcion'=>$request->descripcion_adopcion
           ]);
-    
+
           if ($update){
             session()->flash('mensaje', ['success', 'Los datos de la adopción se han modificado correctamente.']);
             return redirect()->route('adopcion.show', ['info'=>$info->id]);
-        
+
             session()->flash('mensaje', ['danger', 'Se ha Producido un error al Modificar los datos de la adopción.']);
             return redirect()->route('home');
-           }    
+           }
         }
-    
+
         public function delete(Adopcion $info)
         {
             try {
@@ -94,12 +112,12 @@ class AdopcionController extends Controller
                 }
                 session()->flash('mensaje', ['danger', 'Se produjo un ERROR al eliminar la adopción']);
                 return redirect()->route('adopcion.index');
-    
-            } catch( \Exception $info) {
+
+            } catch( \Exception $e) {
                 abort(403);
             }
         }
-    
+
         public function restore($info) {
             try {
                 if (Adopcion::withTrashed()->findOrFail($info)->restore() ){
@@ -108,8 +126,8 @@ class AdopcionController extends Controller
                 }
                 session()->flash('mensaje', ['danger', 'Se produjo un ERROR al recuperar la adopción.']);
                 return redirect()->route('adopcion.index');
-    
-            } catch( \Exception $info) {
+
+            } catch( \Exception $e) {
                 abort(403);
             }
         }
@@ -119,5 +137,5 @@ class AdopcionController extends Controller
             $pdf = PDF::loadview('adopcion.pdf', compact(['info']));
             return $pdf->stream();
         }
-    
+
     }

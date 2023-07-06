@@ -21,13 +21,13 @@
             <form method="POST" action="{{ route('usuario.store')}}" enctype="multipart/form-data">
               <div class="card-body">
                 @csrf
-                
+
                 <div class="form-group">
                   <label class="@error ('nombre_usuario') text-danger @enderror" for="nombre_usuario">Nombres</label>
-                  <input 
-                  type="text" name='nombre_usuario' 
-                  class="form-control  @error ('nombre_usuario') is-invalid @enderror" 
-                  id="nombre_usuario" 
+                  <input
+                  type="text" name='nombre_usuario'
+                  class="form-control  @error ('nombre_usuario') is-invalid @enderror"
+                  id="nombre_usuario"
                   placeholder="Ingrese Nombres"
                   value="{{ old('nombre_usuario') ?: ""}}">
                   @error('nombre_usuario')
@@ -37,11 +37,11 @@
 
                 <div class="form-group">
                     <label class="@error ('apellido_paterno') text-danger @enderror" for="apellido_paterno">Apellido Paterno</label>
-                    <input 
-                    type="text" 
-                    name='apellido_paterno' 
-                    class="form-control @error ('apellido_paterno') is-invalid @enderror" 
-                    id="apellido_paterno" 
+                    <input
+                    type="text"
+                    name='apellido_paterno'
+                    class="form-control @error ('apellido_paterno') is-invalid @enderror"
+                    id="apellido_paterno"
                     placeholder="Ingrese Apellido Paterno"
                     value="{{ old('apellido_paterno') ?: ""}}">
                     @error('apellido_paterno')
@@ -51,11 +51,11 @@
 
                   <div class="form-group">
                     <label class="@error ('apellido_materno') text-danger @enderror" for="apelllido_materno">Apellido Materno</label>
-                    <input 
-                    type="text" 
+                    <input
+                    type="text"
                     name='apellido_materno'
-                    class="form-control @error ('apellido_materno') is-invalid @enderror" 
-                    id="apellido_materno" 
+                    class="form-control @error ('apellido_materno') is-invalid @enderror"
+                    id="apellido_materno"
                     placeholder="Ingrese Apellido Materno"
                     value="{{ old('apellido_materno') ?: ""}}">
                     @error('apellido_materno')
@@ -65,11 +65,11 @@
 
                   <div class="form-group">
                     <label class="@error ('rut_usuario') text-danger @enderror" for="rut_usuario">Rut</label>
-                    <input 
-                    type="text" 
-                    name='rut_usuario' 
-                    class="form-control @error ('rut_usuario') is-invalid @enderror" 
-                    id="rut_usuario" 
+                    <input
+                    type="text"
+                    name='rut_usuario'
+                    class="form-control @error ('rut_usuario') is-invalid @enderror"
+                    id="rut_usuario"
                     placeholder="12345678-9"
                     value="{{ old('rut_usuario') ?: ""}}">
                     @error('rut_usuario')
@@ -79,25 +79,25 @@
 
                   <div class="form-group">
                     <label class="@error ('email_usuario') text-danger @enderror" for="email_usuario">Correo Electrónico</label>
-                    <input 
-                    type="email" 
-                    name='email_usuario' 
-                    class="form-control @error ('email_usuario') is-invalid @enderror" 
-                    id="email_usuario" 
+                    <input
+                    type="email"
+                    name='email_usuario'
+                    class="form-control @error ('email_usuario') is-invalid @enderror"
+                    id="email_usuario"
                     placeholder="Ingrese Correo Electrónico"
                     value="{{ old('email_usuario') ?: ""}}">
                     @error('email_usuario')
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                   </div>
-                  
+
                   <div class="form-group">
                     <label class="@error ('telefono_usuario') text-danger @enderror" for="telefono_usuario">Teléfono</label>
-                    <input 
-                    type="tel" 
-                    name='telefono_usuario' 
-                    class="form-control @error ('telefono_usuario') is-invalid @enderror" 
-                    id="telefono_usuario" 
+                    <input
+                    type="tel"
+                    name='telefono_usuario'
+                    class="form-control @error ('telefono_usuario') is-invalid @enderror"
+                    id="telefono_usuario"
                     placeholder="987654321"
                     value="{{ old('telefono_usuario') ?: ""}}">
                     @error('telefono_usuario')

@@ -27,9 +27,9 @@
                                 <thead class="bg-danger">
                                     <tr class="text-center">
                                         <th>#</th>
-                                        <th>Foto Perfil</th>          
-                                        <th>Nombres</th>
-                                        <th>Apellidos</th>                             
+                                        <th>Foto Perfil</th>
+                                        <th>Nombre Completo</th>
+                                        <th>Correo Electronico</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -37,9 +37,9 @@
                                     @foreach($usuarios as $usuario)
                                     <tr class="text-center">
                                         <td>{{ $usuario ->id }}</td>
-                                        <td><img src="{{asset($usuario->image_usuario) }}" width="60px" height="60px" class="rounded-circle"></td>
-                                        <td>{{ $usuario ->nombre_usuario }}</td>
-                                        <td>{{ $usuario ->apellido_paterno}} {{$usuario->apellido_materno}}</td>
+                                        <td><img src="{{asset($usuario->image_usuario) }}" width="75px" height="60px" class="rounded-circle"></td>
+                                        <td>{{ $usuario ->nombre_usuario.' '.$usuario ->apellido_paterno.' '.$usuario->apellido_materno }}</td>
+                                        <td>{{$usuario ->email_usuario}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('usuario.show', ['u'=>$usuario->id])}}" class="btn btn-info"><i class="material-icons">Datos</i></a>
                                             {{--<a href="{{ route('usuario.create')}}" class="btn btn-primary"><i class="material-icons">Crear</i></a>--}}
